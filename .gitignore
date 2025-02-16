@@ -1,0 +1,9 @@
+# Archivos de entorno y configuración sensible
+.env
+
+# Caché y logs de CodeIgniter
+writable/cache/*
+writable/debugbar/*
+writable/logs/*
+writable/session/*
+writable/uploads/*

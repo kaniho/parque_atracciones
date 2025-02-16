@@ -1,0 +1,125 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Models\UserModel;
+use App\Models\RolesModel;
+
+
+class UserController extends BaseController
+{
+        
+    public function index()
+    {
+        $userModel = new UserModel();
+
+        // Obtener los datos del formulario de búsqueda    
+        $usuario = $this->request->getVar('usuario'); // Obtener el término de búsqueda desde el formulario
+        $rol = $this->request->getVar('rol'); // Obtener el filtro de rol
+        $ultimaConexion = $this->request->getVar('ultimaConexion'); // Obtener el filtro de última conexión
+        $fechaIngreso = $this->request->getVar('fechaIngreso'); // Obtener el filtro de fecha de ingreso
+        $usuarioArchivado = $this->request->getVar('usuarioArchivado'); // Obtener el filtro de usuario archivado
+
+        // Construir la consulta con uniones
+        $userModel->select('users.*, roles.nombre_rol')
+            ->join('roles', 'roles.id = users.id_rol');
+            
+
+        // Aplicar filtros si se introducen
+        if ($usuario) {
+            $userModel->like('users.nombre_usuario', $usuario);
+        }
+        if ($rol) {
+            $userModel->like('roles.nombre_rol', $rol);
+        }
+        if ($ultimaConexion) {
+            $userModel->like('users.ultima_conexion', $ultimaConexion);
+        }
+        if ($fechaIngreso) {
+            $userModel->like('users.fecha_ingreso', $fechaIngreso);
+        }
+        if ($usuarioArchivado) {
+            $userModel->where('users.archivado', 1);
+        }
+
+        // Configuración de la paginación
+        $perPage = 3; // Número de elementos por página
+        $users = $userModel->paginate($perPage); // Obtener usuarios paginados
+        $data['users'] = $users; // Pasar los usuarios a la vista
+        $data['pager'] = $userModel->pager; // Instancia del paginador
+        $data['usuario'] = $usuario; // Mantener el término de búsqueda en la vista
+        $data['rol'] = $rol; // Mantener el filtro de rol en la vista
+        $data['ultimaConexion'] = $ultimaConexion; // Mantener el filtro de última conexión en la vista
+        $data['fechaIngreso'] = $fechaIngreso; // Mantener el filtro de fecha de ingreso en la vista
+        $data['usuarioArchivado'] = $usuarioArchivado; // Mantener el filtro de usuario archivado en la vista
+        
+        
+        return view('user_list', $data); // Cargar la vista con los datos
+    }
+
+    public function saveUser($id = null)
+    {
+        $userModel = new UserModel();
+        $roleModel = new RolesModel();
+        helper(['form', 'url']);
+        
+        // Cargar datos del usuario si es edición
+        $data['user'] = $id ? $userModel->find($id) : null;
+        $data['roles'] = $roleModel->findAll(); // Obtener todos los roles para el formulario
+
+        if ($this->request->getMethod() == 'POST') {
+
+            // Reglas de validación
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'name' => 'required|min_length[3]|max_length[50]',
+                'email' => 'required|valid_email',
+                'rol' => 'required|integer',
+            ]);
+
+            if (!$validation->withRequest($this->request)->run()) {
+                // Mostrar errores de validación
+                $data['validation'] = $validation;
+            } else {
+                // Preparar datos del formulario
+                $userData = [
+                    'nombre_usuario' => $this->request->getPost('name'),
+                    'email' => $this->request->getPost('email'),
+                    'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT), // Encriptamos la contraseña antes de guardarla.
+                    'id_rol' => $this->request->getPost('rol'),
+                ];
+
+                if ($id) {
+                    // Actualizar usuario existente
+                    $userModel->update($id, $userData);
+                    $message = 'Usuario actualizado correctamente.';  
+                } else {
+                    // Crear nuevo usuario
+                    $userModel->save($userData);
+                    $message = 'Usuario creado correctamente.';
+                }
+
+                // Redirigir al listado con un mensaje de éxito
+                return redirect()->to('/users')->with('success', $message);
+            }
+        }
+
+        // Cargar la vista del formulario (crear/editar)
+        return view('user_form', $data);
+    }
+
+    public function delete($id)
+    {
+        $userModel = new UserModel();
+        // Marcamos el usuario como archivado en lugar de eliminarlo físicamente.
+        $userModel->update($id, ['archivado' => 1]);
+        return redirect()->to('/users')->with('success', 'Usuario eliminado correctamente.');
+    }
+
+    public function restore($id) { // parte para restaurar un usuario
+        $userModel = new UserModel();
+        // Restaurar el usuario archivado
+        $userModel->update($id, ['archivado' => 0]);
+        return redirect()->to('/users')->with('success', 'Usuario restaurado correctamente.');
+    }
+}
