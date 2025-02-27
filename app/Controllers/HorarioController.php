@@ -32,14 +32,20 @@ class HorarioController extends BaseController {
 
         // Configuración de la paginación
         $perPage = 3; // Número de elementos por página
-        $data['horarios'] = $horarioModel->paginate($perPage); // Obtener horarios paginados
+        $horarios = $horarioModel->paginate($perPage); // Obtener horarios paginados
         $data['pager'] = $horarioModel->pager; // Instancia del paginador
-        $data['nombre'] = $nombre; // Mantener el término de búsqueda en la vista 
-        $data['horarioInicio'] = $horarioInicio; // Mantener el filtro de hora de inicio en la vista
-        $data['horarioFinalizacion'] = $horarioFinalizacion; // Mantener el filtro de hora de finalización en la vista
-        $data['horarioArchivado'] = $horarioArchivado; // Mantener el filtro de horario archivado en la vista
+        $pager = $horarioModel->pager; // Instancia del paginador
+        $data = [
+            'horarios' => $horarios,
+            'pager' => $pager,
+            'nombre' => $nombre, // Mantener el término de búsqueda en la vista
+            'horarioInicio' => $horarioInicio,
+            'horarioFinalizacion' => $horarioFinalizacion,
+            'horarioArchivado' => $horarioArchivado,
+        ];
+       
 
-        return view('horario_list', $data); // Cargar la vista con los datos
+        return view('horarios/horario_list', $data); // Cargar la vista con los datos
     }
 
     public function saveHorario($id = null) {
@@ -87,7 +93,7 @@ class HorarioController extends BaseController {
         }
 
         // Cargar la vista del formulario (crear/editar)
-        return view('horario_form', $data);
+        return view('horarios/horario_form', $data);
     }
 
     public function delete($id) {

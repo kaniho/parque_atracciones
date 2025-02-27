@@ -52,7 +52,7 @@
 
             <div class="mb-3">
                 <label for="comentario" class="form-label">Comentario:</label>
-                <textarea name="comentario" id="comentario" class="form-control"><?= set_value('comentario', $review['comentario'] ?? '') ?></textarea>
+                <textarea name="comentario" id="comentario" maxlength="350" class="form-control"><?= set_value('comentario', $review['comentario'] ?? '') ?></textarea>
             </div>
 
             <button type="submit" class="btn btn-success"><?= isset($review) ? 'Actualizar' : 'Guardar' ?></button>

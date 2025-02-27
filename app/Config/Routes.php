@@ -15,6 +15,10 @@ $routes->post("register/process", "AuthController::processRegister"); //Procesar
 $routes->get("logout", "AuthController::logout"); // Cerrar sesión
 $routes->get("dashboard", "AuthController::dashboard"); // Página de dashboard
 $routes->get("/", "Home::index"); // Página de graficos
+$routes->get("calendario", "Calendario::index"); // Página de calendario
+$routes->get('settings', 'AuthController::setting');
+$routes->get('info_users', 'AuthController::info_users');
+
 
 // rutas de atracciones
 $routes->get('atracciones', 'AtraccionesController::index');
@@ -61,6 +65,11 @@ $routes->post('tickets/save/(:num)', 'TicketController::saveTicket/$1');
 $routes->get('tickets/delete/(:num)', 'TicketController::delete/$1');
 $routes->get('tickets/restore/(:num)', 'TicketController::restore/$1');
 
+// rutas de eventos
+$routes->get('fetch-events', 'EventoController::fetchEvents');
+$routes->post('add-event', 'EventoController::addEvent');
+$routes->delete('delete-event/(:num)', 'EventoController::deleteEvent/$1');
+
 
 // Grupo de rutas con filtro
 $routes->group("", ["filter" => "role"], function ($routes) {
@@ -73,4 +82,5 @@ $routes->group("", ["filter" => "role"], function ($routes) {
     $routes->post('users/save/(:num)', 'UserController::saveUser/$1'); // Editar usuario (POST)
     $routes->get('users/delete/(:num)', 'UserController::delete/$1'); // Eliminar usuario
     $routes->get('users/restore/(:num)', 'UserController::restore/$1'); // Restaurar usuario
+    $routes->get('users/exportExcel', 'UserController::exportExcel'); // Exportar usuarios a Excel
 });

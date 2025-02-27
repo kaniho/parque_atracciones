@@ -14,12 +14,12 @@ class RoleFilter implements FilterInterface
 
         // Verifica si el usuario está autenticado
         if (!$session->has('isLoggedIn')) {
-            return redirect()->to('/login')->with('success', 'Debes iniciar sesión.');
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión.');
         }
 
         // Verifica si el usuario tiene el rol adecuado (Administrador)
         if ($session->get('id_rol') != 1) { // 1 = Administrador
-            return redirect()->to('/')->with('success', 'No tienes permisos para acceder a esta área.');
+            return redirect()->to('/')->with('error', 'No tienes permisos para acceder a esta área.');
         }
     }
 

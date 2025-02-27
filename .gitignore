@@ -7,3 +7,10 @@ writable/debugbar/*
 writable/logs/*
 writable/session/*
 writable/uploads/*
+
+# Dependencias de PHP
+/vendor/
+
+# Archivos de logs y debugging
+*.log
+php_errorlog

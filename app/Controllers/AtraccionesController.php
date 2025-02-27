@@ -40,20 +40,25 @@ class AtraccionesController extends BaseController
 
         // Configuración de la paginación
         $perPage = 3; // Número de elementos por página
-        $data["atracciones"] = $atraccionesModel->paginate($perPage); // Obtener atracciones paginadas
+        $atracciones = $atraccionesModel->paginate($perPage); // Obtener atracciones paginadas
         $data["pager"] = $atraccionesModel->pager; // Instancia del paginador
-        $data["nombre"] = $nombre; // Mantener el término de búsqueda en la vista
-        $data["descripcion"] = $descripcion;
-        $data["altura_minima"] = $altura_minima;
-        $data["capacidad_maxima"] = $capacidad_maxima;
-        $data["estado"] = $estado;
-        $data["atraccionArchivada"] = $atracionneArchivada; // Mantener el filtro de atracción archivada en la vista
-
+        $pager = $atraccionesModel->pager; // Instancia del paginador
+        $data = [
+            'atracciones' => $atracciones,
+            'pager' => $pager,
+            'nombre' => $nombre, // Mantener el término de búsqueda en la vista
+            'descripcion' => $descripcion,
+            'altura_minima' => $altura_minima,
+            'capacidad_maxima' => $capacidad_maxima,
+            'estado' => $estado,
+            'atraccionArchivada' => $atracionneArchivada, // Mantener el filtro de atracción archivada en la vista
+        ];
+       
         // Otras configuraciones de paginación
         // $atraccionesModel->orderBy('id', 'DESC'); // Ordenar por ID de forma descendente
 
         
-        return view('atracciones_list', $data); // Cargar la vista con los datos
+        return view('atracciones/atracciones_list', $data); // Cargar la vista con los datos
     }
 
     public function saveAtraccion($id = null)
@@ -104,7 +109,7 @@ class AtraccionesController extends BaseController
         }
 
         // Cargar la vista del formulario (crear/editar)
-        return view('atracciones_form', $data);
+        return view('atracciones/atracciones_form', $data);
     }
 
     public function delete($id)

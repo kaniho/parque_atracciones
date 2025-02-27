@@ -60,9 +60,21 @@ class ReservaController extends BaseController {
         }
 
         // Configuración de la paginación
-        $perPage = 3; // Número de elementos por página
-        // Obtener los resultados paginados
-        $reservas = $reservaModel->paginate($perPage);
+        $perPage = 3; // Número de elementos por página       
+        $reservas = $reservaModel->paginate($perPage); // Obtener los resultados paginados
+        $pager = $reservaModel->pager; // Instancia del paginador
+        $data = [
+            'reservas' => $reservas, // Pasar los datos a la vista
+            'pager' => $pager,
+            'atraccion' => $atraccion, // Mantener el término de búsqueda en la vista
+            'usuario' => $usuario, 
+            'fecha' => $fecha, 
+            'horario' => $horario, 
+            'cantidaPersona' => $cantidaPersona, 
+            'estado' => $estado,
+            'fechaCreacion' => $fechaCreacion,
+            'revervaArchivada' => $revervaArchivada,
+        ];
 
         // Obtener los nombres de las atracciones y usuarios
         foreach ($reservas as &$reserva) {
@@ -71,7 +83,7 @@ class ReservaController extends BaseController {
             $reserva["nombre_horario"] = $horarioModel->find($reserva["id_horario"])["nombre_horario"];
         }
 
-        $data["reservas"] = $reservas; // Pasar los datos a la vista
+        /*$data["reservas"] = $reservas; // Pasar los datos a la vista
         $data["pager"] = $reservaModel->pager; // Instancia del paginador
         $data["atraccion"] = $atraccion; // Mantener el término de búsqueda en la vista
         $data["usuario"] = $usuario; // Mantener el filtro de usuario en la vista
@@ -80,13 +92,13 @@ class ReservaController extends BaseController {
         $data["cantidaPersona"] = $cantidaPersona; // Mantener el filtro de cantidad de personas en la vista
         $data["estado"] = $estado; // Mantener el filtro de estado en la vista
         $data["fechaCreacion"] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
-        $data["revervaArchivada"] = $revervaArchivada; // Mantener el filtro de reserva archivada en la vista
+        $data["revervaArchivada"] = $revervaArchivada; // Mantener el filtro de reserva archivada en la vista*/
 
     
         // Agregar ordenación por columnas
 
 
-        return view('reserva_list', $data); // Cargar la vista con los datos
+        return view('reservas/reserva_list', $data); // Cargar la vista con los datos
     }
 
     public function saveReserva($id = null) {
@@ -154,7 +166,7 @@ class ReservaController extends BaseController {
         }
 
         // Cargar la vista del formulario (crear/editar)
-        return view('reserva_form', $data);
+        return view('reservas/reserva_form', $data);
     }
 
     public function delete($id) {

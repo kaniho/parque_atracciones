@@ -1,0 +1,18 @@
+/* filepath: /c:/wamp64/www/parque_atracciones/public/css/custom_styles.css */
+.pagination .page-link {
+    color: #007bff; /* Cambia el color de las flechas */
+}
+
+.pagination .page-link:hover {
+    color: #0056b3; /* Cambia el color de las flechas al pasar el ratón */
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff; /* Cambia el fondo del enlace activo */
+    border-color: #007bff; /* Cambia el borde del enlace activo */
+}
+
+/* parte para los datos archivados*/
+.archivado {
+    border-left: 5px solid red;
+}

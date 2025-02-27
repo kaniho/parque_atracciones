@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea name="descripcion" class="form-control" required><?= isset($atraccion['descripcion']) ? esc($atraccion['descripcion']) : '' ?></textarea>
+                <textarea name="descripcion" class="form-control"  maxlength="350" required><?= isset($atraccion['descripcion']) ? esc($atraccion['descripcion']) : '' ?></textarea>
             </div>
 
             <div class="mb-3">

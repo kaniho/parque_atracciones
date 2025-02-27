@@ -35,25 +35,35 @@ class TicketController extends BaseController
         if ($ticketArchivado) {
             $ticketModel->where('ticket.archivado', 1);
         }
-
+       
         // Configuración de la paginación
         $perPage = 3; // Número de elementos por página
         $tickets = $ticketModel->paginate($perPage); // Obtener tickets paginados
-
+        $pager = $ticketModel->pager; // Instancia del paginador
+        $data['pager'] = $ticketModel->pager; // Instancia del paginador
+        $data = [
+            'tickets' => $tickets,
+            'pager' => $pager,
+            'codigoTicket' => $codigoTicket,
+            'fechaCreacion' => $fechaCreacion,
+            'estado' => $estado,
+            'ticketArchivado' => $ticketArchivado,
+        ];
+      
         // Obtener los nombres de las reservas
         foreach ($tickets as &$ticket) {
             $reserva = $reservaModel->find($ticket['id_reserva']);
             $ticket['id_reserva'] = $reserva ? $reserva['estado'] : '--';
         }
 
-        $data['tickets'] = $tickets;
+      /*  $data['tickets'] = $tickets;
         $data['pager'] = $ticketModel->pager; // Instancia del paginador
         $data['codigoTicket'] = $codigoTicket; // Mantener el término de búsqueda en la vista
         $data['fechaCreacion'] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
         $data['estado'] = $estado; // Mantener el filtro de estado en la vista
-        $data['ticketArchivado'] = $ticketArchivado; // Mantener el filtro de ticket archivado en la vista
+        $data['ticketArchivado'] = $ticketArchivado; // Mantener el filtro de ticket archivado en la vista*/
         
-        return view('ticket_list', $data); // Cargar la vista con los datos
+        return view('tickets/ticket_list', $data); // Cargar la vista con los datos
     }
 
     public function saveTicket($id = null)
@@ -117,7 +127,7 @@ class TicketController extends BaseController
         }
 
         // Cargar la vista del formulario (crear/editar)
-        return view('ticket_form', $data);
+        return view('tickets/ticket_form', $data);
     }
 
     public function delete($id)

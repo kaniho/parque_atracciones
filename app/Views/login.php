@@ -24,7 +24,7 @@ License: For each use you must have a valid license purchased only from above li
 		<meta property="og:url" content="https://keenthemes.com/metronic"/>
 		<meta property="og:site_name" content="Keenthemes | Metronic"/>
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8"/>
-		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/favicon.ico")?>"/>
+		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/atracciones.png")?>"/>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"><!-- link para los mensajes -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- link para los mensajes -->
 		<!--begin::Fonts-->
@@ -50,6 +50,11 @@ License: For each use you must have a valid license purchased only from above li
 				toastr.success('<?= session()->getFlashdata('success'); ?>');
 			</script>
 		<?php endif; ?>
+		<?php if (session()->getFlashdata('error')): ?>
+			<script>
+				toastr.error('<?= session()->getFlashdata('error'); ?>');
+			</script>
+		<?php endif; ?>
 		<!--begin::Main-->
 		<div class="d-flex flex-column flex-root">
 			<!--begin::Authentication - Sign-in -->
@@ -68,7 +73,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Heading-->
 							<div class="text-center mb-10">
 								<!--begin::Title-->
-								<h1 class="text-dark mb-3">Iniciar sesión en ThrillLand</h1>
+								<h1 class="text-dark mb-3">Iniciar sesión en Karmalandia</h1>
 								<!--end::Title-->
 								<!--begin::Link-->
 								<div class="text-gray-400 fw-bold fs-4">¿Es nuevo aquí?
@@ -82,7 +87,7 @@ License: For each use you must have a valid license purchased only from above li
 								<label class="form-label fs-6 fw-bolder text-dark">Email</label>
 								<!--end::Label-->
 								<!--begin::Input-->
-								<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
+								<input class="form-control form-control-lg form-control-solid" type="text" name="email" placeholder="email" autocomplete="off" />
 								<!--end::Input-->
 							</div>
 							<!--end::Input group-->
@@ -99,7 +104,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 								<!--end::Wrapper-->
 								<!--begin::Input-->
-								<input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" />
+								<input class="form-control form-control-lg form-control-solid" type="password" name="password" placeholder="contraseña" autocomplete="off" />
 								<!--end::Input-->
 							</div>
 							<!--end::Input group-->
@@ -123,12 +128,12 @@ License: For each use you must have a valid license purchased only from above li
 				<!--end::Content-->
 				<!--begin::Footer-->
 				<div class="d-flex flex-center flex-column-auto p-10">
-					<!--begin::Links-->
-					<div class="d-flex align-items-center fw-bold fs-6">
+					<!--begin::Links--> <!-- MIRAR PARA UNA POSIBLE IMPLEMENTACIÓN -->
+					<!--<div class="d-flex align-items-center fw-bold fs-6">
 						<a href="https://keenthemes.com" class="text-muted text-hover-primary px-2">About</a>
 						<a href="mailto:support@keenthemes.com" class="text-muted text-hover-primary px-2">Contact</a>
 						<a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2">Contact Us</a>
-					</div>
+					</div>-->
 					<!--end::Links-->
 				</div>
 				<!--end::Footer-->

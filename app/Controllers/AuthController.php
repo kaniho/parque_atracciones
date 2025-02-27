@@ -87,13 +87,14 @@ class AuthController extends BaseController {
 
         // Si la validación pasa, verificamos las credenciales.
         $userModel = new UserModel();
-        $user = $userModel->findByEmail($this->request->getPost("email")); //Buscamos al usuario por su correo
+        $user = $userModel->usuarioConRoles($this->request->getPost("email")); //Buscamos al usuario por su correo
 
         if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
             // Si las credenciales son correctas, guardamos datos del usuario en la sesión.
             $session->set([
                 'id' => $user['id'],           // ID del usuario.
-                'id_rol' => $user['id_rol'],
+                'id_rol' => $user['id_rol'],   // ID del rol.
+                'rol' => $user['nombre_rol'],   // Nombre del rol.
                 'name' => $user['nombre_usuario'],       // Nombre del usuario.
                 'email' => $user['email'],     // Correo del usuario.
                 'isLoggedIn' => true,          // Bandera para indicar que está logueado.
@@ -112,7 +113,7 @@ class AuthController extends BaseController {
         }
 
         // Si las credenciales son incorrectas, mostramos un mensaje de error.
-        return redirect()->to('/login')->with('success', 'Correo o contraseña incorrectos.');
+        return redirect()->to('/login')->with('error', 'Correo o contraseña incorrectos.');
 
     }
 
@@ -134,7 +135,7 @@ class AuthController extends BaseController {
         $session = session();
         
         if (!$session->get('isLoggedIn')) {
-            return redirect()->to('/login')->with('success', 'Debes iniciar sesión para acceder al Dashboard.');
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder al Dashboard.');
         }
         
         return view('dashboard');
@@ -145,6 +146,17 @@ class AuthController extends BaseController {
         
         return view('graficos');
     }
+
+    /* Parte de los ajuste de la cuenta */
+    public function setting() {
+        return view('user_settings');
+    }
+
+    /* Parte del información de la cuenta */
+    public function info_users() {
+        return view('info_users');
+    }
+
 
 }
 

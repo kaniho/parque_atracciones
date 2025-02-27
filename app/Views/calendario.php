@@ -12,7 +12,8 @@ License: For each use you must have a valid license purchased only from above li
 -->
 <html lang="en">
 	<!--begin::Head-->
-	<head><base href="../">
+	<head>
+		<base href="../">
 		<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
 		<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
@@ -24,22 +25,27 @@ License: For each use you must have a valid license purchased only from above li
 		<meta property="og:url" content="https://keenthemes.com/metronic" />
 		<meta property="og:site_name" content="Keenthemes | Metronic" />
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/favicon.ico")?>" />
+		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/favicon.ico") ?>" />
+		<script src="https://kit.fontawesome.com/47d7c4b9a5.js" crossorigin="anonymous"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"><!-- link para los mensajes -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- link para los mensajes -->
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Page Vendor Stylesheets(used by this page)-->
-		<link href="<?= base_url("assets/plugins/custom/fullcalendar/fullcalendar.bundle.css")?>" rel="stylesheet" type="text/css" />
+		<link href="<?= base_url("assets/plugins/custom/fullcalendar/fullcalendar.bundle.css") ?>" rel="stylesheet" type="text/css" />
 		<!--end::Page Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link href="<?= base_url("assets/plugins/global/plugins.bundle.css")?>" rel="stylesheet" type="text/css" />
-		<link href="<?= base_url("assets/css/style.bundle.css")?>" rel="stylesheet" type="text/css" />
-		<!--end::Global Stylesheets Bundle-->
+		<link href="<?= base_url("assets/plugins/global/plugins.bundle.css") ?>" rel="stylesheet" type="text/css" />
+		<link href="<?= base_url("assets/css/style.bundle.css") ?>" rel="stylesheet" type="text/css" />
+		<!--begin::Custom Stylesheets-->
+		<link href="<?= base_url("assets/css/custom.css") ?>" rel="stylesheet" type="text/css" />
+		<!--end::Custom Stylesheets-->
+		<!-- FullCalendar CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+		<!--end::Global Stylesheets Bundle-->	
 	</head>
 	<!--end::Head-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script><!-- link para los mensajes -->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
 		<!--begin::Main-->
@@ -53,7 +59,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
 						<a href="../../demo1/dist/index.html">
-							<img alt="Logo" src="<?= base_url("assets/media/logos/logo-1-dark.svg") ?>" class="h-25px logo" />
+							<img alt="Logo" src="<?= base_url("assets/media/logos/logo-1-dark.svg")?>" class="h-25px logo" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Aside toggler-->
@@ -82,10 +88,10 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-section text-muted text-uppercase fs-8 ls-1">Dashboard</span>
 									</div>
 								</div>
-								<!--Sección de Panel de administración-->
+								<!--Sección de panel de administración---->
 								<?php if ($session->get('id_rol') == 1): ?>
 									<div class="menu-item">
-										<a class="menu-link active" href="<?= base_url("users") ?>">
+										<a class="menu-link" href="<?= base_url("users") ?>">
 											<span class="menu-icon">
 												<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 												<span class="svg-icon svg-icon-2">
@@ -102,7 +108,7 @@ License: For each use you must have a valid license purchased only from above li
 										</a>
 									</div>
 								<?php endif; ?>
-								<!--Sección de Graficas-->
+								<!--Sección de graficos-->
 								<div class="menu-item">
 									<a class="menu-link" href="<?= base_url("/") ?>">
 										<span class="menu-icon">
@@ -256,7 +262,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--end::Menu separator-->
 								<!--begin::Menu item-->
 								<div class="menu-item px-5">
-									<a href="<?= base_url("info_users") ?>" class="menu-link px-5">Mi perfil</a>
+									<a href="<?= base_url("info_users") ?>" class="menu-link px-5">My perfil</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -280,13 +286,11 @@ License: For each use you must have a valid license purchased only from above li
 					</div>						
 					<!--end::Footer-->
 				</div>
-
-
 				<!--end::Aside-->
 				<!--begin::Wrapper-->
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<!--begin::Header-->
-					<div id="kt_header"  class="header align-items-stretch">
+					<div id="kt_header" class="header align-items-stretch">
 						<!--begin::Container-->
 						<div class="container-fluid d-flex align-items-stretch justify-content-between">
 							<!--begin::Aside mobile toggle-->
@@ -324,7 +328,7 @@ License: For each use you must have a valid license purchased only from above li
 													<!--begin::Page title-->
 													<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 														<!--begin::Title-->
-														<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Dashboard</h1>
+														<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Calendario</h1>
 														<!--end::Title-->
 														<!--begin::Separator-->
 														<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -342,73 +346,123 @@ License: For each use you must have a valid license purchased only from above li
 															</li>
 															<!--end::Item-->
 															<!--begin::Item-->
-															<li class="breadcrumb-item text-dark">Panel de Bienvenida</li>
+															<li class="breadcrumb-item text-dark">Calendario</li>
 															<!--end::Item-->
 														</ul>
 														<!--end::Breadcrumb-->
 													</div>
 													<!--end::Page title-->
 												</div><!-- fin migas de pan -->
-												
 											</div>
-										
 										</div>
-											
 										<!--end::Menu-->
 									</div>
-									
 									<!--end::Menu wrapper-->
 								</div>
-								<!--end::Navbar-->								 
-								<?php if (session()->getFlashdata('success')): ?>
-									<script>
-										toastr.success('<?= session()->getFlashdata('success'); ?>');
-									</script>
-								<?php endif; ?>
+								<!--end::Navbar-->							
 							</div>
 							<!--end::Wrapper-->
 						</div>
 						<!--end::Container-->
 					</div>
+
 					<!--end::Header-->
-
-
-					
 					<!--begin::Content-->
-					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content"> 
+						<!--begin::Toolbar-->
+						<?php if (session()->getFlashdata('success')): ?>
+							<script>
+								toastr.success('<?= session()->getFlashdata('success'); ?>');
+							</script>
+						<?php endif; ?>
+						<!--end::Toolbar-->
 						<!--begin::Post-->
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
-								<!--begin::Card-->
-								<div class="card">
-									
-									<!--begin::Card body-->
-									<div class="card-body">
-										<div class="container mt-5">
-
-											<!-- Contenido principal -->
-											<div class="container my-5">
-												<div class="row">
-													<div class="col-12 text-center">
-														<h1>Bienvenido, <?= session('name') ?>!</h1>
-														<p class="lead">Esta es la pantalla principal de la aplicación.</p>
-					
-													</div>
-												</div>
-											</div>											
+								<!--begin::Row-->
+								<div class="g-5 gx-xxl-8"> <!-- COMIENZO DEL CALENDARIO -->
+									<!--begin::Calendar Widget 1-->
+									<div class="card card-xxl-stretch">
+										<!--begin::Card header-->
+										<div class="card-header">
+											<div class="container mt-5">
+												<h2>Calendario Dinámico</h2>
+												
+											</div>
 										</div>
+										<!--end::Card header-->
+										<!--begin::Card body-->
+										<div class="card-body">
+											<div id="calendar"></div>
+										</div>
+										<!--end::Card body-->
 									</div>
-									<!--end::Card body-->
-								</div>	
+
+								</div> <!-- FIN DEL CALENDARIO -->
+								<!--end::Row-->
 							</div>
 							<!--end::Container-->
 						</div>
 						<!--end::Post-->
 					</div>
 					<!--end::Content-->
+					<!-- Modal para añadir evento -->
+					<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="eventModalLabel">Añadir Evento</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<form id="eventForm" method="POST">
+										<div id="eventoError" class="alert alert-danger d-none" role="alert">
+											Por favor, ingresa un título para el evento.
+										</div>
+										<div class="mb-3">
+											<label for="eventTitle" class="form-label">Título del Evento</label>
+											<input type="text" class="form-control" id="eventTitle" required>
+										</div>
+										<div class="mb-3">
+											<label for="eventDescription" class="form-label">Descripción</label>
+											<textarea class="form-control" id="eventDescription" maxlength="50"></textarea>
+										</div>
+										<input type="hidden" id="eventStart">
+										<input type="hidden" id="eventEnd">
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+											<button type="button" class="btn btn-primary" id="saveEvent">Guardar</button>
+										</div>
+									</form>
+								</div>								
+							</div>
+						</div>
+					</div>
+					<!-- Fin del Modal para añadir evento -->	
+					<!-- Modal de Confirmación para Eliminar -->
+					<div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="deleteEventModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="deleteEventModalLabel">Confirmar Eliminación</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									¿Estás seguro de que quieres eliminar este evento?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+									<button type="button" class="btn btn-danger" id="confirmDeleteEvent">Eliminar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Fin del Modal de Confirmación para Eliminar -->			
 					<!--begin::Footer-->
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer"> <!-- COMIENZO DEL FOOTER -->
 						<!--begin::Container-->
 						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<!--begin::Copyright-->
@@ -416,33 +470,160 @@ License: For each use you must have a valid license purchased only from above li
 								<span class="text-muted fw-bold me-1">2021©</span>
 								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
 							</div>
+							<!--end::Copyright-->
+							<!--begin::Menu-->
+							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
+								<li class="menu-item">
+									<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+								</li>
+								<li class="menu-item">
+									<a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Support</a>
+								</li>
+								<li class="menu-item">
+									<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+								</li>
+							</ul>
+							<!--end::Menu-->
 						</div>
 						<!--end::Container-->
-					</div>
+					</div> <!-- FIN DEL FOOTER -->
 					<!--end::Footer-->
 				</div>
 				<!--end::Wrapper-->
 			</div>
 			<!--end::Page-->
 		</div>
-	
+		<!--end::Root-->
+
+		<!--end::Scrolltop-->
 		<!--end::Main-->
-		<script>var hostUrl = "assets/";</script>
+		<script>
+			var hostUrl = "assets/";
+		</script>
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="<?= base_url("assets/plugins/global/plugins.bundle.js") ?>"></script>
-		<script src="<?= base_url("assets/js/scripts.bundle.js") ?>"></script>
+		<script src="<?= base_url("assets/plugins/global/plugins.bundle.js")?>"></script>
+		<script src="<?= base_url("assets/js/scripts.bundle.js")?>"></script>
 		<!--end::Global Javascript Bundle-->
-		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-		<!--end::Page Vendors Javascript-->
-		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/custom/apps/calendar/calendar.js"></script>
-		<script src="assets/js/custom/widgets.js"></script>
-		<script src="assets/js/custom/apps/chat/chat.js"></script>
-		<script src="assets/js/custom/modals/create-app.js"></script>
-		<script src="assets/js/custom/modals/upgrade-plan.js"></script>
-		<!--end::Page Custom Javascript-->
+		<!-- FullCalendar JS -->
+		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- link para los mensajes -->
+
+		<script>
+			$(document).ready(function () {
+				const calendarEl = document.getElementById('calendar');
+
+				// Inicializar FullCalendar
+				const calendar = new FullCalendar.Calendar(calendarEl, {
+					locale: 'es', // Cambiamos al idioma español
+					firstDay : 1,
+					initialView: 'dayGridMonth', // Muestra el calendario en vista mensual
+					selectable: true, // Permite seleccionar fechas
+					editable: true, // Permite arrastrar y modificar eventos
+
+					// Cargar eventos desde el servidor
+					events: function(fetchInfo, successCallback, failureCallback) {
+						$.ajax({
+							url: '<?= base_url('fetch-events') ?>',
+							method: 'GET',
+							success: function(data) {
+								// Transformamos los datos recibidos para que FullCalendar los entienda
+								const formatoEvents = data.map(event => ({
+									id: event.pk_id_evento, // Identificador del evento en la BD
+									title: event.titulo, 
+									start: event.fecha_inicio, 
+									end: event.fecha_final, 
+									description: event.descripcion_ES, // Incluimos la descripción
+									allDay: true // Indica que es un evento de todo el día
+								}));
+
+								successCallback(formatoEvents); // Envía los eventos al calendario
+							},
+
+							error: function() {
+								failureCallback(); // En caso de error, no se cargan los eventos
+							}
+						});
+					},
+
+					// Abrir modal al seleccionar una fecha
+					select: function (info) {
+						$('#eventStart').val(info.startStr); // Rellena el campo con la fecha de inicio seleccionada
+						$('#eventEnd').val(info.endStr); // Rellena la fecha de finalización
+						$('#eventModal').modal('show'); // Muestra el modal para agregar evento
+					},
+
+					// Eliminar evento
+					eventClick: function (info) {
+						if (confirm('¿Deseas eliminar este evento?')) {
+							$.ajax({
+								url: '<?= base_url('delete-event') ?>/' + info.event.id, // Elimina el evento desde el backend
+								method: 'DELETE',
+								success: function() {
+									//calendar.refetchEvents();
+									info.event.remove(); // Borra el evento del calendario sin necesidad de recargar
+								}
+							});
+						}
+					},
+
+					// Renderizarmo los eventos con descripción
+					eventDidMount: function(info) {
+						if (info.event.extendedProps.description) { // Verifica si el evento tiene descripción
+							$(info.el).tooltip({ 
+								title: info.event.extendedProps.description, // Muestra la descripción como tooltip
+								placement: 'top', // Aparece arriba del evento
+								trigger: 'hover', // Se activa al pasar el mouse
+								container: 'body' // Se posiciona dentro del cuerpo del documento
+							});
+						}
+					}
+				});
+
+				calendar.render();
+			
+				// Guardar evento al hacer clic en 'Guardar'
+				$("#saveEvent").click(function () {
+					let title = $("#eventTitle").val().trim(); // Obtiene el título del evento
+					let description = $("#eventDescription").val(); // Obtiene la descripción
+					let start = $("#eventStart").val(); // Obtiene la fecha de inicio
+					let end = $("#eventEnd").val(); // Obtiene la fecha de fin
+
+					if (title === "") {
+						$("#eventoError").removeClass("d-none"); // Muestra el mensaje de error
+						return; // Detiene la ejecución si el campo está vacío
+					}
+
+					// Ocultar mensaje de error si ya se corrigió
+					$("#eventoError").addClass("d-none");
+
+					$.ajax({
+						url: '<?= base_url('add-event') ?>',
+						method: 'POST',
+						data: {
+							titulo: title,
+							fecha_inicio: start,
+							fecha_final: end,
+							descripcion_ES: description
+						},
+						success: function () {
+							$("#eventModal").modal('hide'); // Cierra el modal
+							calendar.refetchEvents(); // Recarga los eventos en el calendario
+						}
+					});
+				});
+
+				// Limpiar los campos del modal cuando se oculta
+				$('#eventModal').on('hidden.bs.modal', function () {
+					$('#eventTitle').val('');
+					$('#eventDescription').val('');
+					$('#eventStart').val('');
+					$('#eventEnd').val('');
+					$("#eventoError").addClass("d-none"); // Ocultar el mensaje de error
+				});
+			});
+		</script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->

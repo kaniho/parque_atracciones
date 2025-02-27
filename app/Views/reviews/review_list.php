@@ -88,7 +88,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 								<?php if ($session->get('id_rol') == 1): ?>
 									<div class="menu-item">
-										<a class="menu-link active" href="<?= base_url("users")?>">
+										<a class="menu-link" href="<?= base_url("users")?>">
 											<span class="menu-icon">
 												<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 												<span class="svg-icon svg-icon-2">
@@ -105,6 +105,7 @@ License: For each use you must have a valid license purchased only from above li
 										</a>
 									</div>
 								<?php endif; ?>
+								
 								<div class="menu-item">
 									<a class="menu-link" href="<?= base_url("/")?>">
 										<span class="menu-icon">
@@ -118,6 +119,22 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-title">Graficas</span>
+									</a>
+								</div>
+								<!--Sección de calendario-->
+								<div class="menu-item">
+									<a class="menu-link" href="<?= base_url("calendario") ?>">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
+											<span class="svg-icon svg-icon-2">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+													<path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
+													<path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+										<span class="menu-title">Calendario</span>
 									</a>
 								</div>
 								<!--Sección de horarios-->
@@ -152,7 +169,7 @@ License: For each use you must have a valid license purchased only from above li
 										<span class="menu-title">Reservas</span>
 									</a>
 								</div>
-                                <!--Sección de tickets-->
+								<!--Sección de tickets-->
 								<div class="menu-item">
 									<a class="menu-link" href="<?= base_url("tickets")?>">
 										<span class="menu-icon">
@@ -170,7 +187,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 								<!--Sección de Reseñas-->
 								<div class="menu-item">
-									<a class="menu-link" href="<?= base_url("reviews")?>">
+									<a class="menu-link active" href="<?= base_url("reviews")?>">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -210,189 +227,61 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Footer-->
 					<div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
 						<!--PARTE DE LA CUENTA DE USUARIO-->
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									<img src="<?= base_url("assets/media/avatars/150-26.jpg")?>" alt="user" />
-								</div>
-								<!--begin::Menu-->
-								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
-									<!--begin::Menu item-->
-									<div class="menu-item px-3">
-										<div class="menu-content d-flex align-items-center px-3">
-											<!--begin::Avatar-->
-											<div class="symbol symbol-50px me-5">
-												<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg")?>" />
-											</div>
-											<!--end::Avatar-->
-											<!--begin::Username-->
-											<div class="d-flex flex-column">
-												<div class="fw-bolder d-flex align-items-center fs-5">Max Smith
-												<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span></div>
-												<a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
-											</div>
-											<!--end::Username-->
-										</div>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu separator-->
-									<div class="separator my-2"></div>
-									<!--end::Menu separator-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/pages/projects/list.html" class="menu-link px-5">
-											<span class="menu-text">My Projects</span>
-											<span class="menu-badge">
-												<span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
-											</span>
-										</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-										<a href="#" class="menu-link px-5">
-											<span class="menu-title">My Subscription</span>
-											<span class="menu-arrow"></span>
-										</a>
-										<!--begin::Menu sub-->
-										<div class="menu-sub menu-sub-dropdown w-175px py-4">
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/referrals.html" class="menu-link px-5">Referrals</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/billing.html" class="menu-link px-5">Billing</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/statements.html" class="menu-link px-5">Payments</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/statements.html" class="menu-link d-flex flex-stack px-5">Statements
-												<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu separator-->
-											<div class="separator my-2"></div>
-											<!--end::Menu separator-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<div class="menu-content px-3">
-													<label class="form-check form-switch form-check-custom form-check-solid">
-														<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-														<span class="form-check-label text-muted fs-7">Notifications</span>
-													</label>
-												</div>
-											</div>
-											<!--end::Menu item-->
-										</div>
-										<!--end::Menu sub-->
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/account/statements.html" class="menu-link px-5">My Statements</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu separator-->
-									<div class="separator my-2"></div>
-									<!--end::Menu separator-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-										<a href="#" class="menu-link px-5">
-											<span class="menu-title position-relative">Language
-											<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-											<img class="w-15px h-15px rounded-1 ms-2" src="<?= base_url("assets/media/flags/united-states.svg")?>" alt="" /></span></span>
-										</a>
-										<!--begin::Menu sub-->
-										<div class="menu-sub menu-sub-dropdown w-175px py-4">
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5 active">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/united-states.svg")?>" alt="" />
-												</span>English</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/spain.svg")?>" alt="" />
-												</span>Spanish</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/germany.svg")?>" alt="" />
-												</span>German</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/japan.svg")?>" alt="" />
-												</span>Japanese</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/france.svg")?>" alt="" />
-												</span>French</a>
-											</div>
-											<!--end::Menu item-->
-										</div>
-										<!--end::Menu sub-->
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5 my-1">
-										<a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account Settings</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign Out</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu separator-->
-									<div class="separator my-2"></div>
-									<!--end::Menu separator-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<div class="menu-content px-5">
-											<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-												<input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="kt_user_menu_dark_mode_toggle" data-kt-url="../../demo1/dist/index.html" />
-												<span class="pulse-ring ms-n1"></span>
-												<span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-											</label>
-										</div>
-									</div>
-									<!--end::Menu item-->
-								</div>
-								<!--end::Menu-->
-								<!--end::Menu wrapper-->
+						<!--begin::User-->
+						<?php $session = session(); ?>
+						<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+							<!--begin::Menu wrapper-->
+							<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+								<img src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" alt="user" />
 							</div>
+							<!--begin::Menu-->
+							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
+								<!--begin::Menu item-->
+								<div class="menu-item px-3">
+									<div class="menu-content d-flex align-items-center px-3">
+										<!--begin::Avatar-->
+										<div class="symbol symbol-50px me-5">
+											<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" />
+										</div>
+										<!--end::Avatar-->
+										<!--begin::Username-->
+										<div class="d-flex flex-column">
+											<div class="fw-bolder d-flex align-items-center fs-5"><?= esc($session->get('name')) ?>
+												<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
+											</div>
+											<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
+										</div>
+										<!--end::Username-->
+									</div>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu separator-->
+								<div class="separator my-2"></div>
+								<!--end::Menu separator-->
+								<!--begin::Menu item-->
+								<div class="menu-item px-5">
+									<a href="<?= base_url("info_users") ?>" class="menu-link px-5">Mi perfil</a>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu item-->
+								<div class="menu-item px-5 my-1">
+									<a href="<?= base_url("settings") ?>" class="menu-link px-5">Configuraciones de la cuenta</a>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu item-->
+								<div class="menu-item px-5">
+									<a href="<?= base_url('logout') ?>" class="menu-link px-5">Cerrar sesión</a>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu separator-->
+								<div class="separator my-2"></div>
+								<!--end::Menu separator-->
+							</div>
+							<!--end::Menu-->
+							<!--end::Menu wrapper-->
+						</div>
 						<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
-					</div>
-
-						
+					</div>					
 					<!--end::Footer-->
 				</div>
 
@@ -439,7 +328,7 @@ License: For each use you must have a valid license purchased only from above li
 													<!--begin::Page title-->
 													<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 														<!--begin::Title-->
-														<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Tickets</h1>
+														<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Reseñas</h1>
 														<!--end::Title-->
 														<!--begin::Separator-->
 														<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -457,40 +346,20 @@ License: For each use you must have a valid license purchased only from above li
 															</li>
 															<!--end::Item-->
 															<!--begin::Item-->
-															<li class="breadcrumb-item text-dark">Listado de Tickets</li>
+															<li class="breadcrumb-item text-dark">Listado de Reseñas</li>
 															<!--end::Item-->
 														</ul>
 														<!--end::Breadcrumb-->
 													</div>
 													<!--end::Page title-->			
-												</div><!-- fin migas de pan -->
-												
-											</div>
-										
-										</div>
-											
+												</div><!-- fin migas de pan -->												
+											</div>										
+										</div>											
 										<!--end::Menu-->
-									</div>
-									
+									</div>									
 									<!--end::Menu wrapper-->
 								</div>
-								<!--end::Navbar-->
-								<!-- PARTE DEL BOTÓN DE CERRAR SESIÓN -->
-								<!-- Barra de navegación -->
-								<nav class="navbar navbar-expand-lg navbar-dark bg-white">
-									<div class="container">
-										<a class="navbar-brand" >Panel de Administración</a>
-										
-										<div class="collapse navbar-collapse" id="navbarNav">
-											<ul class="navbar-nav ms-auto">
-												
-												<li class="nav-item">
-												<a href="<?= base_url('logout') ?>" class="btn btn-danger">Cerrar sesión</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</nav>
+								<!--end::Navbar-->			
 							</div>
 							<!--end::Wrapper-->
 						</div>
@@ -502,21 +371,22 @@ License: For each use you must have a valid license purchased only from above li
 					
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Toolbar-->
 						<?php if (session()->getFlashdata('success')): ?>
 							<script>
 								toastr.success('<?= session()->getFlashdata('success'); ?>');
 							</script>
 						<?php endif; ?>
-
+						<!--end::Toolbar-->
 						<!--begin::Post-->
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
 								<!--begin::Card-->
-								<div class="card">
+								<div class="card-body">
 									
 									<!--COMIENZO DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
-									<div class="card-body">
+									<div class="card">
 										<!--begin::Card header-->
 										<div class="card-header border-0 pt-6">
 											<!--begin::Card title-->
@@ -524,7 +394,7 @@ License: For each use you must have a valid license purchased only from above li
 												<!--begin::Search-->
 												<div class="d-flex align-items-center position-relative my-1"> <!-- FORMULARIO DE búsqueda -->
 													<!-- Formulario de búsqueda -->
-													<!--<form method="GET" action="<?= base_url("tickets") ?>" >
+													<!--<form method="GET" action="<?= base_url("reviews") ?>" >
 														<div class="input-group w-auto">
 															<input type="text" name="name" class="form-control" placeholder="Nombre" value="">
 															<button type="submit" class="btn btn-primary">Buscar</button>
@@ -534,7 +404,7 @@ License: For each use you must have a valid license purchased only from above li
 												<!-- FORMULARIO DE búsqueda -->												
 											</div>
 
-											<h1 class="text-center">Listado de tickets</h1>
+											<h1 class="text-center">Listado de Reseñas</h1>
 
 											<!--begin::Card title-->
 											<!--begin::Card toolbar-->
@@ -549,7 +419,7 @@ License: For each use you must have a valid license purchased only from above li
 															<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
 														</svg>
 													</span>
-													<!--end::Svg Icon-->Fitrar</button>
+													<!--end::Svg Icon-->Filtrar</button>
 													<!--begin::Menu 1-->
 													<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
 														<!--begin::Header-->
@@ -562,40 +432,54 @@ License: For each use you must have a valid license purchased only from above li
 														<!--end::Separator-->
 														<!--begin::Content-->
 														<div class="px-7 py-5" data-kt-user-table-filter="form">
-															<!--begin::Input group-->															
-															<form method="GET" action="<?= base_url("tickets") ?>">
-																<!--begin::Input group-->
-																<div class="mb-5">
-																	<label class="form-label fs-6 fw-bold">Código Ticket:</label>
+															<!--begin::Input group-->
+															<form method="GET" action="<?= base_url("reviews") ?>">
+																<div class="mb-10">
+																	<label class="form-label fs-6 fw-bold">Atracción:</label>
 																	<div class="input-group w-auto">
-																		<input type="text" name="codigoTicket" class="form-control" placeholder="Código Ticket" value="<?= esc($codigoTicket) ?>">
+																		<input type="text" name="atraccion" class="form-control" placeholder="Atracción" value="<?= esc($atraccion) ?>">
 																	</div>
 																</div>
 																<!--end::Input group-->
 																<!--begin::Input group-->
-																<div class="mb-5">
-																	<label class="form-label fs-6 fw-bold">Estado:</label>
+																<div class="mb-10">
+																	<label class="form-label fs-6 fw-bold">Usuario:</label>
 																	<div class="input-group w-auto">
-																		<input type="text" name="estado" class="form-control" placeholder="Estado" value="<?= esc($estado) ?>">
+																		<input type="text" name="usuario" class="form-control" placeholder="Nombre" value="<?= esc($usuario) ?>">
 																	</div>
 																</div>
 																<!--end::Input group-->
 																<!--begin::Input group-->
-																<div class="mb-5">
-																	<label class="form-label fs-6 fw-bold">Fecha Creación:</label>
+																<div class="mb-10">
+																	<label class="form-label fs-6 fw-bold">Calificación:</label>
 																	<div class="input-group w-auto">
-																		<input type="text" name="fechaCreacion" class="form-control" placeholder="Fecha de Creación" value="<?= esc($fechaCreacion) ?>">
+																		<input type="text" name="calificacion" class="form-control" placeholder="Calificación" value="<?= esc($calificacion) ?>">
+																	</div>
+																</div>
+																<!--end::Input group-->
+																<!--begin::Input group-->
+																<div class="mb-10">
+																	<label class="form-label fs-6 fw-bold">Comentario:</label>
+																	<div class="input-group w-auto">
+																		<input type="text" name="comentario" class="form-control" placeholder="Comentario" value="<?= esc($comentario) ?>">
+																	</div>
+																</div>
+																<!--end::Input group-->
+																<!--begin::Input group-->
+																<div class="mb-10">
+																	<label class="form-label fs-6 fw-bold">Fecha:</label>
+																	<div class="input-group w-auto">
+																		<input type="text" name="fechaCreacion" class="form-control" placeholder="Fecha" value="<?= esc($fechaCreacion) ?>">
 																	</div>
 																</div>
 																<!--end::Input group-->
 																<!--begin::Actions-->
 																<div class="d-flex justify-content-end">
-																	<button type="reset" class="btn btn-sm btn-light btn-active-light-primary fw-bold me-2 px-6" onclick="window.location.href='<?= base_url("tickets") ?>'">Restablece</button>
-																	<button type="submit" name="ticketArchivado" value="1" class="btn btn-sm btn-danger me-2 px-4 ">Mostrar Archivados</button>
+																	<button type="reset" class="btn btn-sm btn-light btn-active-light-primary fw-bold me-2 px-6" onclick="window.location.href='<?= base_url("reviews") ?>'">Restablece</button>
+																	<button type="submit" name="reviewArchivada" value="1" class="btn btn-sm btn-danger me-2 px-4 ">Mostrar Archivados</button>
 																	<button type="submit" class="btn btn-sm btn-primary">Buscar</button>
 																</div>
 															</form>
-															<!--end::Actions-->
 														</div>
 														<!--end::Content-->
 													</div>
@@ -614,7 +498,7 @@ License: For each use you must have a valid license purchased only from above li
 													<!--end::Svg Icon-->Export</button>
 													<!--end::Export-->
 													<!--begin::Add user-->
-													<a href="<?= base_url('tickets/save') ?>" class="btn btn-primary ">
+													<a href="<?= base_url('reviews/save') ?>" class="btn btn-primary ">
 														<span class="svg-icon svg-icon-2">
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 																<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
@@ -928,7 +812,7 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Card header-->
 										<!--begin::Card body-->
 										<div class="card-body pt-0">
-											<?php if (!empty($tickets) && is_array($tickets)): ?>
+											<?php if (!empty($reviews) && is_array($reviews)): ?>
 												<!--begin::Table-->
 												<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
 													<!--begin::Table head-->
@@ -940,9 +824,11 @@ License: For each use you must have a valid license purchased only from above li
 																	<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 																</div>
 															</th>
-															<th class="min-w-125px">Reserva</th>
-															<th class="min-w-125px">Código Ticket</th>
-															<th class="min-w-125px">Fecha de Creación</th>
+															<th class="min-w-125px">Atracción</th>
+															<th class="min-w-125px">Usuario</th>
+															<th class="min-w-125px">Calificación</th>
+															<th class="min-w-125px">Comentario</th>
+															<th class="min-w-125px">Fecha</th>
 															<th class="text-end min-w-100px">Acciones</th>
 														</tr>
 														<!--end::Table row-->
@@ -950,7 +836,7 @@ License: For each use you must have a valid license purchased only from above li
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody class="text-gray-600 fw-bold">
-														<?php foreach ($tickets as $ticket): ?>
+														<?php foreach ($reviews as $review): ?>
 															<tr> <!-- PRUEBA -->
 																<!--begin::Checkbox-->
 																<td>
@@ -958,29 +844,39 @@ License: For each use you must have a valid license purchased only from above li
 																		<input class="form-check-input" type="checkbox" value="1" />
 																	</div>
 																</td>
-
-																<td class="  position-relative"> 
-																	<?php if ($ticket['archivado']): ?>
+																<!--end::Checkbox-->
+																<!--begin::User=-->
+																<td class="position-relative">
+																	<?php if ($review['archivado']): ?>
 																		<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
 																	<?php endif; ?>
-																	<?= esc($ticket['id_reserva']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA DESCRIPCIÓN -->
+																	<?= esc($review['nombre_atraccion']) ?> <!-- PARTE DEL FOREACH DONDE PILLA EL NOMBRE -->																		
+																</td>
+																<!--end::User=-->
+																<!--begin::Role=-->
+																<td> 
+																	<?= esc($review['nombre_usuario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA DESCRIPCIÓN -->
 																</td> 
 																<!--end::Role=-->
 
 																<!--begin::Two step=-->
 																<td>
-																	<?= esc($ticket['codigo_ticket']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA ALTURA MAXIMA -->
+																	<?= esc($review['calificacion']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA ALTURA MAXIMA -->
 																</td>
 																<!--end::Two step=-->
 																<!--begin::Joined-->
 																<td>
-																	<?= (new DateTime($ticket['fecha_creacion']))->format('d-m-Y H:i:s') ?> <!-- PARTE DEL FOREACH DONDE PILLA LA CAPACIDAD MAXIMA -->
+																	<?= esc($review['comentario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA CAPACIDAD MAXIMA -->
+																</td> 
+
+																<td>
+																	<?= (new DateTime($review['fecha_creacion']))->format('d-m-Y H:i:s') ?> <!-- PARTE DEL FOREACH DONDE PILLA LOS ESTADOS -->
 																</td> 
 
 																<!--begin::Joined-->
 																<!--begin::Action=-->
 																<td class="text-end">
-																	<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+																	<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
 																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																	<span class="svg-icon svg-icon-5 m-0">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -992,21 +888,21 @@ License: For each use you must have a valid license purchased only from above li
 																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																		<!--begin::Menu item-->
 																		<div class="menu-item px-3">
-																			<a href="<?= base_url('tickets/save/' . $ticket['id']) ?>" class="menu-link px-3">
+																			<a href="<?= base_url('reviews/save/' . $review['id']) ?>" class="menu-link px-3">
 																				Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
 																			</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
 																		</div>
 																		<!--end::Menu item-->
 																		<!--begin::Menu item-->
-																		<div class="menu-item px-3">		
-																		<?php if ($ticket['archivado']): ?>
-																			<a href="<?= base_url('tickets/restore/' . $ticket['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas restaurar este ticket?');"
+																		<div class="menu-item px-3">
+																		<?php if ($review['archivado']): ?>
+																			<a href="<?= base_url('reviews/restore/' . $review['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas restaurar este reseña?');"
 																				class="menu-link px-3" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i>
-																			</a><!-- AQUI PONEMOS EL LINK PARA RESTAURAR EL TICKET -->
+																			</a><!-- AQUI PONEMOS EL LINK PARA RESTAURAR EL RESEÑA -->
 																		<?php else: ?>
-																			<a href="<?= base_url('tickets/delete/' . $ticket['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este ticket?');"
-																				class="menu-link px-3" data-kt-users-table-filter="delete_row">Eliminar <i class="fa-solid fa-trash ms-4"></i>
-																			</a><!-- AQUI PONEMOS EL LINK PARA ELIMINAR EL TICKET -->
+																			<a href="<?= base_url('reviews/delete/' . $review['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas archivar este reseña?');"
+																				class="menu-link px-3" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i>
+																			</a><!-- AQUI PONEMOS EL LINK PARA ELIMINAR EL RESEÑA -->
 																		<?php endif; ?>
 																		</div>
 																		<!--end::Menu item-->
@@ -1025,24 +921,25 @@ License: For each use you must have a valid license purchased only from above li
 												<div class="row">
 													<div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start"></div>
 													<div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">													
-														<?= $pager->only(["name"])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
+														<?= $pager->only(['atraccion', 'usuario', 'calificacion', 'comentario', 'fechaCreacion', 'reviewArchivada'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
 													</div>
 												</div>
 											<?php else: ?>
-												<p class="text-center">No hay ticket registradas.</p>
+												<p class="text-center">No hay reseñas registradas.</p>
 											<?php endif; ?>
 										</div>
 										<!--end::Card body-->
 									</div>
 									<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
-								</div>	
+
+									<!--end::Card body-->
+								</div>
 							</div>
 							<!--end::Container-->
 						</div>
 						<!--end::Post-->
 					</div>
 					<!--end::Content-->
-					
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->

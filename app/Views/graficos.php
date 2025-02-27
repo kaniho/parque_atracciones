@@ -97,7 +97,7 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 								<?php endif; ?>
 								<div class="menu-item">
-									<a class="menu-link" href="<?= base_url("/")?>">
+									<a class="menu-link active" href="<?= base_url("/")?>">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -109,6 +109,22 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-title">Graficas</span>
+									</a>
+								</div>
+								<!--Sección de calendario-->
+								<div class="menu-item">
+									<a class="menu-link" href="<?= base_url("calendario") ?>">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
+											<span class="svg-icon svg-icon-2">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+													<path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
+													<path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+										<span class="menu-title">Calendario</span>
 									</a>
 								</div>
 								<!--Sección de horarios-->
@@ -201,189 +217,61 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Footer-->
 					<div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
 						<!--PARTE DE LA CUENTA DE USUARIO-->
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									<img src="<?= base_url("assets/media/avatars/150-26.jpg")?>" alt="user" />
-								</div>
-								<!--begin::Menu-->
-								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
-									<!--begin::Menu item-->
-									<div class="menu-item px-3">
-										<div class="menu-content d-flex align-items-center px-3">
-											<!--begin::Avatar-->
-											<div class="symbol symbol-50px me-5">
-												<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg")?>" />
-											</div>
-											<!--end::Avatar-->
-											<!--begin::Username-->
-											<div class="d-flex flex-column">
-												<div class="fw-bolder d-flex align-items-center fs-5">Max Smith
-												<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span></div>
-												<a href="#" class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
-											</div>
-											<!--end::Username-->
-										</div>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu separator-->
-									<div class="separator my-2"></div>
-									<!--end::Menu separator-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My Profile</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/pages/projects/list.html" class="menu-link px-5">
-											<span class="menu-text">My Projects</span>
-											<span class="menu-badge">
-												<span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
-											</span>
-										</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-										<a href="#" class="menu-link px-5">
-											<span class="menu-title">My Subscription</span>
-											<span class="menu-arrow"></span>
-										</a>
-										<!--begin::Menu sub-->
-										<div class="menu-sub menu-sub-dropdown w-175px py-4">
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/referrals.html" class="menu-link px-5">Referrals</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/billing.html" class="menu-link px-5">Billing</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/statements.html" class="menu-link px-5">Payments</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/statements.html" class="menu-link d-flex flex-stack px-5">Statements
-												<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu separator-->
-											<div class="separator my-2"></div>
-											<!--end::Menu separator-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<div class="menu-content px-3">
-													<label class="form-check form-switch form-check-custom form-check-solid">
-														<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-														<span class="form-check-label text-muted fs-7">Notifications</span>
-													</label>
-												</div>
-											</div>
-											<!--end::Menu item-->
-										</div>
-										<!--end::Menu sub-->
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/account/statements.html" class="menu-link px-5">My Statements</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu separator-->
-									<div class="separator my-2"></div>
-									<!--end::Menu separator-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-										<a href="#" class="menu-link px-5">
-											<span class="menu-title position-relative">Language
-											<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-											<img class="w-15px h-15px rounded-1 ms-2" src="<?= base_url("assets/media/flags/united-states.svg")?>" alt="" /></span></span>
-										</a>
-										<!--begin::Menu sub-->
-										<div class="menu-sub menu-sub-dropdown w-175px py-4">
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5 active">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/united-states.svg")?>" alt="" />
-												</span>English</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/spain.svg")?>" alt="" />
-												</span>Spanish</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/germany.svg")?>" alt="" />
-												</span>German</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/japan.svg")?>" alt="" />
-												</span>Japanese</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-												<span class="symbol symbol-20px me-4">
-													<img class="rounded-1" src="<?= base_url("assets/media/flags/france.svg")?>" alt="" />
-												</span>French</a>
-											</div>
-											<!--end::Menu item-->
-										</div>
-										<!--end::Menu sub-->
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5 my-1">
-										<a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account Settings</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="../../demo1/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign Out</a>
-									</div>
-									<!--end::Menu item-->
-									<!--begin::Menu separator-->
-									<div class="separator my-2"></div>
-									<!--end::Menu separator-->
-									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<div class="menu-content px-5">
-											<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-												<input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="kt_user_menu_dark_mode_toggle" data-kt-url="../../demo1/dist/index.html" />
-												<span class="pulse-ring ms-n1"></span>
-												<span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
-											</label>
-										</div>
-									</div>
-									<!--end::Menu item-->
-								</div>
-								<!--end::Menu-->
-								<!--end::Menu wrapper-->
+						<!--begin::User-->
+						<?php $session = session(); ?>
+						<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+							<!--begin::Menu wrapper-->
+							<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+								<img src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" alt="user" />
 							</div>
+							<!--begin::Menu-->
+							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
+								<!--begin::Menu item-->
+								<div class="menu-item px-3">
+									<div class="menu-content d-flex align-items-center px-3">
+										<!--begin::Avatar-->
+										<div class="symbol symbol-50px me-5">
+											<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" />
+										</div>
+										<!--end::Avatar-->
+										<!--begin::Username-->
+										<div class="d-flex flex-column">
+											<div class="fw-bolder d-flex align-items-center fs-5"><?= esc($session->get('name')) ?>
+												<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
+											</div>
+											<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
+										</div>
+										<!--end::Username-->
+									</div>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu separator-->
+								<div class="separator my-2"></div>
+								<!--end::Menu separator-->
+								<!--begin::Menu item-->
+								<div class="menu-item px-5">
+									<a href="<?= base_url("info_users") ?>" class="menu-link px-5">Mi perfil</a>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu item-->
+								<div class="menu-item px-5 my-1">
+									<a href="<?= base_url("settings") ?>" class="menu-link px-5">Configuraciones de la cuenta</a>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu item-->
+								<div class="menu-item px-5">
+									<a href="<?= base_url('logout') ?>" class="menu-link px-5">Cerrar sesión</a>
+								</div>
+								<!--end::Menu item-->
+								<!--begin::Menu separator-->
+								<div class="separator my-2"></div>
+								<!--end::Menu separator-->
+							</div>
+							<!--end::Menu-->
+							<!--end::Menu wrapper-->
+						</div>
 						<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
-					</div>
-
-						
+					</div>						
 					<!--end::Footer-->
 				</div>
 				<!--end::Aside-->
@@ -948,7 +836,7 @@ License: For each use you must have a valid license purchased only from above li
 								
 								
 								
-								<div class="g-5 gx-xxl-8">
+								<div class="g-5 gx-xxl-8"> <!-- COMIENZO DEL CALENDARIO -->
 									<!--begin::Calendar Widget 1-->
 									<div class="card card-xxl-stretch">
 										<!--begin::Card header-->
@@ -1248,7 +1136,7 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 									<!--end::Modal - New Product-->
 									<!--end::Modals-->
-								</div>
+								</div> <!-- FIN DEL CALENDARIO -->
 								<!--end::Row-->
 							</div>
 							<!--end::Container-->
@@ -1257,7 +1145,7 @@ License: For each use you must have a valid license purchased only from above li
 					</div>
 					<!--end::Content-->
 					<!--begin::Footer-->
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer"> <!-- COMIENZO DEL FOOTER -->
 						<!--begin::Container-->
 						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<!--begin::Copyright-->
@@ -1281,7 +1169,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Menu-->
 						</div>
 						<!--end::Container-->
-					</div>
+					</div> <!-- FIN DEL FOOTER -->
 					<!--end::Footer-->
 				</div>
 				<!--end::Wrapper-->

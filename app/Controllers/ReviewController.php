@@ -49,6 +49,17 @@ class ReviewController extends BaseController {
         // Configuración de la paginación
         $perPage = 3; // Número de elementos por página
         $reviews = $reviewModel->paginate($perPage); // Obtener reseñas paginadas
+        $pager = $reviewModel->pager; // Instancia del paginador
+        $data = [
+            'reviews' => $reviews,
+            'pager' => $pager,
+            'atraccion' => $atraccion,
+            'usuario' => $usuario,
+            'calificacion' => $calificacion,
+            'comentario' => $comentario,
+            'fechaCreacion' => $fechaCreacion,
+            'reviewArchivada' => $reviewArchivada,
+        ];
 
         // Obtener los nombres de las atracciones y usuarios
         foreach ($reviews as &$review) {
@@ -56,16 +67,9 @@ class ReviewController extends BaseController {
             $review['nombre_usuario'] = $usuariosModel->find($review['id_usuario'])['nombre_usuario'];
         }
 
-        $data['reviews'] = $reviews; // Pasar los datos a la vista
-        $data['pager'] = $reviewModel->pager; // Instancia del paginador
-        $data['atraccion'] = $atraccion; // Mantener el término de búsqueda en la vista
-        $data['usuario'] = $usuario; // Mantener el filtro de usuario en la vista
-        $data['calificacion'] = $calificacion; // Mantener el filtro de calificación en la vista
-        $data['comentario'] = $comentario; // Mantener el filtro de comentario en la vista
-        $data['fechaCreacion'] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
-        $data['reviewArchivada'] = $reviewArchivada; // Mantener el filtro de reseña archivada en la vista
+        
 
-        return view('review_list', $data); // Cargar la vista con los datos
+        return view('reviews/review_list', $data); // Cargar la vista con los datos
     }
 
     public function saveReview($id = null) {
@@ -130,7 +134,7 @@ class ReviewController extends BaseController {
         }
 
         // Cargar la vista del formulario (crear/editar)
-        return view('review_form', $data);
+        return view('reviews/review_form', $data);
     }
 
 

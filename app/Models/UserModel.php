@@ -28,4 +28,11 @@ class UserModel extends Model
         return $this->where("email", $email)->first();
     }
 
+    public function usuarioConRoles($email) {
+        return $this->select('users.*, roles.nombre_rol')
+        ->join('roles', 'roles.id = users.id_rol')
+        ->where('users.email', $email)
+        ->first();
+    }
+
 }
