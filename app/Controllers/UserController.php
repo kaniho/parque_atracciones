@@ -22,11 +22,25 @@ class UserController extends BaseController
         $ultimaConexion = $this->request->getVar('ultimaConexion'); // Obtener el filtro de última conexión
         $fechaIngreso = $this->request->getVar('fechaIngreso'); // Obtener el filtro de fecha de ingreso
         $usuarioArchivado = $this->request->getVar('usuarioArchivado'); // Obtener el filtro de usuario archivado
+        $perPage = $this->request->getVar('perPage') ?? 3; // Obtener el número de elementos por página, por defecto 3
+
+        // Parámetros de ordenación
+        $sort = $this->request->getVar('sort') ?? 'id';
+        $order = $this->request->getVar('order') ?? 'asc';
 
         // Construir la consulta con uniones
         $userModel->select('users.*, roles.nombre_rol')
             ->join('roles', 'roles.id = users.id_rol');
             
+        // Contador de filtros activos
+        $filtrosActivos = 0;
+        if ($usuario) $filtrosActivos++;
+        if ($email) $filtrosActivos++;
+        if ($rol) $filtrosActivos++;
+        if ($ultimaConexion) $filtrosActivos++;
+        if ($fechaIngreso) $filtrosActivos++;
+        if ($usuarioArchivado !== null) $filtrosActivos++;
+
 
         // Aplicar filtros si se introducen
         if ($usuario) {
@@ -44,12 +58,16 @@ class UserController extends BaseController
         if ($fechaIngreso) {
             $userModel->like('users.fecha_ingreso', $fechaIngreso);
         }
-        if ($usuarioArchivado) {
+        if ($usuarioArchivado === '0') {
+            $userModel->where('users.archivado', 0);
+        } elseif ($usuarioArchivado === '1') {
             $userModel->where('users.archivado', 1);
         }
 
-        // Configuración de la paginación
-        $perPage = 3; // Número de elementos por página
+        // Aplicar ordenación
+        $userModel->orderBy($sort, $order);
+
+        // Configuración de la paginación  
         $users = $userModel->paginate($perPage); // Obtener usuarios paginados
         $data['pager'] = $userModel->pager; // Instancia del paginador
         // Pasar los datos a la vista
@@ -63,16 +81,11 @@ class UserController extends BaseController
             'ultimaConexion' => $ultimaConexion,
             'fechaIngreso' => $fechaIngreso,
             'usuarioArchivado' => $usuarioArchivado,
+            'perPage' => $perPage,
+            'filtrosActivos' => $filtrosActivos,
+            'sort' => $sort, // Enviar el campo de ordenación a la vista
+            'order' => $order, // Enviar la dirección de ordenación a la vista
         ];
-        /*$data['users'] = $users; // Pasar los usuarios a la vista
-        $data['pager'] = $userModel->pager; // Instancia del paginador
-        $data['usuario'] = $usuario; // Mantener el término de búsqueda en la vista
-        $data['email'] = $email; // Manterner el término de búsqueda en la vista
-        $data['rol'] = $rol; // Mantener el filtro de rol en la vista
-        $data['ultimaConexion'] = $ultimaConexion; // Mantener el filtro de última conexión en la vista
-        $data['fechaIngreso'] = $fechaIngreso; // Mantener el filtro de fecha de ingreso en la vista
-        $data['usuarioArchivado'] = $usuarioArchivado; // Mantener el filtro de usuario archivado en la vista*/
-        
         
         return view('usuarios/user_list', $data); // Cargar la vista con los datos
     }
@@ -107,9 +120,11 @@ class UserController extends BaseController
         if ($fechaIngreso) {
             $userModel->like('users.fecha_ingreso', $fechaIngreso);
         }
-        if ($usuarioArchivado) {
+        if ($usuarioArchivado === '0') {
+            $userModel->where('users.archivado', 0);
+        } elseif ($usuarioArchivado === '1') {
             $userModel->where('users.archivado', 1);
-        } 
+        }
     
         $users = $userModel->findAll(); // Obtener todos los usuarios que coinciden con los filtros
     

@@ -16,7 +16,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
 	<base href="../">
-	<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+	<title>Bienvenido a Karmalandia</title>
 	<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 	<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,7 +27,7 @@ License: For each use you must have a valid license purchased only from above li
 	<meta property="og:url" content="https://keenthemes.com/metronic" />
 	<meta property="og:site_name" content="Keenthemes | Metronic" />
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-	<link rel="shortcut icon" href="<?= base_url("assets/media/logos/favicon.ico") ?>" />
+	<link rel="shortcut icon" href="<?= base_url("assets/media/logos/atracciones.png") ?>" />
 	<script src="https://kit.fontawesome.com/47d7c4b9a5.js" crossorigin="anonymous"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"><!-- link para los mensajes -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- link para los mensajes -->
@@ -61,8 +61,8 @@ License: For each use you must have a valid license purchased only from above li
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
 					<a href="../../demo1/dist/index.html">
-						<img alt="Logo" src="<?= base_url("assets/media/logos/logo-1-dark.svg") ?>" class="h-25px logo" />
-					</a>
+							<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo blanco.svg")?>" class="h-40px logo" />
+						</a>
 					<!--end::Logo-->
 					<!--begin::Aside toggler-->
 					<div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
@@ -234,30 +234,22 @@ License: For each use you must have a valid license purchased only from above li
 						<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
 							<img src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" alt="user" />
 						</div>
-						<!--begin::Menu-->
-						<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
-							<!--begin::Menu item-->
-							<div class="menu-item px-3">
-								<div class="menu-content d-flex align-items-center px-3">
-									<!--begin::Avatar-->
-									<div class="symbol symbol-50px me-5">
-										<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" />
+						<div class="menu-item px-3">
+							<div class="menu-content d-flex align-items-center px-3">
+							
+								<!--end::Avatar-->
+								<!--begin::Username-->
+								<div class="d-flex flex-column">
+									<div class="fw-bolder d-flex align-items-center fs-5"><span style="color: white;"> <?= esc($session->get('name')) ?></span>
+										<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
 									</div>
-									<!--end::Avatar-->
-									<!--begin::Username-->
-									<div class="d-flex flex-column">
-										<div class="fw-bolder d-flex align-items-center fs-5"><?= esc($session->get('name')) ?>
-											<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
-										</div>
-										<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
-									</div>
-									<!--end::Username-->
+									<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
 								</div>
+								<!--end::Username-->
 							</div>
-							<!--end::Menu item-->
-							<!--begin::Menu separator-->
-							<div class="separator my-2"></div>
-							<!--end::Menu separator-->
+						</div>
+						<!--begin::Menu-->
+						<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">								
 							<!--begin::Menu item-->
 							<div class="menu-item px-5">
 								<a href="<?= base_url("info_users") ?>" class="menu-link px-5">Mi perfil</a>
@@ -272,14 +264,11 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="menu-item px-5">
 								<a href="<?= base_url('logout') ?>" class="menu-link px-5">Cerrar sesión</a>
 							</div>
-							<!--end::Menu item-->
-							<!--begin::Menu separator-->
-							<div class="separator my-2"></div>
-							<!--end::Menu separator-->
+							<!--end::Menu item-->							
 						</div>
 						<!--end::Menu-->
 						<!--end::Menu wrapper-->
-					</div>
+					</div>							
 					<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
 				</div>
 				<!--end::Footer-->
@@ -411,6 +400,11 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Toolbar-->
 											<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
 												<!--begin::Filter-->
+												<div class="px-7 d-flex align-items-center justify-content-between">
+													<?php if ($filtrosActivos > 0): ?>
+														<span class="badge bg-danger ms-2">Filtros activados: <?= $filtrosActivos ?></span>
+													<?php endif; ?>
+												</div>
 												<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 													<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
 													<span class="svg-icon svg-icon-2">
@@ -470,11 +464,22 @@ License: For each use you must have a valid license purchased only from above li
 																</div>
 															</div>
 															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-5">
+																<label class="form-label fs-6 fw-bold">Mostrar Usuarios:</label>
+																<div class="input-group w-auto">
+																<select name="usuarioArchivado" id="usuarioArchivado" class="form-select">
+																	<option value="0" <?= $usuarioArchivado === '0' ? 'selected' : '' ?>>No Archivados</option>
+																	<option value="1" <?= $usuarioArchivado === '1' ? 'selected' : '' ?>>Archivados</option>
+																	<option value="2" <?= $usuarioArchivado === '2' ? 'selected' : '' ?>>Todos</option>
+																</select>
+																</div>
+															</div>
+															<!--end::Input group-->
 															<!--begin::Actions-->
 															<div class="d-flex justify-content-end">											
-																<button type="reset" class="btn btn-sm btn-light btn-active-light-primary fw-bold me-2 px-4" onclick="window.location.href='<?= base_url("users") ?>'">Restablece</button>
-																<button type="submit" name="usuarioArchivado" value="1" class="btn btn-sm btn-danger me-2 px-4 ">Mostrar Archivados</button>
-																<button type="submit" class="btn btn-sm btn-primary">Buscar</button>
+																<button type="reset" class="btn  btn-light btn-active-light-primary fw-bold me-2 px-4" onclick="window.location.href='<?= base_url("users") ?>'">Restablece</button>												
+																<button type="submit" class="btn  btn-primary">Buscar</button>
 															</div>
 															<!--end::Actions-->
 														</form>
@@ -483,8 +488,7 @@ License: For each use you must have a valid license purchased only from above li
 												</div>
 												<!--end::Menu 1-->
 												<!--end::Filter-->
-												<!--begin::Export-->
-												
+												<!--begin::Export-->											
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
 												<form method="GET" action="<?= base_url('users/exportExcel') ?>">
 													<input type="hidden" name="usuario" value="<?= esc($usuario) ?>">
@@ -537,10 +541,10 @@ License: For each use you must have a valid license purchased only from above li
 																	<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
 																		<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 																	</div>
-																</th>													
-																<th class="min-w-125px">Usuario</th>
-																<th class="min-w-125px">Email</th>
-																<th class="min-w-125px">Rol</th>
+																</th>												
+																<th class="min-w-125px"><a href="<?= base_url('users?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc')) ?>">Usuario</a></th>
+																<th class="min-w-125px"><a href="<?= base_url('users?sort=email&order=' . ($sort == 'email' && $order == 'asc' ? 'desc' : 'asc')) ?>">Email</a></th>
+																<th class="min-w-125px"><a href="<?= base_url('users?sort=nombre_rol&order=' . ($sort == 'nombre_rol' && $order == 'asc' ? 'desc' : 'asc')) ?>">Rol</a></th>
 																<th class="min-w-125px">Última Conexión</th>
 																<th class="min-w-125px">Fecha de Ingreso</th>
 																<th class="text-end min-w-100px">Acciones</th>
@@ -644,8 +648,22 @@ License: For each use you must have a valid license purchased only from above li
 													</table>
 													<!--end::Table-->
 													<!-- Paginador -->
+																									
 													<div class="mt-4">
-														<?= $pager->only(['usuario', 'email', 'rol', 'ultimaConexion', 'fechaIngreso', 'usuarioArchivado'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
+														<div class="d-flex justify-content-between align-items-center">
+															<div class="d-flex align-items-center">
+																<label for="perPage" class="form-label me-2">Elementos por página:</label>
+																<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
+																	<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
+																	<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
+																	<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
+																	<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
+																</select>
+															</div>
+															<div>
+																<?= $pager->only(['usuario', 'email', 'rol', 'ultimaConexion', 'fechaIngreso', 'usuarioArchivado'])->links("default", "custom_pagination") ?> <!-- Usa la plantilla predeterminada -->
+															</div>
+														</div>
 													</div>
 												<?php else: ?>
 													<p class="text-center">No hay usuarios registrados.</p>
@@ -695,6 +713,7 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
+	<script src="<?= base_url("assets/js/custom.js") ?>"></script>
 	<script src="assets/js/custom/apps/calendar/calendar.js"></script>
 	<script src="assets/js/custom/widgets.js"></script>
 	<script src="assets/js/custom/apps/chat/chat.js"></script>

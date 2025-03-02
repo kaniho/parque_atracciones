@@ -62,9 +62,9 @@ License: For each use you must have a valid license purchased only from above li
 				<!--begin::Content-->
 				<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
 					<!--begin::Logo-->
-					<a href="../../demo1/dist/index.html" class="mb-12">
-						<img alt="Logo" src="<?= base_url("assets/media/logos/logo-1.svg")?>" class="h-40px" />
-					</a>
+					<div class="mb-12">
+						<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo negro.svg")?>" class="h-80px" />
+					</div>
 					<!--end::Logo-->
 					<!--begin::Wrapper-->
 					<div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">

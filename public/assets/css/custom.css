@@ -23,6 +23,26 @@
     background-color: red;
     border-radius: 5px;
 }
+/*parte del selector de elementos por página */
+.form-select-sm {
+    height: auto;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+.form-label {
+    margin-bottom: 0;
+}
+
+/* parte del botón para archivar y desarchivar */
+#btn-archivar {
+    margin-right: 900px; /* Ajusta el valor según sea necesario */
+}
+
+
+
+
 /*#archivado-atraccion {
     position: absolute;
     left: -5px;

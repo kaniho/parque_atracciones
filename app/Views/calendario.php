@@ -14,7 +14,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Head-->
 	<head>
 		<base href="../">
-		<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel by Keenthemes</title>
+		<title>Bienvenido a Karmalandia</title>
 		<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 		<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +25,7 @@ License: For each use you must have a valid license purchased only from above li
 		<meta property="og:url" content="https://keenthemes.com/metronic" />
 		<meta property="og:site_name" content="Keenthemes | Metronic" />
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/favicon.ico") ?>" />
+		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/atracciones.png") ?>" />
 		<script src="https://kit.fontawesome.com/47d7c4b9a5.js" crossorigin="anonymous"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"><!-- link para los mensajes -->
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- link para los mensajes -->
@@ -59,7 +59,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
 						<a href="../../demo1/dist/index.html">
-							<img alt="Logo" src="<?= base_url("assets/media/logos/logo-1-dark.svg")?>" class="h-25px logo" />
+							<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo blanco.svg")?>" class="h-40px logo" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Aside toggler-->
@@ -236,33 +236,25 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
 								<img src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" alt="user" />
 							</div>
-							<!--begin::Menu-->
-							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
-								<!--begin::Menu item-->
-								<div class="menu-item px-3">
-									<div class="menu-content d-flex align-items-center px-3">
-										<!--begin::Avatar-->
-										<div class="symbol symbol-50px me-5">
-											<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" />
+							<div class="menu-item px-3">
+								<div class="menu-content d-flex align-items-center px-3">
+								
+									<!--end::Avatar-->
+									<!--begin::Username-->
+									<div class="d-flex flex-column">
+										<div class="fw-bolder d-flex align-items-center fs-5"><span style="color: white;"> <?= esc($session->get('name')) ?></span>
+											<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
 										</div>
-										<!--end::Avatar-->
-										<!--begin::Username-->
-										<div class="d-flex flex-column">
-											<div class="fw-bolder d-flex align-items-center fs-5"><?= esc($session->get('name')) ?>
-												<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
-											</div>
-											<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
-										</div>
-										<!--end::Username-->
+										<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
 									</div>
+									<!--end::Username-->
 								</div>
-								<!--end::Menu item-->
-								<!--begin::Menu separator-->
-								<div class="separator my-2"></div>
-								<!--end::Menu separator-->
+							</div>
+							<!--begin::Menu-->
+							<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">								
 								<!--begin::Menu item-->
 								<div class="menu-item px-5">
-									<a href="<?= base_url("info_users") ?>" class="menu-link px-5">My perfil</a>
+									<a href="<?= base_url("info_users") ?>" class="menu-link px-5">Mi perfil</a>
 								</div>
 								<!--end::Menu item-->
 								<!--begin::Menu item-->
@@ -274,14 +266,11 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="menu-item px-5">
 									<a href="<?= base_url('logout') ?>" class="menu-link px-5">Cerrar sesión</a>
 								</div>
-								<!--end::Menu item-->
-								<!--begin::Menu separator-->
-								<div class="separator my-2"></div>
-								<!--end::Menu separator-->
+								<!--end::Menu item-->							
 							</div>
 							<!--end::Menu-->
 							<!--end::Menu wrapper-->
-						</div>
+						</div>						
 						<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
 					</div>						
 					<!--end::Footer-->

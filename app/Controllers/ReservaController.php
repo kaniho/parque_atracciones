@@ -6,6 +6,8 @@ use App\Models\ReservaModel;
 use App\Models\AtraccionesModel;
 use App\Models\UserModel;
 use App\Models\HorarioModel;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class ReservaController extends BaseController {
 
@@ -24,8 +26,122 @@ class ReservaController extends BaseController {
         $estado = $this->request->getVar('estado'); // Obtener el filtro de estado
         $fechaCreacion = $this->request->getVar('fechaCreacion'); // Obtener el filtro de fecha de creación
         $revervaArchivada = $this->request->getVar('revervaArchivada'); // Obtener el filtro de reserva archivada
-
+        $perPage = $this->request->getVar('perPage') ?? 3; // Obtener el número de elementos por página, por defecto 3 
         
+        // Parámetros de ordenación
+        $sort = $this->request->getVar('sort') ?? 'reservas.id';
+        $order = $this->request->getVar('order') ?? 'asc';
+        
+        // Contador de filtros activos
+        $filtrosActivos = 0;
+        if ($atraccion) $filtrosActivos++;
+        if ($usuario) $filtrosActivos++;
+        if ($fecha) $filtrosActivos++;
+        if ($horario) $filtrosActivos++;
+        if ($cantidaPersona) $filtrosActivos++;
+        if ($estado) $filtrosActivos++;
+        if ($fechaCreacion) $filtrosActivos++;
+        if ($revervaArchivada !== null) $filtrosActivos++;
+
+        // Construir la consulta con uniones
+        $reservaModel->select('reservas.*, atracciones.nombre as nombre_atraccion, users.nombre_usuario, horarios.nombre_horario')
+            ->join('atracciones', 'atracciones.id = reservas.id_atraccion')
+            ->join('users', 'users.id = reservas.id_usuario')
+            ->join('horarios', 'horarios.id = reservas.id_horario');
+            
+
+        // Aplicar filtros si se introducen
+        if ($atraccion) {
+            $reservaModel->like('atracciones.nombre', $atraccion);
+        }
+        if ($usuario) {
+            $reservaModel->like('users.nombre_usuario', $usuario);
+        }
+        if ($fecha) {
+            $reservaModel->like('reservas.fecha', $fecha);
+        }
+        if ($horario) {
+            $reservaModel->like('horarios.nombre_horario', $horario);
+        }
+        if ($cantidaPersona) {
+            $reservaModel->like('reservas.cantidad_personas', $cantidaPersona);
+        }
+        if ($estado) {
+            $reservaModel->like('reservas.estado', $estado);
+        }
+        if ($fechaCreacion) {
+            $reservaModel->like('reservas.fecha_creacion', $fechaCreacion);
+        }
+        if ($revervaArchivada === '0') {
+            $reservaModel->where('reservas.archivado', 0);
+        } elseif ($revervaArchivada === '1') {
+            $reservaModel->where('reservas.archivado', 1);
+        }
+
+        // Aplicar ordenación
+        $reservaModel->orderBy($sort, $order);
+
+        // Configuración de la paginación   
+        $reservas = $reservaModel->paginate($perPage); // Obtener los resultados paginados
+        $pager = $reservaModel->pager; // Instancia del paginador
+        $data = [
+            'reservas' => $reservas, // Pasar los datos a la vista
+            'pager' => $pager,
+            'atraccion' => $atraccion, // Mantener el término de búsqueda en la vista
+            'usuario' => $usuario, 
+            'fecha' => $fecha, 
+            'horario' => $horario, 
+            'cantidaPersona' => $cantidaPersona, 
+            'estado' => $estado,
+            'fechaCreacion' => $fechaCreacion,
+            'revervaArchivada' => $revervaArchivada,
+            'perPage' => $perPage,
+            'filtrosActivos' => $filtrosActivos, // Enviar el contador de filtros activos a la vista
+            'sort' => $sort, // Enviar el campo de ordenación a la vista
+            'order' => $order, // Enviar la dirección de ordenación a la vista
+        ];
+
+        // Obtener los nombres de las atracciones y usuarios
+        foreach ($reservas as &$reserva) {
+            $reserva["nombre_atraccion"] = $atraccionesModel->find($reserva["id_atraccion"])["nombre"];
+            $reserva["nombre_usuario"] = $usuariosModel->find($reserva["id_usuario"])["nombre_usuario"];
+            $reserva["nombre_horario"] = $horarioModel->find($reserva["id_horario"])["nombre_horario"];
+        }
+
+        /*$data["reservas"] = $reservas; // Pasar los datos a la vista
+        $data["pager"] = $reservaModel->pager; // Instancia del paginador
+        $data["atraccion"] = $atraccion; // Mantener el término de búsqueda en la vista
+        $data["usuario"] = $usuario; // Mantener el filtro de usuario en la vista
+        $data["fecha"] = $fecha; // Mantener el filtro de fecha en la vista
+        $data["horario"] = $horario; // Mantener el filtro de horario en la vista
+        $data["cantidaPersona"] = $cantidaPersona; // Mantener el filtro de cantidad de personas en la vista
+        $data["estado"] = $estado; // Mantener el filtro de estado en la vista
+        $data["fechaCreacion"] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
+        $data["revervaArchivada"] = $revervaArchivada; // Mantener el filtro de reserva archivada en la vista*/
+
+    
+        // Agregar ordenación por columnas
+
+
+        return view('reservas/reserva_list', $data); // Cargar la vista con los datos
+    }
+
+    // parte de exportar a excel
+    public function exportExcel() {
+        $reservaModel = new ReservaModel();
+        $atraccionesModel = new AtraccionesModel();
+        $usuariosModel = new UserModel();
+        $horarioModel = new HorarioModel();
+
+        // Obtener los parámetros de búsqueda
+        $atraccion = $this->request->getVar('atraccion'); // Obtener el término de búsqueda desde el formulario
+        $usuario = $this->request->getVar('usuario'); // Obtener el filtro de usuario
+        $fecha = $this->request->getVar('fecha'); // Obtener el filtro de fecha
+        $horario = $this->request->getVar('horario'); // Obtener el filtro de horario
+        $cantidaPersona = $this->request->getVar('cantidaPersona'); // Obtener el filtro de cantidad de personas
+        $estado = $this->request->getVar('estado'); // Obtener el filtro de estado
+        $fechaCreacion = $this->request->getVar('fechaCreacion'); // Obtener el filtro de fecha de creación
+        $revervaArchivada = $this->request->getVar('revervaArchivada'); // Obtener el filtro de reserva archivada
 
         // Construir la consulta con uniones
         $reservaModel->select('reservas.*, atracciones.nombre as nombre_atraccion, users.nombre_usuario, horarios.nombre_horario')
@@ -55,50 +171,50 @@ class ReservaController extends BaseController {
         if ($fechaCreacion) {
             $reservaModel->like('reservas.fecha_creacion', $fechaCreacion);
         }
-        if ($revervaArchivada) {
+        if ($revervaArchivada === '0') {
+            $reservaModel->where('reservas.archivado', 0);
+        } elseif ($revervaArchivada === '1') {
             $reservaModel->where('reservas.archivado', 1);
         }
 
-        // Configuración de la paginación
-        $perPage = 3; // Número de elementos por página       
-        $reservas = $reservaModel->paginate($perPage); // Obtener los resultados paginados
-        $pager = $reservaModel->pager; // Instancia del paginador
-        $data = [
-            'reservas' => $reservas, // Pasar los datos a la vista
-            'pager' => $pager,
-            'atraccion' => $atraccion, // Mantener el término de búsqueda en la vista
-            'usuario' => $usuario, 
-            'fecha' => $fecha, 
-            'horario' => $horario, 
-            'cantidaPersona' => $cantidaPersona, 
-            'estado' => $estado,
-            'fechaCreacion' => $fechaCreacion,
-            'revervaArchivada' => $revervaArchivada,
-        ];
+        $reserva = $reservaModel->findAll(); // Obtener todos los resultados
 
-        // Obtener los nombres de las atracciones y usuarios
-        foreach ($reservas as &$reserva) {
-            $reserva["nombre_atraccion"] = $atraccionesModel->find($reserva["id_atraccion"])["nombre"];
-            $reserva["nombre_usuario"] = $usuariosModel->find($reserva["id_usuario"])["nombre_usuario"];
-            $reserva["nombre_horario"] = $horarioModel->find($reserva["id_horario"])["nombre_horario"];
+        $spreadsheet = new Spreadsheet(); // Crear una nueva hoja de cálculo
+        $sheet = $spreadsheet->getActiveSheet(); // Obtener la hoja activa
+
+        // Agregar encabezados a la hoja de cálculo
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Atracción');
+        $sheet->setCellValue('C1', 'Usuario');
+        $sheet->setCellValue('D1', 'Fecha');
+        $sheet->setCellValue('E1', 'Horario');
+        $sheet->setCellValue('F1', 'Cantidad de personas');
+        $sheet->setCellValue('G1', 'Estado');
+        $sheet->setCellValue('H1', 'Fecha de creación');
+
+        // Recorre los resultados y los agrega a la hoja de cálculo
+        $row = 2;
+        foreach ($reserva as $reserva) {
+            $sheet->setCellValue('A' . $row, $reserva['id']);
+            $sheet->setCellValue('B' . $row, $reserva['nombre_atraccion']);
+            $sheet->setCellValue('C' . $row, $reserva['nombre_usuario']);
+            $sheet->setCellValue('D' . $row, $reserva['fecha']);
+            $sheet->setCellValue('E' . $row, $reserva['nombre_horario']);
+            $sheet->setCellValue('F' . $row, $reserva['cantidad_personas']);
+            $sheet->setCellValue('G' . $row, $reserva['estado']);
+            $sheet->setCellValue('H' . $row, $reserva['fecha_creacion']);
+            $row++;
         }
 
-        /*$data["reservas"] = $reservas; // Pasar los datos a la vista
-        $data["pager"] = $reservaModel->pager; // Instancia del paginador
-        $data["atraccion"] = $atraccion; // Mantener el término de búsqueda en la vista
-        $data["usuario"] = $usuario; // Mantener el filtro de usuario en la vista
-        $data["fecha"] = $fecha; // Mantener el filtro de fecha en la vista
-        $data["horario"] = $horario; // Mantener el filtro de horario en la vista
-        $data["cantidaPersona"] = $cantidaPersona; // Mantener el filtro de cantidad de personas en la vista
-        $data["estado"] = $estado; // Mantener el filtro de estado en la vista
-        $data["fechaCreacion"] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
-        $data["revervaArchivada"] = $revervaArchivada; // Mantener el filtro de reserva archivada en la vista*/
+        $writer = new Xlsx($spreadsheet); // Crear un escritor de Excel
+        $filename = 'reservas.xlsx'; // Nombre del archivo
 
-    
-        // Agregar ordenación por columnas
-
-
-        return view('reservas/reserva_list', $data); // Cargar la vista con los datos
+        // Enviar el archivo al navegador para descargar
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit;
     }
 
     public function saveReserva($id = null) {

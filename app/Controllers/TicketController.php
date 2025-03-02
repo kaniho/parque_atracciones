@@ -4,11 +4,92 @@ namespace App\Controllers;
 
 use App\Models\TicketModel;
 use App\Models\ReservaModel;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class TicketController extends BaseController
 {
     public function index()
     {
+        $ticketModel = new TicketModel();
+        $reservaModel = new ReservaModel();
+
+        // Obtener los parámetros de búsqueda
+        $codigoTicket = $this->request->getVar('codigoTicket'); // Obtener el filtro de código de ticket
+        $fechaCreacion = $this->request->getVar('fechaCreacion'); // Obtener el filtro de fecha de creación
+        $estado = $this->request->getVar('estado'); // Obtener el filtro de estado
+        $ticketArchivado = $this->request->getVar('ticketArchivado'); // Obtener el filtro de ticket archivado
+        $perPage = $this->request->getVar('perPage') ?? 3; // Obtener el número de elementos por página, por defecto 3
+
+        // Parámetros de ordenación
+        $sort = $this->request->getVar('sort') ?? 'id';
+        $order = $this->request->getVar('order') ?? 'asc';
+
+        // Construir la consulta con uniones
+        $ticketModel->select('ticket.*, reservas.estado')
+            ->join('reservas', 'reservas.id = ticket.id_reserva');
+
+        // Contador de filtros activos
+        $filtrosActivos = 0;
+        if ($codigoTicket) $filtrosActivos++;
+        if ($fechaCreacion) $filtrosActivos++;
+        if ($estado) $filtrosActivos++;
+        if ($ticketArchivado !== null) $filtrosActivos++;
+
+        // Aplicar filtro si se introduce un nombre
+        if ($codigoTicket) {
+            $ticketModel->like('codigo_ticket', $codigoTicket);
+        }
+        if ($fechaCreacion) {
+            $ticketModel->like('fecha_creacion', $fechaCreacion);
+        }
+        if ($estado) {
+            $ticketModel->like('estado', $estado);
+        }
+        if ($ticketArchivado === '0') {
+            $ticketModel->where('ticket.archivado', 0);
+        } elseif ($ticketArchivado === '1') {
+            $ticketModel->where('ticket.archivado', 1);
+        }
+
+        // Aplicar ordenación
+        $ticketModel->orderBy($sort, $order);
+       
+        // Configuración de la paginación
+        $tickets = $ticketModel->paginate($perPage); // Obtener tickets paginados
+        $pager = $ticketModel->pager; // Instancia del paginador
+        $data['pager'] = $ticketModel->pager; // Instancia del paginador
+        $data = [
+            'tickets' => $tickets,
+            'pager' => $pager,
+            'codigoTicket' => $codigoTicket,
+            'fechaCreacion' => $fechaCreacion,
+            'estado' => $estado,
+            'ticketArchivado' => $ticketArchivado,
+            'perPage' => $perPage,
+            'filtrosActivos' => $filtrosActivos,
+            'sort' => $sort, // Enviar el campo de ordenación a la vista
+            'order' => $order, // Enviar la dirección de ordenación a la vista
+        ];
+      
+        // Obtener los nombres de las reservas
+        foreach ($tickets as &$ticket) {
+            $reserva = $reservaModel->find($ticket['id_reserva']);
+            $ticket['id_reserva'] = $reserva ? $reserva['estado'] : '--';
+        }
+
+      /*  $data['tickets'] = $tickets;
+        $data['pager'] = $ticketModel->pager; // Instancia del paginador
+        $data['codigoTicket'] = $codigoTicket; // Mantener el término de búsqueda en la vista
+        $data['fechaCreacion'] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
+        $data['estado'] = $estado; // Mantener el filtro de estado en la vista
+        $data['ticketArchivado'] = $ticketArchivado; // Mantener el filtro de ticket archivado en la vista*/
+        
+        return view('tickets/ticket_list', $data); // Cargar la vista con los datos
+    }
+
+    // Exporta a excel
+    public function exportExcel() {
         $ticketModel = new TicketModel();
         $reservaModel = new ReservaModel();
 
@@ -32,38 +113,45 @@ class TicketController extends BaseController
         if ($estado) {
             $ticketModel->like('estado', $estado);
         }
-        if ($ticketArchivado) {
+        if ($ticketArchivado === '0') {
+            $ticketModel->where('ticket.archivado', 0);
+        } elseif ($ticketArchivado === '1') {
             $ticketModel->where('ticket.archivado', 1);
         }
-       
-        // Configuración de la paginación
-        $perPage = 3; // Número de elementos por página
-        $tickets = $ticketModel->paginate($perPage); // Obtener tickets paginados
-        $pager = $ticketModel->pager; // Instancia del paginador
-        $data['pager'] = $ticketModel->pager; // Instancia del paginador
-        $data = [
-            'tickets' => $tickets,
-            'pager' => $pager,
-            'codigoTicket' => $codigoTicket,
-            'fechaCreacion' => $fechaCreacion,
-            'estado' => $estado,
-            'ticketArchivado' => $ticketArchivado,
-        ];
-      
-        // Obtener los nombres de las reservas
-        foreach ($tickets as &$ticket) {
+
+        $tickets = $ticketModel->findAll(); // Obtener todos los tickets
+
+        $spreadsheets = new Spreadsheet(); // Crear una nueva hoja de cálculo
+        $sheet = $spreadsheets->getActiveSheet(); // Obtener la hoja activa
+
+        // Agregar ancabezados a la hoja de cálculo
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'ID Reserva');
+        $sheet->setCellValue('C1', 'Código Ticket');
+        $sheet->setCellValue('D1', 'Fecha Creación');
+        $sheet->setCellValue('E1', 'Estado');
+
+        // Agregar los datos de los tickets a la hoja de cálculo
+        $row = 2;
+        foreach ($tickets as $ticket) {
             $reserva = $reservaModel->find($ticket['id_reserva']);
-            $ticket['id_reserva'] = $reserva ? $reserva['estado'] : '--';
+            $sheet->setCellValue('A' . $row, $ticket['id']);
+            $sheet->setCellValue('B' . $row, $reserva ? $reserva['estado'] : '--');
+            $sheet->setCellValue('C' . $row, $ticket['codigo_ticket']);
+            $sheet->setCellValue('D' . $row, $ticket['fecha_creacion']);
+            $sheet->setCellValue('E' . $row, $ticket['estado']);
+            $row++;
         }
 
-      /*  $data['tickets'] = $tickets;
-        $data['pager'] = $ticketModel->pager; // Instancia del paginador
-        $data['codigoTicket'] = $codigoTicket; // Mantener el término de búsqueda en la vista
-        $data['fechaCreacion'] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
-        $data['estado'] = $estado; // Mantener el filtro de estado en la vista
-        $data['ticketArchivado'] = $ticketArchivado; // Mantener el filtro de ticket archivado en la vista*/
+        $writer = new Xlsx($spreadsheets); // Crear un escritor de hoja de cálculo
+        $fileName = 'tickets.xlsx'; // Nombre del archivo
         
-        return view('tickets/ticket_list', $data); // Cargar la vista con los datos
+        // Enviar el achivo al navegador para descargar
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $fileName . '"');
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit;     
     }
 
     public function saveTicket($id = null)

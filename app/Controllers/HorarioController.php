@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\HorarioModel;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class HorarioController extends BaseController {
 
@@ -13,6 +15,18 @@ class HorarioController extends BaseController {
         $horarioInicio = $this->request->getVar('horarioInicio');
         $horarioFinalizacion = $this->request->getVar('horarioFinalizacion');
         $horarioArchivado = $this->request->getVar('horarioArchivado');
+        $perPage = $this->request->getVar('perPage') ?? 3;
+
+        // Parámetros de ordenación
+        $sort = $this->request->getVar('sort') ?? 'id';
+        $order = $this->request->getVar('order') ?? 'asc';
+
+        // Contador de filtros activos
+        $filtrosActivos = 0;
+        if ($nombre) $filtrosActivos++;
+        if ($horarioInicio) $filtrosActivos++;
+        if ($horarioFinalizacion) $filtrosActivos++;
+        if ($horarioArchivado !== null) $filtrosActivos++;
 
         // Aplicar filtro si se introduce un nombre
         if ($nombre) {
@@ -26,12 +40,16 @@ class HorarioController extends BaseController {
         if ($horarioFinalizacion) {
             $horarioModel->like('hora_fin', $horarioFinalizacion);
         }
-        if ($horarioArchivado) {
-            $horarioModel->where('archivado', 1);
+        if ($horarioArchivado === '0') {
+            $horarioModel->where('horarios.archivado', 0);
+        } elseif ($horarioArchivado === '1') {
+            $horarioModel->where('horarios.archivado', 1);
         }
 
+        // Aplicar ordenación
+        $horarioModel->orderBy($sort, $order);
+
         // Configuración de la paginación
-        $perPage = 3; // Número de elementos por página
         $horarios = $horarioModel->paginate($perPage); // Obtener horarios paginados
         $data['pager'] = $horarioModel->pager; // Instancia del paginador
         $pager = $horarioModel->pager; // Instancia del paginador
@@ -42,10 +60,75 @@ class HorarioController extends BaseController {
             'horarioInicio' => $horarioInicio,
             'horarioFinalizacion' => $horarioFinalizacion,
             'horarioArchivado' => $horarioArchivado,
+            'perPage' => $perPage,
+            'filtrosActivos' => $filtrosActivos,
+            'sort' => $sort, // Enviar el campo de ordenación a la vista
+            'order' => $order, // Enviar la dirección de ordenación a la vista
         ];
        
 
         return view('horarios/horario_list', $data); // Cargar la vista con los datos
+    }
+
+    // parte de la exportación de excel
+    public function exportExcel() {
+        $horarioModel = new HorarioModel();
+        
+        $nombre = $this->request->getVar('nombre');
+        $horarioInicio = $this->request->getVar('horarioInicio');
+        $horarioFinalizacion = $this->request->getVar('horarioFinalizacion');
+        $horarioArchivado = $this->request->getVar('horarioArchivado');
+
+
+        // Aplicar filtro si se introduce un nombre
+        if ($nombre) {
+            $horarioModel->like('nombre_horario', $nombre);
+        }
+        // Aplicar filtro si se selecciona una hora de inicio
+        if ($horarioInicio) {
+            $horarioModel->like('hora_inicio', $horarioInicio);
+        }
+        // Aplicar filtro si se selecciona una hora de finalización
+        if ($horarioFinalizacion) {
+            $horarioModel->like('hora_fin', $horarioFinalizacion);
+        }
+        if ($horarioArchivado === '0') {
+            $horarioModel->where('horarios.archivado', 0);
+        } elseif ($horarioArchivado === '1') {
+            $horarioModel->where('horarios.archivado', 1);
+        }
+
+        $horarios = $horarioModel->findAll(); // Obtener todos los horarios
+        $spreadsheet = new Spreadsheet(); // Crear una nueva hoja de cálculo
+        $sheet = $spreadsheet->getActiveSheet(); // Obtener la hoja activa
+
+        // Agregar encabezados de columna
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Nombre');
+        $sheet->setCellValue('C1', 'Hora de inicio');
+        $sheet->setCellValue('D1', 'Hora de finalización');
+        $sheet->setCellValue('E1', 'Archivado');
+
+        // Recorrer los horarios y agregarlos a la hoja de cálculo
+        $row = 2;
+        foreach ($horarios as $horario) {
+            $sheet->setCellValue('A' . $row, $horario['id']);
+            $sheet->setCellValue('B' . $row, $horario['nombre_horario']);
+            $sheet->setCellValue('C' . $row, $horario['hora_inicio']);
+            $sheet->setCellValue('D' . $row, $horario['hora_fin']);
+            $sheet->setCellValue('E' . $row, $horario['archivado'] ? 'Sí' : 'No');
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet); // Crear un escritor de Excel
+        $fileName = 'horarios.xlsx'; // Nombre del archivo de Excel
+        
+        // Enviar el archivo al navegador para descargar
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $fileName . '"');
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit;
     }
 
     public function saveHorario($id = null) {

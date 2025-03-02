@@ -28,6 +28,7 @@ $routes->post('atracciones/save', 'AtraccionesController::saveAtraccion');
 $routes->post('atracciones/save/(:num)', 'AtraccionesController::saveAtraccion/$1');
 $routes->get('atracciones/delete/(:num)', 'AtraccionesController::delete/$1');
 $routes->get('atracciones/restore/(:num)', 'AtraccionesController::restore/$1');
+$routes->get('atracciones/exportExcel', 'AtraccionesController::exportExcel');
 
 // rutas de reseñas
 $routes->get('reviews', 'ReviewController::index');
@@ -37,6 +38,7 @@ $routes->post('reviews/save', 'ReviewController::saveReview');
 $routes->post('reviews/save/(:num)', 'ReviewController::saveReview/$1');
 $routes->get('reviews/delete/(:num)', 'ReviewController::delete/$1');
 $routes->get('reviews/restore/(:num)', 'ReviewController::restore/$1');
+$routes->get('reviews/exportExcel', 'ReviewController::exportExcel');
 
 // rutas de reservas
 $routes->get('reservas', 'ReservaController::index');
@@ -46,6 +48,7 @@ $routes->post('reservas/save', 'ReservaController::saveReserva');
 $routes->post('reservas/save/(:num)', 'ReservaController::saveReserva/$1');
 $routes->get('reservas/delete/(:num)', 'ReservaController::delete/$1');
 $routes->get('reservas/restore/(:num)', 'ReservaController::restore/$1');
+$routes->get('reservas/exportExcel', 'ReservaController::exportExcel');
 
 // rutas de horarios
 $routes->get('horarios', 'HorarioController::index');
@@ -55,6 +58,7 @@ $routes->post('horarios/save', 'HorarioController::saveHorario');
 $routes->post('horarios/save/(:num)', 'HorarioController::saveHorario/$1');
 $routes->get('horarios/delete/(:num)', 'HorarioController::delete/$1');
 $routes->get('horarios/restore/(:num)', 'HorarioController::restore/$1');
+$routes->get('horarios/exportExcel', 'HorarioController::exportExcel');
 
 // rutas de tickets
 $routes->get('tickets', 'TicketController::index');
@@ -64,6 +68,7 @@ $routes->post('tickets/save', 'TicketController::saveTicket');
 $routes->post('tickets/save/(:num)', 'TicketController::saveTicket/$1');
 $routes->get('tickets/delete/(:num)', 'TicketController::delete/$1');
 $routes->get('tickets/restore/(:num)', 'TicketController::restore/$1');
+$routes->get('tickets/exportExcel', 'TicketController::exportExcel');
 
 // rutas de eventos
 $routes->get('fetch-events', 'EventoController::fetchEvents');
