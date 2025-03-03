@@ -85,7 +85,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--Sección de Panel de administración-->
 								<?php if ($session->get('id_rol') == 1): ?>
 									<div class="menu-item">
-										<a class="menu-link active" href="<?= base_url("users") ?>">
+										<a class="menu-link" href="<?= base_url("users") ?>">
 											<span class="menu-icon">
 												<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 												<span class="svg-icon svg-icon-2">
@@ -104,7 +104,7 @@ License: For each use you must have a valid license purchased only from above li
 								<?php endif; ?>
 								<!--Sección de Graficas-->
 								<div class="menu-item">
-									<a class="menu-link" href="<?= base_url("/") ?>">
+									<a class="menu-link active" href="<?= base_url("dashboard") ?>">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -115,12 +115,12 @@ License: For each use you must have a valid license purchased only from above li
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Graficas</span>
+										<span class="menu-title">Dashboard</span>
 									</a>
 								</div>
 								<!--Sección de calendario-->
 								<div class="menu-item">
-									<a class="menu-link active" href="<?= base_url("calendario") ?>">
+									<a class="menu-link" href="<?= base_url("calendario") ?>">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -402,7 +402,7 @@ License: For each use you must have a valid license purchased only from above li
 						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
-								<span class="text-muted fw-bold me-1">2021©</span>
+								<span class="text-muted fw-bold me-1">2025©</span>
 								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
 							</div>
 						</div>

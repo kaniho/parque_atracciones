@@ -61,7 +61,7 @@ License: For each use you must have a valid license purchased only from above li
 				<!--begin::Brand-->
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
-					<a href="../../demo1/dist/index.html">
+					<a href="<?= base_url("dashboard") ?>">
 						<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo blanco.svg")?>" class="h-40px logo" />
 					</a>
 					<!--end::Logo-->
@@ -109,7 +109,7 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--Sección de graficos-->
 							<div class="menu-item">
-								<a class="menu-link" href="<?= base_url("/") ?>">
+								<a class="menu-link" href="<?= base_url("dashboard") ?>">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 										<span class="svg-icon svg-icon-2">
@@ -120,7 +120,7 @@ License: For each use you must have a valid license purchased only from above li
 										</span>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-title">Graficas</span>
+									<span class="menu-title">Dashboard</span>
 								</a>
 							</div>
 							<!--Sección de calendario-->
@@ -136,7 +136,7 @@ License: For each use you must have a valid license purchased only from above li
 										</span>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-title">Prueba Calendario</span>
+									<span class="menu-title">Calendario</span>
 								</a>
 							</div>
 							<!--Sección de horarios-->
@@ -231,38 +231,30 @@ License: For each use you must have a valid license purchased only from above li
 					<!--PARTE DE LA CUENTA DE USUARIO-->
 					<!--begin::User-->
 					<?php $session = session(); ?>
-                    <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+					<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 						<!--begin::Menu wrapper-->
 						<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
 							<img src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" alt="user" />
 						</div>
-						<!--begin::Menu-->
-						<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
-							<!--begin::Menu item-->
-							<div class="menu-item px-3">
-								<div class="menu-content d-flex align-items-center px-3">
-									<!--begin::Avatar-->
-									<div class="symbol symbol-50px me-5">
-										<img alt="Logo" src="<?= base_url("assets/media/avatars/150-26.jpg") ?>" />
+						<div class="menu-item px-3">
+							<div class="menu-content d-flex align-items-center px-3">
+							
+								<!--end::Avatar-->
+								<!--begin::Username-->
+								<div class="d-flex flex-column">
+									<div class="fw-bolder d-flex align-items-center fs-5"><span style="color: white;"> <?= esc($session->get('name')) ?></span>
+										<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
 									</div>
-									<!--end::Avatar-->
-									<!--begin::Username-->
-									<div class="d-flex flex-column">
-										<div class="fw-bolder d-flex align-items-center fs-5"><?= esc($session->get('name')) ?>
-											<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"><?= esc($session->get('rol')) ?></span>
-										</div>
-										<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
-									</div>
-									<!--end::Username-->
+									<a href="#" class="fw-bold text-muted text-hover-primary fs-7"><?= esc($session->get('email')) ?></a>
 								</div>
+								<!--end::Username-->
 							</div>
-							<!--end::Menu item-->
-							<!--begin::Menu separator-->
-							<div class="separator my-2"></div>
-							<!--end::Menu separator-->
+						</div>
+						<!--begin::Menu-->
+						<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">								
 							<!--begin::Menu item-->
 							<div class="menu-item px-5">
-								<a href="<?= base_url("info_users") ?>" class="menu-link px-5">My perfil</a>
+								<a href="<?= base_url("info_users") ?>" class="menu-link px-5">Mi perfil</a>
 							</div>
 							<!--end::Menu item-->
 							<!--begin::Menu item-->
@@ -274,15 +266,11 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="menu-item px-5">
 								<a href="<?= base_url('logout') ?>" class="menu-link px-5">Cerrar sesión</a>
 							</div>
-							<!--end::Menu item-->
-							<!--begin::Menu separator-->
-							<div class="separator my-2"></div>
-							<!--end::Menu separator-->
-
+							<!--end::Menu item-->							
 						</div>
 						<!--end::Menu-->
 						<!--end::Menu wrapper-->
-					</div>
+					</div>							
 					<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
 				</div>
 
@@ -409,8 +397,8 @@ License: For each use you must have a valid license purchased only from above li
                                                 <div class="d-flex flex-column">
                                                     <!--begin::Name-->
                                                     <div class="d-flex align-items-center mb-2"><!-- PARTE DEL NOMBRE -->
-                                                        <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1"><?= esc($session->get('name')) ?></a>
-                                                        <a href="#">
+                                                        <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1"><?= esc($session->get('name')) ?></a>
+                                                        <a >
                                                             <!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
                                                             <span class="svg-icon svg-icon-1 svg-icon-primary">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
@@ -425,25 +413,8 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--end::Name-->
                                                     <!--begin::Info-->
                                                     <div class="d-flex flex-wrap fw-bold fs-6 mb-4 pe-2">
-                                                        <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
-                                                        <!--begin::Svg Icon | path: icons/duotune/communication/com006.svg-->
-                                                        <span class="svg-icon svg-icon-4 me-1">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path opacity="0.3" d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z" fill="black" />
-                                                                <path d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z" fill="black" />
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->Developer</a>
-                                                        <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
-                                                        <!--begin::Svg Icon | path: icons/duotune/general/gen018.svg-->
-                                                        <span class="svg-icon svg-icon-4 me-1">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path opacity="0.3" d="M18.0624 15.3453L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3453C4.56242 13.6453 3.76242 11.4453 4.06242 8.94534C4.56242 5.34534 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24534 19.9624 9.94534C20.0624 12.0453 19.2624 13.9453 18.0624 15.3453Z" fill="black" />
-                                                                <path d="M12.0624 13.0453C13.7193 13.0453 15.0624 11.7022 15.0624 10.0453C15.0624 8.38849 13.7193 7.04535 12.0624 7.04535C10.4056 7.04535 9.06241 8.38849 9.06241 10.0453C9.06241 11.7022 10.4056 13.0453 12.0624 13.0453Z" fill="black" />
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->SF, Bay Area</a>
-                                                        <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                                     
+                                                        <a  class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
                                                         <!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
                                                         <span class="svg-icon svg-icon-4 me-1">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -457,91 +428,6 @@ License: For each use you must have a valid license purchased only from above li
                                                 </div>
                                                 <!--end::User-->
                                                 <!--begin::Actions-->
-                                                <div class="d-flex my-4"><!-- MENÚ DE LOS TRES PUNTITOS -->                                               
-                                                    <!--begin::Menu-->
-                                                    <div class="me-0">
-                                                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                            <i class="bi bi-three-dots fs-3"></i>
-                                                        </button>
-                                                        <!--begin::Menu 3-->
-                                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-                                                            <!--begin::Heading-->
-                                                            <div class="menu-item px-3">
-                                                                <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-                                                            </div>
-                                                            <!--end::Heading-->
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3">Create Invoice</a>
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link flex-stack px-3">Create Payment
-                                                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i></a>
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="#" class="menu-link px-3">Generate Bill</a>
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-end">
-                                                                <a href="#" class="menu-link px-3">
-                                                                    <span class="menu-title">Subscription</span>
-                                                                    <span class="menu-arrow"></span>
-                                                                </a>
-                                                                <!--begin::Menu sub-->
-                                                                <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Plans</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Billing</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <a href="#" class="menu-link px-3">Statements</a>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                    <!--begin::Menu separator-->
-                                                                    <div class="separator my-2"></div>
-                                                                    <!--end::Menu separator-->
-                                                                    <!--begin::Menu item-->
-                                                                    <div class="menu-item px-3">
-                                                                        <div class="menu-content px-3">
-                                                                            <!--begin::Switch-->
-                                                                            <label class="form-check form-switch form-check-custom form-check-solid">
-                                                                                <!--begin::Input-->
-                                                                                <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-                                                                                <!--end::Input-->
-                                                                                <!--end::Label-->
-                                                                                <span class="form-check-label text-muted fs-6">Recuring</span>
-                                                                                <!--end::Label-->
-                                                                            </label>
-                                                                            <!--end::Switch-->
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--end::Menu item-->
-                                                                </div>
-                                                                <!--end::Menu sub-->
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3 my-1">
-                                                                <a href="#" class="menu-link px-3">Settings</a>
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                        </div>
-                                                        <!--end::Menu 3-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </div>
                                                 <!--end::Actions-->
                                             </div>
                                             <!--end::Title-->                                         
@@ -634,7 +520,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
-							<span class="text-muted fw-bold me-1">2021©</span>
+							<span class="text-muted fw-bold me-1">2025©</span>
 							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
 						</div>
 					</div>

@@ -8,13 +8,12 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('/', 'Home::index');
 
 // rutas login y registro
-$routes->get("login", "AuthController::login"); // Página de login
-$routes->post("login/process", "AuthController::processLogin"); //Procesar login
+$routes->get('login', 'AuthController::login'); // Página de login
+$routes->post('login/process', 'AuthController::processLogin'); // Procesar login
 $routes->get("register", "AuthController::register"); //Página de registro
 $routes->post("register/process", "AuthController::processRegister"); //Procesar registro
-$routes->get("logout", "AuthController::logout"); // Cerrar sesión
+$routes->get('logout', 'AuthController::logout'); // Cerrar sesión
 $routes->get("dashboard", "AuthController::dashboard"); // Página de dashboard
-$routes->get("/", "Home::index"); // Página de graficos
 $routes->get("calendario", "Calendario::index"); // Página de calendario
 $routes->get('settings', 'AuthController::setting');
 $routes->get('info_users', 'AuthController::info_users');
@@ -88,4 +87,6 @@ $routes->group("", ["filter" => "role"], function ($routes) {
     $routes->get('users/delete/(:num)', 'UserController::delete/$1'); // Eliminar usuario
     $routes->get('users/restore/(:num)', 'UserController::restore/$1'); // Restaurar usuario
     $routes->get('users/exportExcel', 'UserController::exportExcel'); // Exportar usuarios a Excel
+    $routes->post('user/updateProfile', 'UserController::updateProfile'); // Actualizar perfil de usuario
+    $routes->post('user/deactivateAccount', 'UserController::deactivateAccount'); // Desactivar cuenta de usuario
 });

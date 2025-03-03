@@ -183,7 +183,7 @@ class HorarioController extends BaseController {
         $horarioModel = new HorarioModel();
         // Marcar el horario como archivada en lugar de eliminarla físicamente
         $horarioModel->update($id, ['archivado' => 1]);
-        return redirect()->to('/horarios')->with('success', 'Horario archivado correctamente');
+        return redirect()->to('/horarios')->with('error', 'Horario archivado correctamente');
     }
 
     public function restore($id) {

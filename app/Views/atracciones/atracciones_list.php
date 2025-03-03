@@ -58,7 +58,7 @@ License: For each use you must have a valid license purchased only from above li
 					<!--begin::Brand-->
 					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
-						<a href="../../demo1/dist/index.html">
+						<a href="<?= base_url("dashboard") ?>">
 							<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo blanco.svg")?>" class="h-40px logo" />
 						</a>
 						<!--end::Logo-->
@@ -110,7 +110,7 @@ License: For each use you must have a valid license purchased only from above li
 								<?php endif; ?>
 								
 								<div class="menu-item">
-									<a class="menu-link" href="<?= base_url("")?>">
+									<a class="menu-link" href="<?= base_url("dashboard") ?>">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -121,7 +121,7 @@ License: For each use you must have a valid license purchased only from above li
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Graficas</span>
+										<span class="menu-title">Dashboard</span>
 									</a>
 								</div>
 								<!--Sección de calendario-->
@@ -366,6 +366,11 @@ License: For each use you must have a valid license purchased only from above li
 						<?php if (session()->getFlashdata('success')): ?>
 							<script>
 								toastr.success('<?= session()->getFlashdata('success'); ?>');
+							</script>
+						<?php endif; ?>
+						<?php if (session()->getFlashdata('error')): ?>
+							<script>
+								toastr.error('<?= session()->getFlashdata('error'); ?>');
 							</script>
 						<?php endif; ?>
 						<!--end::Toolbar-->
@@ -639,23 +644,13 @@ License: For each use you must have a valid license purchased only from above li
 																				<!--begin::Menu item-->
 																				<div class="menu-item px-3">
 																					<?php if ($atraccion['archivado']): ?>
-																						<a href="<?= base_url('atracciones/restore/' . $atraccion['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas restaurar este atracción?');"
-																							class="menu-link px-3" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i>
-																						</a><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
-																					<?php else: ?>
-																						<a href="<?= base_url('atracciones/delete/' . $atraccion['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas archivar este atracción?');"
-																							class="menu-link px-3" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i>
-																						</a><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
-																					<?php endif; ?>
-
-																					<?php if ($atraccion['archivado']): ?>
 																						<form action="<?= base_url('atracciones/restore/' . $atraccion['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
 																							<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
-																						</form>
+																						</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
 																					<?php else: ?>
 																						<form action="<?= base_url('atracciones/delete/' . $atraccion['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
 																							<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
-																						</form>
+																						</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
 																					<?php endif; ?>
 																				</div>
 																				<!--end::Menu item-->
@@ -734,7 +729,7 @@ License: For each use you must have a valid license purchased only from above li
 						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
-								<span class="text-muted fw-bold me-1">2021©</span>
+								<span class="text-muted fw-bold me-1">2025©</span>
 								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
 							</div>
 						</div>

@@ -76,11 +76,7 @@ class AtraccionesController extends BaseController
             'sort' => $sort, // Enviar el campo de ordenación a la vista
             'order' => $order, // Enviar la dirección de ordenación a la vista
         ];
-       
-        // Otras configuraciones de paginación
-        // $atraccionesModel->orderBy('id', 'DESC'); // Ordenar por ID de forma descendente
-
-        
+              
         return view('atracciones/atracciones_list', $data); // Cargar la vista con los datos
     }
 
@@ -208,7 +204,7 @@ class AtraccionesController extends BaseController
         $atraccionesModel = new AtraccionesModel();
         // Marcar la atracción como archivada en lugar de eliminarla físicamente
         $atraccionesModel->update($id, ['archivado' => 1]);
-        return redirect()->to('/atracciones')->with('success', 'Atracción archivada correctamente.');
+        return redirect()->to('/atracciones')->with('error', 'Atracción archivada correctamente.');
     }
 
     public function restore($id) {

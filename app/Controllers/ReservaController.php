@@ -108,21 +108,6 @@ class ReservaController extends BaseController {
             $reserva["nombre_horario"] = $horarioModel->find($reserva["id_horario"])["nombre_horario"];
         }
 
-        /*$data["reservas"] = $reservas; // Pasar los datos a la vista
-        $data["pager"] = $reservaModel->pager; // Instancia del paginador
-        $data["atraccion"] = $atraccion; // Mantener el término de búsqueda en la vista
-        $data["usuario"] = $usuario; // Mantener el filtro de usuario en la vista
-        $data["fecha"] = $fecha; // Mantener el filtro de fecha en la vista
-        $data["horario"] = $horario; // Mantener el filtro de horario en la vista
-        $data["cantidaPersona"] = $cantidaPersona; // Mantener el filtro de cantidad de personas en la vista
-        $data["estado"] = $estado; // Mantener el filtro de estado en la vista
-        $data["fechaCreacion"] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
-        $data["revervaArchivada"] = $revervaArchivada; // Mantener el filtro de reserva archivada en la vista*/
-
-    
-        // Agregar ordenación por columnas
-
-
         return view('reservas/reserva_list', $data); // Cargar la vista con los datos
     }
 
@@ -289,7 +274,7 @@ class ReservaController extends BaseController {
         $reservaModel = new ReservaModel();
         // Marcamos el usuario como archivado en lugar de eliminarlo físicamente.
         $reservaModel->update($id, ['archivado' => 1]);
-        return redirect()->to('/reservas')->with('success', 'Reserva archivada correctamente');
+        return redirect()->to('/reservas')->with('error', 'Reserva archivada correctamente');
     }
 
     public function restore($id) {

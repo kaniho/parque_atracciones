@@ -22,6 +22,18 @@ confirmButton.addEventListener('click', function () {
     }
 });
 
+// parte para la desactivación de los botones de eliminar
+document.addEventListener('DOMContentLoaded', function () {
+    var deactivateCheckbox = document.getElementById('deactivateCheckbox');
+    var deactivateButton = document.getElementById('deactivateButton');
+
+    deactivateCheckbox.addEventListener('change', function () {
+        deactivateButton.disabled = !this.checked;
+    });
+});
+
+
+
 // tooltips de los comentarios
 document.addEventListener('DOMContentLoaded', function () {
     let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));

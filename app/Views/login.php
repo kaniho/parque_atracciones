@@ -99,7 +99,7 @@ License: For each use you must have a valid license purchased only from above li
 									<label class="form-label fw-bolder text-dark fs-6 mb-0">Contraseña</label>
 									<!--end::Label-->
 									<!--begin::Link-->
-									<a href="../../demo1/dist/authentication/flows/basic/password-reset.html" class="link-primary fs-6 fw-bolder">¿Ha olvidado su contraseña?</a>
+									<!--<a href="../../demo1/dist/authentication/flows/basic/password-reset.html" class="link-primary fs-6 fw-bolder">¿Ha olvidado su contraseña?</a>-->
 									<!--end::Link-->
 								</div>
 								<!--end::Wrapper-->

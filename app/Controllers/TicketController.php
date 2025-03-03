@@ -77,13 +77,6 @@ class TicketController extends BaseController
             $reserva = $reservaModel->find($ticket['id_reserva']);
             $ticket['id_reserva'] = $reserva ? $reserva['estado'] : '--';
         }
-
-      /*  $data['tickets'] = $tickets;
-        $data['pager'] = $ticketModel->pager; // Instancia del paginador
-        $data['codigoTicket'] = $codigoTicket; // Mantener el término de búsqueda en la vista
-        $data['fechaCreacion'] = $fechaCreacion; // Mantener el filtro de fecha de creación en la vista
-        $data['estado'] = $estado; // Mantener el filtro de estado en la vista
-        $data['ticketArchivado'] = $ticketArchivado; // Mantener el filtro de ticket archivado en la vista*/
         
         return view('tickets/ticket_list', $data); // Cargar la vista con los datos
     }
@@ -223,7 +216,7 @@ class TicketController extends BaseController
         $ticketModel = new TicketModel();
         // Marcamos el usuario como archivado en lugar de eliminarlo físicamente.
         $ticketModel->update($id, ['archivado' => 1]);
-        return redirect()->to('/tickets')->with('success', 'Ticket eliminado correctamente');
+        return redirect()->to('/tickets')->with('error', 'Ticket eliminado correctamente');
     }
 
     public function restore($id) {

@@ -225,10 +225,6 @@ class ReviewController extends BaseController {
                     $message = 'Reseña creada correctamente';
                 }
 
-                // Obtener nombres de atracción y usuario
-                //$data['atraccion_nombre'] = $atraccionesModel->find($revieData['id_atraccion'])['nombre'];
-               // $data['usuario_nombre'] = $usuariosModel->find($revieData['id_usuario'])['nombre'];
-
                 // Redirigir al listado con un mensaje de éxito
                 return redirect()->to('/reviews')->with('success',$message);
             }
@@ -243,7 +239,7 @@ class ReviewController extends BaseController {
         $revieModel = new ReviewModel();
         // Marcamos la reseña como archivada en lugar de eliminarla físicamente.
         $revieModel->update($id, ['archivado' => 1]);
-        return redirect()->to('/reviews')->with('success', 'Reseña eliminada correctamente.');
+        return redirect()->to('/reviews')->with('error', 'Reseña eliminada correctamente.');
     }
 
     public function restore($id) {

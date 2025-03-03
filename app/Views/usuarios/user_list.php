@@ -60,9 +60,9 @@ License: For each use you must have a valid license purchased only from above li
 				<!--begin::Brand-->
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
-					<a href="../../demo1/dist/index.html">
-							<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo blanco.svg")?>" class="h-40px logo" />
-						</a>
+					<a href="<?= base_url("dashboard") ?>">
+						<img alt="Logo" src="<?= base_url("assets/media/logos/Karmalandia definitivo blanco.svg")?>" class="h-40px logo" />
+					</a>
 					<!--end::Logo-->
 					<!--begin::Aside toggler-->
 					<div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
@@ -106,9 +106,8 @@ License: For each use you must have a valid license purchased only from above li
 									<span class="menu-title">Panel de Administración</span>
 								</a>
 							</div>
-							<!--Sección de graficos-->
 							<div class="menu-item">
-								<a class="menu-link" href="<?= base_url("/") ?>">
+								<a class="menu-link" href="<?= base_url("dashboard") ?>">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 										<span class="svg-icon svg-icon-2">
@@ -119,7 +118,7 @@ License: For each use you must have a valid license purchased only from above li
 										</span>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-title">Graficas</span>
+									<span class="menu-title">Dashboard</span>
 								</a>
 							</div>
 							<!--Sección de calendario-->
@@ -449,20 +448,20 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 															<!--end::Input group-->
 															<!--begin::Input group-->
-															<div class="mb-5">
+															<!--<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Última Conexión:</label>
 																<div class="input-group w-auto">
-																	<input type="text" name="ultimaConexion" class="form-control" placeholder="Última Conexión" value="<?= esc($ultimaConexion) ?>">
+																	<input type="text" name="ultimaConexion" class="form-control" placeholder="Última Conexión" value="">
 																</div>
-															</div>
+															</div>-->
 															<!--end::Input group-->
 															<!--begin::Input group-->
-															<div class="mb-5">
+															<!--<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Fecha de Ingreso:</label>
 																<div class="input-group w-auto">
-																	<input type="text" name="fechaIngreso" class="form-control" placeholder="Fecha de Ingreso" value="<?= esc($fechaIngreso) ?>">
+																	<input type="text" name="fechaIngreso" class="form-control" placeholder="Fecha de Ingreso" value="">
 																</div>
-															</div>
+															</div>-->
 															<!--end::Input group-->
 															<!--begin::Input group-->
 															<div class="mb-5">
@@ -545,8 +544,8 @@ License: For each use you must have a valid license purchased only from above li
 																<th class="min-w-125px"><a href="<?= base_url('users?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc')) ?>">Usuario</a></th>
 																<th class="min-w-125px"><a href="<?= base_url('users?sort=email&order=' . ($sort == 'email' && $order == 'asc' ? 'desc' : 'asc')) ?>">Email</a></th>
 																<th class="min-w-125px"><a href="<?= base_url('users?sort=nombre_rol&order=' . ($sort == 'nombre_rol' && $order == 'asc' ? 'desc' : 'asc')) ?>">Rol</a></th>
-																<th class="min-w-125px">Última Conexión</th>
-																<th class="min-w-125px">Fecha de Ingreso</th>
+																<!--<th class="min-w-125px">Última Conexión</th>
+																<th class="min-w-125px">Fecha de Ingreso</th>-->
 																<th class="text-end min-w-100px">Acciones</th>
 															</tr>
 															<!--end::Table row-->
@@ -592,17 +591,17 @@ License: For each use you must have a valid license purchased only from above li
 																	<td><?= esc($user['nombre_rol']) ?></td> <!-- PARTE DEL FOREACH DONDE PILLA LOS ROLES DE LOS USUARIOS -->
 																	<!--end::Role=-->
 																	<!--begin::Last login=-->
-																	<td>
+																	<!--<td>
 																		<div class="badge badge-light fw-bolder">- -</div>
-																	</td>
+																	</td>-->
 																	<!--end::Last login=-->
 																	<!--begin::Two step=-->
 
 																	<!--end::Two step=-->
 																	<!--begin::Joined-->
-																	<td>
+																	<!--<td>
 																		<div class="badge badge-light fw-bolder">- -</div>
-																	</td> <!-- MIRAR SI PONEMOS ESTE CAMPO -->
+																	</td>--> <!-- MIRAR SI PONEMOS ESTE CAMPO -->
 																	<!--begin::Joined-->
 																	<!--begin::Action=-->
 																	<td class="text-end">
@@ -626,13 +625,13 @@ License: For each use you must have a valid license purchased only from above li
 																			<!--begin::Menu item-->
 																			<div class="menu-item px-3">
 																				<?php if ($user['archivado']): ?>
-																					<a href="<?= base_url('users/restore/' . $user['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas restaurar este usuario?');"
-																						class="menu-link px-3" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i>
-																					</a><!-- AQUI PONEMOS EL LINK PARA RESTAURAR EL USUARIO -->
+																					<form action="<?= base_url('users/restore/' . $user['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																						<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
+																					</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
 																				<?php else: ?>
-																					<a href="<?= base_url('users/delete/' . $user['id'])  ?>" onclick="return confirm('¿Estás seguro de que deseas archivar este usuario?');"
-																						class="menu-link px-3" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i>
-																					</a><!-- AQUI PONEMOS EL LINK PARA ELIMINAR EL USUARIO -->
+																					<form action="<?= base_url('users/delete/' . $user['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																						<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
+																					</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
 																				<?php endif; ?>
 																			</div>
 																			<!--end::Menu item-->
@@ -672,6 +671,32 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 									</div>							
 								<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
+								<!-- Modal de confirmación -->
+								<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="confirmModalLabel">Confirmar acción</h5>
+													<button type="button" class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+														<span class="svg-icon svg-icon-1">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+																<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+															</svg>
+														</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													¿Estás seguro de que deseas realizar esta acción?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+													<button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- FIN DE LA PARTE DEL MODAL -->
 						    </div>
 						    <!--end::Card body-->
 						</div>
@@ -685,7 +710,7 @@ License: For each use you must have a valid license purchased only from above li
 					<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
-							<span class="text-muted fw-bold me-1">2021©</span>
+							<span class="text-muted fw-bold me-1">2025©</span>
 							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
 						</div>
 					</div>
