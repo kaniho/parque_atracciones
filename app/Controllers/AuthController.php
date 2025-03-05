@@ -90,6 +90,11 @@ class AuthController extends BaseController {
         $user = $userModel->usuarioConRoles($this->request->getPost("email")); //Buscamos al usuario por su correo
 
         if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+            // Verificar si el usuario está archivado
+            if ($user['archivado'] == 1) {
+                return redirect()->to('/login')->with('error', 'Tu cuenta está desactivada.');
+            }
+            
             // Si las credenciales son correctas, guardamos datos del usuario en la sesión.
             $session->set([
                 'id' => $user['id'],           // ID del usuario.
@@ -115,6 +120,22 @@ class AuthController extends BaseController {
         // Si las credenciales son incorrectas, mostramos un mensaje de error.
         return redirect()->to('/login')->with('error', 'Correo o contraseña incorrectos.');
 
+    }
+
+    public function deactivateAccount()
+    {
+        $session = session();
+        $userId = $session->get('id');
+
+        if ($this->request->getMethod() == 'POST') {
+            $userModel = new UserModel();
+            $userModel->update($userId, ['archivado' => 1]);
+
+            $session->destroy();
+            return redirect()->to('/login')->with('success', 'Tu cuenta ha sido desactivada.');
+        }
+
+        return redirect()->to('/settings')->with('error', 'No se pudo desactivar la cuenta.');
     }
 
     /**
@@ -145,17 +166,31 @@ class AuthController extends BaseController {
 
     /*Parte del dashboard */
     public function graficos() {  
-        
+        $session = session();
+
+        if (!$session ->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder a los gráficos.');
+        }
         return view('graficos');
     }
 
     /* Parte de los ajuste de la cuenta */
     public function setting() {
+        $session = session();
+        
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder a los ajustes de la cuenta.');
+        }
         return view('user_settings');
     }
 
     /* Parte del información de la cuenta */
     public function info_users() {
+        $session = session();
+
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder a la información de la cuenta.');
+        }
         return view('info_users');
     }
 

@@ -90,23 +90,25 @@ License: For each use you must have a valid license purchased only from above li
 									<span class="menu-section text-muted text-uppercase fs-8 ls-1">Dashboard</span>
 								</div>
 							</div>
-							<div class="menu-item">
-								<a class="menu-link " href="<?= base_url("users") ?>">
-									<span class="menu-icon">
-										<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-										<span class="svg-icon svg-icon-2">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-												<rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-												<rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-												<rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-title">Panel de Administración</span>
-								</a>
-							</div>
+                            <?php if ($session->get('id_rol') == 1): ?>
+                                <div class="menu-item">
+                                    <a class="menu-link " href="<?= base_url("users") ?>">
+                                        <span class="menu-icon">
+                                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+                                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+                                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+                                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
+                                        </span>
+                                        <span class="menu-title">Panel de Administración</span>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
 							<!--Sección de graficos-->
                             <div class="menu-item">
                                 <a class="menu-link" href="<?= base_url("dashboard") ?>">
@@ -370,6 +372,11 @@ License: For each use you must have a valid license purchased only from above li
 					<?php if (session()->getFlashdata('success')): ?>
 						<script>
 							toastr.success('<?= session()->getFlashdata('success'); ?>');
+						</script>
+					<?php endif; ?>
+                    <?php if (session()->getFlashdata('error')): ?>
+						<script>
+							toastr.error('<?= session()->getFlashdata('error'); ?>');
 						</script>
 					<?php endif; ?>
 
@@ -700,7 +707,7 @@ License: For each use you must have a valid license purchased only from above li
                                 <!--begin::Content-->
                                 <div id="kt_account_deactivate" class="collapse show">
                                     <!--begin::Form-->
-                                    <form id="kt_account_deactivate_form" class="form" action="<?= base_url('user/deactivateAccount') ?>" method="post">
+                                    <form id="kt_account_deactivate_form" class="form" action="<?= base_url('deactivateAccount') ?>" method="POST">
                                         <!--begin::Card body-->
                                         <div class="card-body border-top p-9">
                                             <!--begin::Notice-->
@@ -730,7 +737,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Notice-->
                                             <!--begin::Form input row-->
                                             <div class="form-check form-check-solid fv-row">
-                                                <input name="deactivate" class="form-check-input" type="checkbox" value="" id="deactivateCheckbox" />
+                                                <input name="deactivate" class="form-check-input" type="checkbox" value="" id="deactivateCheckbox" onclick="toggleDeactivateButton()" />
                                                 <label class="form-check-label fw-bold ps-2 fs-6" for="deactivateCheckbox">Confirmo la desactivación de mi cuenta</label>
                                             </div>
                                             <!--end::Form input row-->
@@ -777,15 +784,13 @@ License: For each use you must have a valid license purchased only from above li
 		var hostUrl = "assets/";
 	</script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var deactivateCheckbox = document.getElementById('deactivateCheckbox');
-            var deactivateButton = document.getElementById('deactivateButton');
-
-            deactivateCheckbox.addEventListener('change', function () {
-                deactivateButton.disabled = !this.checked;
-            });
-        });
+        function toggleDeactivateButton() {
+            const checkbox = document.getElementById('deactivateCheckbox');
+            const button = document.getElementById('deactivateButton');
+            button.disabled = !checkbox.checked;
+        }
     </script>
+
 	<!--begin::Javascript-->
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script src="<?= base_url("assets/plugins/global/plugins.bundle.js") ?>"></script>

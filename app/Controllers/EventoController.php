@@ -7,6 +7,12 @@ use App\Models\EventoModel;
 
 class EventoController extends BaseController
 {
+    public function index(): string
+    {
+        return view('calendario');
+    }
+
+    
     public function fetchEvents()
     {
         $eventModel = new EventoModel(); // Crea una instancia del modelo

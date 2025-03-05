@@ -270,6 +270,21 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Menu wrapper-->
 						</div>							
 						<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
+						<div class="menu-item">
+							<a class="menu-link" href="../../demo1/dist/documentation/getting-started/changelog.html">
+								<span class="menu-icon">
+									<!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
+									<span class="svg-icon svg-icon-2">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M16.95 18.9688C16.75 18.9688 16.55 18.8688 16.35 18.7688C15.85 18.4688 15.75 17.8688 16.05 17.3688L19.65 11.9688L16.05 6.56876C15.75 6.06876 15.85 5.46873 16.35 5.16873C16.85 4.86873 17.45 4.96878 17.75 5.46878L21.75 11.4688C21.95 11.7688 21.95 12.2688 21.75 12.5688L17.75 18.5688C17.55 18.7688 17.25 18.9688 16.95 18.9688ZM7.55001 18.7688C8.05001 18.4688 8.15 17.8688 7.85 17.3688L4.25001 11.9688L7.85 6.56876C8.15 6.06876 8.05001 5.46873 7.55001 5.16873C7.05001 4.86873 6.45 4.96878 6.15 5.46878L2.15 11.4688C1.95 11.7688 1.95 12.2688 2.15 12.5688L6.15 18.5688C6.35 18.8688 6.65 18.9688 6.95 18.9688C7.15 18.9688 7.35001 18.8688 7.55001 18.7688Z" fill="black" />
+											<path opacity="0.3" d="M10.45 18.9687C10.35 18.9687 10.25 18.9687 10.25 18.9687C9.75 18.8687 9.35 18.2688 9.55 17.7688L12.55 5.76878C12.65 5.26878 13.25 4.8687 13.75 5.0687C14.25 5.1687 14.65 5.76878 14.45 6.26878L11.45 18.2688C11.35 18.6688 10.85 18.9687 10.45 18.9687Z" fill="black" />
+										</svg>
+									</span>
+									<!--end::Svg Icon-->
+								</span>
+								<span class="menu-title">Changelog v8.0.25</span>
+							</a>
+						</div>
 					</div>						
 					<!--end::Footer-->
 				</div>
@@ -492,6 +507,7 @@ License: For each use you must have a valid license purchased only from above li
 																	<label class="form-label fs-6 fw-bold">Mostrar Reservas:</label>
 																	<div class="input-group w-auto">
 																	<select name="revervaArchivada" id="revervaArchivada" class="form-select">
+																		<option selected>selecciona una opción</option>
 																		<option value="0" <?= $revervaArchivada === '0' ? 'selected' : '' ?>>No Archivados</option>
 																		<option value="1" <?= $revervaArchivada === '1' ? 'selected' : '' ?>>Archivados</option>
 																		<option value="2" <?= $revervaArchivada === '2' ? 'selected' : '' ?>>Todos</option>
@@ -564,13 +580,13 @@ License: For each use you must have a valid license purchased only from above li
 																	<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 																</div>
 															</th>														
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=nombre_atraccion&order=' . ($sort == 'nombre_atraccion' && $order == 'asc' ? 'desc' : 'asc')) ?>">Atracción</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc')) ?>">Usuario</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=fecha&order=' . ($sort == 'fecha' && $order == 'asc' ? 'desc' : 'asc')) ?>">Fecha</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=nombre_horario&order=' . ($sort == 'nombre_horario' && $order == 'asc' ? 'desc' : 'asc')) ?>">Horario</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=cantidad_personas&order=' . ($sort == 'cantidad_personas' && $order == 'asc' ? 'desc' : 'asc')) ?>">Cantidad de Personas</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=estado&order=' . ($sort == 'estado' && $order == 'asc' ? 'desc' : 'asc')) ?>">Estado</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=fecha_creacion&order=' . ($sort == 'fecha_creacion' && $order == 'asc' ? 'desc' : 'asc')) ?>">Fecha de Creación</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=nombre_atraccion&order=' . ($sort == 'nombre_atraccion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Atracción</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Usuario</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=fecha&order=' . ($sort == 'fecha' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Fecha</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=nombre_horario&order=' . ($sort == 'nombre_horario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Horario</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=cantidad_personas&order=' . ($sort == 'cantidad_personas' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Cantidad de Personas</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=estado&order=' . ($sort == 'estado' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Estado</a></th>
+															<th class="min-w-125px"><a href="<?= base_url('reservas?sort=fecha_creacion&order=' . ($sort == 'fecha_creacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">Fecha de Creación</a></th>
 															<th class="text-end min-w-100px">Acciones</th>
 														</tr>
 														<!--end::Table row-->
@@ -680,7 +696,7 @@ License: For each use you must have a valid license purchased only from above li
 															</select>
 														</div>
 														<div>													
-															<?= $pager->only(['reservas', 'atraccion', 'usuario', 'fecha', 'horario', 'cantidaPersona', 'estado', 'fechaCreacion', 'reservaArchivada'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
+															<?= $pager->only(['reservas', 'atraccion', 'usuario', 'fecha', 'horario', 'cantidaPersona', 'estado', 'fechaCreacion', 'reservaArchivada', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
 														</div>
 													</div>												
 												</div>

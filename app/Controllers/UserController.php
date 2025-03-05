@@ -41,7 +41,6 @@ class UserController extends BaseController
         //if ($fechaIngreso) $filtrosActivos++;
         if ($usuarioArchivado !== null) $filtrosActivos++;
 
-
         // Aplicar filtros si se introducen
         if ($usuario) {
             $userModel->like('users.nombre_usuario', $usuario);
@@ -52,7 +51,7 @@ class UserController extends BaseController
         if ($rol) {
             $userModel->like('roles.nombre_rol', $rol);
         }
-       /* if ($ultimaConexion) {
+        /* if ($ultimaConexion) {
             //$userModel->like('users.ultima_conexion', $ultimaConexion);
         }
         if ($fechaIngreso) {
@@ -68,10 +67,9 @@ class UserController extends BaseController
         $userModel->orderBy($sort, $order);
 
         // Configuración de la paginación  
-        $users = $userModel->paginate($perPage); // Obtener usuarios paginados
-        $data['pager'] = $userModel->pager; // Instancia del paginador
-        // Pasar los datos a la vista
+        $users = $userModel->paginate($perPage); // Obtener usuarios paginados        
         $pager = $userModel->pager; // Instancia del paginador
+        // Pasar los datos a la vista
         $data = [
             'users' => $users,
             'pager' => $pager,
@@ -264,24 +262,6 @@ class UserController extends BaseController
 
         // Redirigir con un mensaje de éxito
         return redirect()->to('/settings')->with('success', 'Perfil actualizado correctamente.');
-    }
-
-    public function deactivateAccount()
-    {
-        $session = session();
-        $userModel = new UserModel();
-
-        // Obtener el ID del usuario desde la sesión
-        $userId = $session->get('id');
-
-        // Actualizar el estado del usuario a archivado
-        $userModel->update($userId, ['archivado' => 1]);
-
-        // Destruir la sesión del usuario
-        $session->destroy();
-
-        // Redirigir al usuario a la página de inicio de sesión con un mensaje de éxito
-        return redirect()->to('/login')->with('success', 'Tu cuenta ha sido desactivada correctamente.');
     }
 
 
