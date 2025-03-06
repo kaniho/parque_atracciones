@@ -164,15 +164,7 @@ class AuthController extends BaseController {
         return view('dashboard');
     }
 
-    /*Parte del dashboard */
-    public function graficos() {  
-        $session = session();
-
-        if (!$session ->get('isLoggedIn')) {
-            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder a los gráficos.');
-        }
-        return view('graficos');
-    }
+   
 
     /* Parte de los ajuste de la cuenta */
     public function setting() {
@@ -192,6 +184,16 @@ class AuthController extends BaseController {
             return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder a la información de la cuenta.');
         }
         return view('info_users');
+    }
+
+    /* Parte del changelog */
+    public function changelog() {
+        $session = session();
+
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder al changelog.');
+        }
+        return view('changelog');
     }
 
 

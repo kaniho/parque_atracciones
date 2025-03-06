@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\EventoController;
 use CodeIgniter\Router\RouteCollection;
 
 /**
@@ -17,6 +18,16 @@ $routes->get("dashboard", "AuthController::dashboard"); // Página de dashboard
 $routes->get('settings', 'AuthController::setting');
 $routes->get('info_users', 'AuthController::info_users');
 $routes->post('deactivateAccount', 'AuthController::deactivateAccount');
+$routes->get('graficos','EventoController::graficos');
+$routes->get('changelog','AuthController::changelog'); // Ruta para el changelog
+
+//rutas para los graficos
+$routes->get('evento/getUserData', 'EventoController::getUserData');
+$routes->get('evento/getReservaData', 'EventoController::getReservaData');
+$routes->get('evento/getReviewData', 'EventoController::getReviewData');
+$routes->get('evento/getAtraccionData', 'EventoController::getAtraccionData');
+
+
 
 // Grupo de rutas con filtro
 $routes->group("", ["filter" => "auth"], function ($routes) {

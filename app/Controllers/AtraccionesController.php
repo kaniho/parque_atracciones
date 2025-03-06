@@ -60,7 +60,6 @@ class AtraccionesController extends BaseController
 
         // Configuración de la paginación
         $atracciones = $atraccionesModel->paginate($perPage); // Obtener atracciones paginadas
-        $data["pager"] = $atraccionesModel->pager; // Instancia del paginador
         $pager = $atraccionesModel->pager; // Instancia del paginador
         $data = [
             'atracciones' => $atracciones,
