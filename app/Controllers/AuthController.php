@@ -69,6 +69,7 @@ class AuthController extends BaseController {
     */
 
     public function processLogin() {
+        $validation = \Config\Services::validation();
         helper(["form", "url"]); // Carga los helpers necesarios para trabajar con formularios y urls.
         $session = session(); // Inicia una sesión para el usuario
 

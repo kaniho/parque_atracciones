@@ -84,14 +84,14 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Input group-->
 							<div class="row fv-row mb-7">
 								<!--begin::Col-->
-								<label for="name" class="form-label fw-bolder text-dark fs-6">Nombre</label>
-								<input type="text" name="name" id="name" class="form-control form-control-lg form-control-solid" placeholder="nombre" value="<?= set_value('name') ?>" required>								
+								<label for="name" class="form-label fw-bolder text-dark fs-6 required">Nombre</label>
+								<input type="text" name="name" id="name" class="form-control form-control-lg form-control-solid" placeholder="Nombre" value="<?= set_value('name') ?>" required>								
 								<!--end::Col-->
 							</div>
 							<!--end::Input group-->
 							<!--begin::Input group-->
 							<div class="fv-row mb-7">
-								<label class="form-label fw-bolder text-dark fs-6">Email</label>
+								<label class="form-label fw-bolder text-dark fs-6 required">Email</label>
 								<input class="form-control form-control-lg form-control-solid" type="email" placeholder="Email" name="email" id="email" value="<?= set_value('email') ?>" autocomplete="off" />
 							</div>
 							<!--end::Input group-->
@@ -100,11 +100,11 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Wrapper-->
 								<div class="mb-1">
 									<!--begin::Label-->
-									<label class="form-label fw-bolder text-dark fs-6">Contraseña</label>
+									<label class="form-label fw-bolder text-dark fs-6 required">Contraseña</label>
 									<!--end::Label-->
 									<!--begin::Input wrapper-->
 									<div class="position-relative mb-3">
-										<input class="form-control form-control-lg form-control-solid" type="password" placeholder="contraseña" name="password" id="password" autocomplete="off" />
+										<input class="form-control form-control-lg form-control-solid required" type="password" placeholder="Contraseña" name="password" id="password" autocomplete="off" />
 										<!--<span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
 											<i class="bi bi-eye-slash fs-2"></i>
 											<i class="bi bi-eye fs-2 d-none"></i>
@@ -128,8 +128,8 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Input group=-->
 							<!--begin::Input group-->
 							<div class="fv-row mb-5">
-								<label class="form-label fw-bolder text-dark fs-6">Confirmar contraseña</label>
-								<input class="form-control form-control-lg form-control-solid" type="password" placeholder="confirmar contraseña" name="password_confirm" id="password_confirm" autocomplete="off" />
+								<label class="form-label fw-bolder text-dark fs-6 required">Confirmar contraseña</label>
+								<input class="form-control form-control-lg form-control-solid" type="password" placeholder="Confirmar contraseña" name="password_confirm" id="password_confirm" autocomplete="off" />
 							</div>
 							<!--end::Input group-->
 							<!--begin::Input group-->

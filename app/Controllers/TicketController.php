@@ -20,6 +20,7 @@ class TicketController extends BaseController
         $estado = $this->request->getVar('estado'); // Obtener el filtro de estado
         $ticketArchivado = $this->request->getVar('ticketArchivado'); // Obtener el filtro de ticket archivado
         $perPage = $this->request->getVar('perPage') ?? 3; // Obtener el número de elementos por página, por defecto 3
+        $page = $this->request->getVar('page') ?? 1; // Obtener la página actual, por defecto 1
 
         // Parámetros de ordenación
         $sort = $this->request->getVar('sort') ?? 'id';
@@ -58,7 +59,7 @@ class TicketController extends BaseController
         // Configuración de la paginación
         $tickets = $ticketModel->paginate($perPage); // Obtener tickets paginados
         $pager = $ticketModel->pager; // Instancia del paginador
-        $data['pager'] = $ticketModel->pager; // Instancia del paginador
+        // Pasar los datos a la vista
         $data = [
             'tickets' => $tickets,
             'pager' => $pager,
@@ -70,6 +71,7 @@ class TicketController extends BaseController
             'filtrosActivos' => $filtrosActivos,
             'sort' => $sort, // Enviar el campo de ordenación a la vista
             'order' => $order, // Enviar la dirección de ordenación a la vista
+            'page' => $page, // Enviar la página actual a la vista
         ];
       
         // Obtener los nombres de las reservas

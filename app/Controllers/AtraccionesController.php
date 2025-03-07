@@ -19,6 +19,7 @@ class AtraccionesController extends BaseController
         $estado = $this->request->getVar('estado');
         $atracionneArchivada = $this->request->getVar('atraccionArchivada'); // Obtener el filtro de atracción archivada
         $perPage = $this->request->getVar('perPage') ?? 3; // Obtener el número de elementos por página, por defecto 3
+        $page = $this->request->getVar('page') ?? 1; // Obtener la página actual, por defecto 1
 
         // Parámetros de ordenación
         $sort = $this->request->getVar('sort') ?? 'id';
@@ -74,6 +75,7 @@ class AtraccionesController extends BaseController
             'filtrosActivos' => $filtrosActivos, // Enviar el contador de filtros activos a la vista    
             'sort' => $sort, // Enviar el campo de ordenación a la vista
             'order' => $order, // Enviar la dirección de ordenación a la vista
+            'page' => $page, // Enviar la página actual a la vista
         ];
               
         return view('atracciones/atracciones_list', $data); // Cargar la vista con los datos

@@ -351,7 +351,7 @@ License: For each use you must have a valid license purchased only from above li
 														<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 															<!--begin::Item-->
 															<li class="breadcrumb-item text-muted">
-																<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+																<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
 															</li>
 															<!--end::Item-->
 															<!--begin::Item-->
@@ -404,7 +404,7 @@ License: For each use you must have a valid license purchased only from above li
 								<div class="card">
 									
 									<!--COMIENZO DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
-									<div class="card-body">
+									
 										<!--begin::Card header-->
 										<div class="card-header border-0 pt-6">
 											<!--begin::Card title-->
@@ -457,6 +457,8 @@ License: For each use you must have a valid license purchased only from above li
 														<div class="px-7 py-5" data-kt-user-table-filter="form">
 															<!--begin::Input group-->															
 															<form method="GET" action="<?= base_url("tickets") ?>">
+																<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+																<input type="hidden" name="page" value="<?= esc($page) ?>">
 																<!--begin::Input group-->
 																<div class="mb-5">
 																	<label class="form-label fs-6 fw-bold">Código Ticket:</label>
@@ -544,140 +546,144 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Card header-->
 										<!--begin::Card body-->
 										<div class="card-body pt-0">
-											<?php if (!empty($tickets) && is_array($tickets)): ?>
-												<!--begin::Table-->
-												<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-													<!--begin::Table head-->
-													<thead>
-														<!--begin::Table row-->
-														<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-															<th class="w-10px pe-2">
-																<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-																	<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
-																</div>
-															</th>
-															<th class="min-w-125px"><a href="<?= base_url('tickets?sort=id_reserva&order=' . ($sort == 'id_reserva' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
-																Reserva
-																<?php if ($sort == 'id_reserva'): ?>
-																	<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																<?php endif; ?>
-															</a></th>
-
-															<th class="min-w-125px"><a href="<?= base_url('tickets?sort=codigo_ticket&order=' . ($sort == 'codigo_ticket' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
-																Código Ticket
-																<?php if ($sort == 'codigo_ticket'): ?>
-																	<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																<?php endif; ?>
-															</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('tickets?sort=fecha_creacion&order=' . ($sort == 'fecha_creacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
-																Fecha de Creación
-																<?php if ($sort == 'fecha_creacion'): ?>
-																	<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																<?php endif; ?>
-															</a></th>
-															<th class="text-end min-w-100px">Acciones</th>
-														</tr>
-														<!--end::Table row-->
-													</thead>
-													<!--end::Table head-->
-													<!--begin::Table body-->
-													<tbody class="text-gray-600 fw-bold">
-														<?php foreach ($tickets as $ticket): ?>
-															<tr> <!-- PRUEBA -->
-																<!--begin::Checkbox-->
-																<td>
-																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
-																	</div>
-																</td>
-
-																<td class="  position-relative"> 
-																	<?php if ($ticket['archivado']): ?>
-																		<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
-																	<?php endif; ?>
-																	<?= esc($ticket['id_reserva']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA DESCRIPCIÓN -->
-																</td> 
-																<!--end::Role=-->
-
-																<!--begin::Two step=-->
-																<td>
-																	<?= esc($ticket['codigo_ticket']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA ALTURA MAXIMA -->
-																</td>
-																<!--end::Two step=-->
-																<!--begin::Joined-->
-																<td>
-																	<?= (new DateTime($ticket['fecha_creacion']))->format('d-m-Y H:i:s') ?> <!-- PARTE DEL FOREACH DONDE PILLA LA CAPACIDAD MAXIMA -->
-																</td> 
-
-																<!--begin::Joined-->
-																<!--begin::Action=-->
-																<td class="text-end">
-																	<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
-																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																		</svg>
-																	</span>
-																	<!--end::Svg Icon--></a>
-																	<!--begin::Menu-->
-																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																		<!--begin::Menu item-->
-																		<?php if (!$ticket['archivado']): ?>
-																			<div class="menu-item px-3">
-																				<a href="<?= base_url('tickets/save/' . $ticket['id']) ?>" class="menu-link px-3">
-																					Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
-																				</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
-																			</div>
-																		<?php endif; ?>
-																		<!--end::Menu item-->
-																		<!--begin::Menu item-->
-																		<div class="menu-item px-3">		
-																		<?php if ($ticket['archivado']): ?>
-																			<form action="<?= base_url('tickets/restore/' . $ticket['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
-																				<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
-																			</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
-																		<?php else: ?>
-																			<form action="<?= base_url('tickets/delete/' . $ticket['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
-																				<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
-																			</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
-																		<?php endif; ?>
+											<div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+												<div class="table-responsive">
+													<?php if (!empty($tickets) && is_array($tickets)): ?>
+														<!--begin::Table-->
+														<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+															<!--begin::Table head-->
+															<thead>
+																<!--begin::Table row-->
+																<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+																	<th class="w-10px pe-2">
+																		<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+																			<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 																		</div>
-																		<!--end::Menu item-->
-																	</div>
-																	<!--end::Menu-->
-																</td>
-																<!--end::Action=-->
-															</tr>
-														<?php endforeach; ?>
-														<!--end::Table row-->
-													</tbody>
-													<!--end::Table body-->
-												</table>
-												<!--end::Table-->
-												<!-- Paginador -->
-												<div class="mt-4">
-													<div class="d-flex justify-content-between align-items-center">
-														<div class="d-flex align-items-center">
-															<label for="perPage" class="form-label me-2">Elementos por página:</label>
-															<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
-																<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
-																<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
-																<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
-																<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
-															</select>
+																	</th>
+																	<th class="min-w-125px"><a href="<?= base_url('tickets?sort=id_reserva&order=' . ($sort == 'id_reserva' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																		Reserva
+																		<?php if ($sort == 'id_reserva'): ?>
+																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																		<?php endif; ?>
+																	</a></th>
+
+																	<th class="min-w-125px"><a href="<?= base_url('tickets?sort=codigo_ticket&order=' . ($sort == 'codigo_ticket' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																		Código Ticket
+																		<?php if ($sort == 'codigo_ticket'): ?>
+																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																		<?php endif; ?>
+																	</a></th>
+																	<th class="min-w-125px"><a href="<?= base_url('tickets?sort=fecha_creacion&order=' . ($sort == 'fecha_creacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																		Fecha de Creación
+																		<?php if ($sort == 'fecha_creacion'): ?>
+																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																		<?php endif; ?>
+																	</a></th>
+																	<th class="text-end min-w-100px">Acciones</th>
+																</tr>
+																<!--end::Table row-->
+															</thead>
+															<!--end::Table head-->
+															<!--begin::Table body-->
+															<tbody class="text-gray-600 fw-bold">
+																<?php foreach ($tickets as $ticket): ?>
+																	<tr> <!-- PRUEBA -->
+																		<!--begin::Checkbox-->
+																		<td>
+																			<div class="form-check form-check-sm form-check-custom form-check-solid">
+																				<input class="form-check-input" type="checkbox" value="1" />
+																			</div>
+																		</td>
+
+																		<td class="  position-relative"> 
+																			<?php if ($ticket['archivado']): ?>
+																				<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
+																			<?php endif; ?>
+																			<?= esc($ticket['id_reserva']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA DESCRIPCIÓN -->
+																		</td> 
+																		<!--end::Role=-->
+
+																		<!--begin::Two step=-->
+																		<td>
+																			<?= esc($ticket['codigo_ticket']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA ALTURA MAXIMA -->
+																		</td>
+																		<!--end::Two step=-->
+																		<!--begin::Joined-->
+																		<td>
+																			<?= (new DateTime($ticket['fecha_creacion']))->format('d-m-Y H:i:s') ?> <!-- PARTE DEL FOREACH DONDE PILLA LA CAPACIDAD MAXIMA -->
+																		</td> 
+
+																		<!--begin::Joined-->
+																		<!--begin::Action=-->
+																		<td class="text-end">
+																			<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
+																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+																			<span class="svg-icon svg-icon-5 m-0">
+																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																					<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																				</svg>
+																			</span>
+																			<!--end::Svg Icon--></a>
+																			<!--begin::Menu-->
+																			<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																				<!--begin::Menu item-->
+																				<?php if (!$ticket['archivado']): ?>
+																					<div class="menu-item px-3">
+																						<a href="<?= base_url('tickets/save/' . $ticket['id']) ?>" class="menu-link px-3">
+																							Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
+																						</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
+																					</div>
+																				<?php endif; ?>
+																				<!--end::Menu item-->
+																				<!--begin::Menu item-->
+																				<div class="menu-item px-3">		
+																				<?php if ($ticket['archivado']): ?>
+																					<form action="<?= base_url('tickets/restore/' . $ticket['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																						<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
+																					</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
+																				<?php else: ?>
+																					<form action="<?= base_url('tickets/delete/' . $ticket['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																						<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
+																					</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
+																				<?php endif; ?>
+																				</div>
+																				<!--end::Menu item-->
+																			</div>
+																			<!--end::Menu-->
+																		</td>
+																		<!--end::Action=-->
+																	</tr>
+																<?php endforeach; ?>
+																<!--end::Table row-->
+															</tbody>
+															<!--end::Table body-->
+														</table>
+														<!--end::Table-->
+														<!-- Paginador -->
+														<div class="mt-4">
+															<div class="d-flex justify-content-between align-items-center">
+																<div class="d-flex align-items-center">
+																	<label for="perPage" class="form-label me-2">Elementos por página:</label>
+																	<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
+																		<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
+																		<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
+																		<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
+																		<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
+																	</select>
+																</div>
+																<div >													
+																	<?= $pager->only(['codigoTicket', 'fechaCreacion', 'estado', 'ticketArchivado', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
+																</div>
+															</div>													
 														</div>
-														<div >													
-															<?= $pager->only(['codigoTicket', 'fechaCreacion', 'estado', 'ticketArchivado', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
-														</div>
-													</div>													
+													<?php else: ?>
+														<p class="text-center">No hay ticket registradas.</p>
+													<?php endif; ?>
 												</div>
-											<?php else: ?>
-												<p class="text-center">No hay ticket registradas.</p>
-											<?php endif; ?>
+											</div>
 										</div>
 										<!--end::Card body-->
-									</div>
+									
 									<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
 									<!-- Modal de confirmación -->
 									<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">

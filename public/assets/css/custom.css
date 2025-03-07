@@ -27,10 +27,8 @@
 /*parte del selector de elementos por página */
 .form-select-sm {
     height: auto;
-    padding: 0.375rem 2.25rem 0.375rem 0.75rem; /* Ajustar el padding para dar más espacio a la flecha */
-    font-size: 0.875rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;
+   
+    
 
 }
 

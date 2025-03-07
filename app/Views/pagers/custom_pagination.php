@@ -3,11 +3,6 @@
         <ul class="pagination justify-content-end">
             <!-- Enlace a la primera página -->
             <?php if ($pager->hasPreviousPage()): ?>
-                <!--<li class="page-item">
-                    <a class="page-link" href="<?= $pager->getFirst() ?>" aria-label="Primera">
-                        <span aria-hidden="true">&laquo;&laquo;</span>
-                    </a>
-                </li>-->
                 <li class="page-item">
                     <a class="page-link" href="<?= $pager->getPreviousPage() ?>" aria-label="Anterior">
                         <span aria-hidden="true">&laquo;</span>
@@ -31,11 +26,6 @@
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
-                <!--<li class="page-item">
-                    <a class="page-link" href="<?= $pager->getLast() ?>" aria-label="Última">
-                        <span aria-hidden="true">&raquo;&raquo;</span>
-                    </a>
-                </li>-->
             <?php endif; ?>
         </ul>
     </nav>

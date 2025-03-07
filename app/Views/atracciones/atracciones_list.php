@@ -355,7 +355,7 @@ License: For each use you must have a valid license purchased only from above li
 														<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 															<!--begin::Item-->
 															<li class="breadcrumb-item text-muted">
-																<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+																<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
 															</li>
 															<!--end::Item-->
 															<!--begin::Item-->
@@ -465,7 +465,9 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="px-7 py-5" data-kt-user-table-filter="form">
 														<!--begin::Input group-->
 														<form method="GET" action="<?= base_url("atracciones") ?>">
-															<div class="mb-10">
+															<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+															<input type="hidden" name="page" value="<?= esc($page) ?>">
+															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Nombre:</label>																	
 																<div class="input-group w-auto">
 																	<input type="text" name="nombre" class="form-control" placeholder="Nombre de atracción" value="<?= esc($nombre) ?>">
@@ -473,7 +475,7 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 															<!--end::Input group-->
 															<!--begin::Input group-->
-															<div class="mb-10">
+															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Descripción:</label>
 																<div class="input-group w-auto">
 																	<input type="text" name="descripcion" class="form-control" placeholder="Descripción" value="<?= esc($descripcion) ?>">
@@ -481,7 +483,7 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 															<!--end::Input group-->
 															<!--begin::Input group-->
-															<div class="mb-10">
+															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Altura Mínima:</label>
 																<div class="input-group w-auto">
 																	<input type="text" name="altura_minima" class="form-control" placeholder="Altura Mínima" value="<?= esc($altura_minima) ?>">
@@ -489,7 +491,7 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 															<!--end::Input group-->
 															<!--begin::Input group-->
-															<div class="mb-10">
+															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Capacidad Máxima:</label>
 																<div class="input-group w-auto">
 																	<input type="text" name="capacidad_maxima" class="form-control" placeholder="Capacidad Máxima" value="<?= esc($capacidad_maxima) ?>">
@@ -497,7 +499,7 @@ License: For each use you must have a valid license purchased only from above li
 															</div>
 															<!--end::Input group-->
 															<!--begin::Input group-->
-															<div class="mb-10">
+															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Estado:</label>
 																<div class="input-group w-auto">
 																	<input type="text" name="estado" class="form-control" placeholder="Estado" value="<?= esc($estado) ?>">
@@ -588,7 +590,7 @@ License: For each use you must have a valid license purchased only from above li
 																
 															
 																<th class="min-w-125px">
-																	<a href="<?= base_url('atracciones?sort=nombre&order=' . ($sort == 'nombre' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('atracciones?sort=nombre&order=' . ($sort == 'nombre' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Nombre
 																		<?php if ($sort == 'nombre'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -596,7 +598,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('atracciones?sort=descripcion&order=' . ($sort == 'descripcion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('atracciones?sort=descripcion&order=' . ($sort == 'descripcion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Descripción
 																		<?php if ($sort == 'descripcion'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -604,7 +606,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('atracciones?sort=altura_minima&order=' . ($sort == 'altura_minima' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('atracciones?sort=altura_minima&order=' . ($sort == 'altura_minima' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Altura Mínima
 																		<?php if ($sort == 'altura_minima'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -612,7 +614,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('atracciones?sort=capacidad_maxima&order=' . ($sort == 'capacidad_maxima' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('atracciones?sort=capacidad_maxima&order=' . ($sort == 'capacidad_maxima' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Capacidad Máxima
 																		<?php if ($sort == 'capacidad_maxima'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -620,7 +622,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('atracciones?sort=estado&order=' . ($sort == 'estado' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('atracciones?sort=estado&order=' . ($sort == 'estado' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Estado
 																		<?php if ($sort == 'estado'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>

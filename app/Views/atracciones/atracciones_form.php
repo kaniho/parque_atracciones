@@ -351,7 +351,7 @@ License: For each use you must have a valid license purchased only from above li
 													<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 														<!--begin::Item-->
 														<li class="breadcrumb-item text-muted">
-															<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
 														</li>
 														<!--end::Item-->
 														<!--begin::Item-->
@@ -461,7 +461,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <div class="row">
                                                         <!--begin::Col-->
                                                         <div class="col-lg-6 fv-row">
-                                                            <input type="number" name="altura_minima" id="altura_minima" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Nobmre" value="<?= isset($atraccion['altura_minima']) ? esc($atraccion['altura_minima']) : '' ?>"required/>
+                                                            <input type="text" name="altura_minima" id="altura_minima" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Altura mínima" value="<?= isset($atraccion['altura_minima']) ? esc($atraccion['altura_minima']) : '' ?>"required/>
                                                         </div>
                                                         <!--end::Col-->                                                        
                                                     </div>
@@ -481,7 +481,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <div class="row">
                                                         <!--begin::Col-->
                                                         <div class="col-lg-6 fv-row">
-                                                            <input type="number" name="capacidad_maxima" id="capacidad_maxima" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Capacidad Máxima" value="<?= isset($atraccion['capacidad_maxima']) ? esc($atraccion['capacidad_maxima']) : '' ?>"required/>
+                                                            <input type="text" name="capacidad_maxima" id="capacidad_maxima" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Capacidad Máxima" value="<?= isset($atraccion['capacidad_maxima']) ? esc($atraccion['capacidad_maxima']) : '' ?>"required/>
                                                         </div>
                                                         <!--end::Col-->                                                        
                                                     </div>
@@ -514,6 +514,10 @@ License: For each use you must have a valid license purchased only from above li
 											<button type="submit" id="submitBtn" class="btn btn-success"><?= isset($atraccion) ? 'Actualizar' : 'Crear' ?></button>
                                         </div>
                                         <!--end::Actions-->
+										<!-- Mensaje de carga -->
+										<div id="mensajeCarga" style="display: none; text-align: center; margin-top: 10px;">
+											<p>Guardando, por favor espera...</p>
+										</div>
                                     </form>
                                     <!--end::Form-->
                                 </div>
@@ -554,6 +558,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script src="<?= base_url("assets/plugins/global/plugins.bundle.js") ?>"></script>
 	<script src="<?= base_url("assets/js/scripts.bundle.js") ?>"></script>
+	<script src="<?= base_url("assets/js/custom.js") ?>"></script>
 	<!--end::Global Javascript Bundle-->
 	<!--begin::Page Vendors Javascript(used by this page)-->
 	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>

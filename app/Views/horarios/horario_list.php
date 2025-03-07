@@ -353,7 +353,7 @@ License: For each use you must have a valid license purchased only from above li
 														<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 															<!--begin::Item-->
 															<li class="breadcrumb-item text-muted">
-																<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+																<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
 															</li>
 															<!--end::Item-->
 															<!--begin::Item-->
@@ -406,11 +406,7 @@ License: For each use you must have a valid license purchased only from above li
 							<div id="kt_content_container" class="container-xxl">
 								<!--begin::Card-->
 								<div class="card">
-									<!--begin::Card body-->
-									<div class="card-body">
-
-										<!--COMIENZO DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
-										
+									<!--COMIENZO DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->										
 										<!--begin::Card header-->
 										<div class="card-header border-0 pt-6">
 											<!--begin::Card title-->
@@ -460,9 +456,11 @@ License: For each use you must have a valid license purchased only from above li
 														<div class="separator border-gray-200"></div>
 														<!--end::Separator-->
 														<!--begin::Content-->
-														<div class="px-7 py-5" data-kt-user-table-filter="form">
+														<div class="px-7 py-5" data-kt-user-table-filter="form">														
 															<!--begin::Input group-->
 															<form method="GET" action="<?= base_url("horarios") ?>" > <!-- SECCIÓN DEL FILTRO PARA LAS BUSQUEDAS -->
+																<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+																<input type="hidden" name="page" value="<?= esc($page) ?>">
 																<div class="mb-5">
 																	<label class="form-label fs-6 fw-bold">Nombre:</label>						
 																	<div class="input-group w-auto">
@@ -551,178 +549,179 @@ License: For each use you must have a valid license purchased only from above li
 										<!--end::Card header-->
 										<!--begin::Card body-->
 										<div class="card-body pt-0">
-											<?php if (!empty($horarios) && is_array($horarios)): ?>
-												<!--begin::Table-->
-												<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-													<!--begin::Table head-->
-													<thead>
-														<!--begin::Table row-->
-														<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-															<th class="w-10px pe-2">
-																<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-																	<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
-																</div>
-															</th>
-															
-															<th class="min-w-125px"><a href="<?= base_url('horarios?sort=nombre_horario&order=' . ($sort == 'nombre_horario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
-																Nombre
-																<?php if ($sort == 'nombre_horario'): ?>
-																	<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																<?php endif; ?>
-															</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('horarios?sort=hora_inicio&order=' . ($sort == 'hora_inicio' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
-																Horario de inicio
-																<?php if ($sort == 'hora_inicio'): ?>
-																	<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																<?php endif; ?>
-															</a></th>
-															<th class="min-w-125px"><a href="<?= base_url('horarios?sort=hora_fin&order=' . ($sort == 'hora_fin' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
-																Horario de finalización
-																<?php if ($sort == 'hora_fin'): ?>
-																	<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																<?php endif; ?>
-															</a></th>
-															<?php if ($session->get('id_rol') == 1): ?>
-																<th class="text-end min-w-100px">Acciones</th>
-															<?php endif; ?>
-														</tr>
-														<!--end::Table row-->
-													</thead>
-													<!--end::Table head-->
-													<!--begin::Table body-->
-													<tbody class="text-gray-600 fw-bold">
-														<?php foreach ($horarios as $horario): ?>
-															<tr> <!-- PRUEBA -->
-																<!--begin::Checkbox-->
-																<td>
-																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
-																	</div>
-																</td>
-																<!--end::Checkbox-->
-																<!--begin::User=-->
-																<td class="position-relative">
-																	<?php if ($horario['archivado']): ?>
-																		<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
-																	<?php endif; ?>
-																	<?= esc($horario['nombre_horario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA EL NOMBRE DEL HORARIO -->																		
-																</td>
-																<!--end::User=-->
-																<!--begin::Role=-->
-
-																<!--end::Role=-->
-
-																<!--begin::Two step=-->
-																<td>
-																<?= esc($horario['hora_inicio']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA HORA DE INICIO -->
-																</td>
-																<!--end::Two step=-->
-																<!--begin::Joined-->
-																<td>
-																<?= esc($horario['hora_fin']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA HORA DE FINALIZACIÓN -->
-																</td> 
-
-																<!--begin::Joined-->
-																<!--begin::Action=-->
-																<?php if ($session->get('id_rol') == 1): ?>
-																	<td class="text-end">
-																		<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
-																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																		<span class="svg-icon svg-icon-5 m-0">
-																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																				<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																			</svg>
-																		</span>
-																		<!--end::Svg Icon--></a>
-																		<!--begin::Menu-->
-																		<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																			<!--begin::Menu item-->
-																			<?php if (!$horario['archivado']): ?>
-																				<div class="menu-item px-3">
-																					<a href="<?= base_url('horarios/save/' . $horario['id']) ?>" class="menu-link px-3">
-																						Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
-																					</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
-																				</div>
-																			<?php endif; ?>
-																			<!--end::Menu item-->
-																			<!--begin::Menu item-->
-																			<div class="menu-item px-3">
-																			<?php if ($horario['archivado']): ?>
-																				<form action="<?= base_url('horarios/restore/' . $horario['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
-																					<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
-																				</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
-																			<?php else: ?>
-																				<form action="<?= base_url('horarios/delete/' . $horario['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
-																					<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
-																				</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
-																			<?php endif; ?>
-																			</div>
-																			<!--end::Menu item-->
+											<div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">											
+												<div class="table-responsive">
+													<?php if (!empty($horarios) && is_array($horarios)): ?>
+														<!--begin::Table-->
+														<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+															<!--begin::Table head-->
+															<thead>
+																<!--begin::Table row-->
+																<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+																	<th class="w-10px pe-2">
+																		<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+																			<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 																		</div>
-																		<!--end::Menu-->
-																	</td>
-																<?php endif; ?>
-																<!--end::Action=-->
-															</tr>
-														<?php endforeach; ?>
-														<!--end::Table row-->
-													</tbody>
-													<!--end::Table body-->
-												</table>
-												<!--end::Table-->
-												<!-- Paginador -->
-												<div class="mt-4">
-													<div class="d-flex justify-content-between align-items-center">
-														<div class="d-flex align-items-center">
-															<label for="perPage" class="form-label me-2">Elementos por página:</label>
-															<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
-																<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
-																<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
-																<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
-																<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
-															</select>
+																	</th>
+																	
+																	<th class="min-w-125px"><a href="<?= base_url('horarios?sort=nombre_horario&order=' . ($sort == 'nombre_horario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																		Nombre
+																		<?php if ($sort == 'nombre_horario'): ?>
+																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																		<?php endif; ?>
+																	</a></th>
+																	<th class="min-w-125px"><a href="<?= base_url('horarios?sort=hora_inicio&order=' . ($sort == 'hora_inicio' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																		Horario de inicio
+																		<?php if ($sort == 'hora_inicio'): ?>
+																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																		<?php endif; ?>
+																	</a></th>
+																	<th class="min-w-125px"><a href="<?= base_url('horarios?sort=hora_fin&order=' . ($sort == 'hora_fin' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																		Horario de finalización
+																		<?php if ($sort == 'hora_fin'): ?>
+																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																		<?php endif; ?>
+																	</a></th>
+																	<?php if ($session->get('id_rol') == 1): ?>
+																		<th class="text-end min-w-100px">Acciones</th>
+																	<?php endif; ?>
+																</tr>
+																<!--end::Table row-->
+															</thead>
+															<!--end::Table head-->
+															<!--begin::Table body-->
+															<tbody class="text-gray-600 fw-bold">
+																<?php foreach ($horarios as $horario): ?>
+																	<tr> <!-- PRUEBA -->
+																		<!--begin::Checkbox-->
+																		<td>
+																			<div class="form-check form-check-sm form-check-custom form-check-solid">
+																				<input class="form-check-input" type="checkbox" value="1" />
+																			</div>
+																		</td>
+																		<!--end::Checkbox-->
+																		<!--begin::User=-->
+																		<td class="position-relative">
+																			<?php if ($horario['archivado']): ?>
+																				<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
+																			<?php endif; ?>
+																			<?= esc($horario['nombre_horario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA EL NOMBRE DEL HORARIO -->																		
+																		</td>
+																		<!--end::User=-->
+																		<!--begin::Role=-->
+
+																		<!--end::Role=-->
+
+																		<!--begin::Two step=-->
+																		<td>
+																		<?= esc($horario['hora_inicio']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA HORA DE INICIO -->
+																		</td>
+																		<!--end::Two step=-->
+																		<!--begin::Joined-->
+																		<td>
+																		<?= esc($horario['hora_fin']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA HORA DE FINALIZACIÓN -->
+																		</td> 
+
+																		<!--begin::Joined-->
+																		<!--begin::Action=-->
+																		<?php if ($session->get('id_rol') == 1): ?>
+																			<td class="text-end">
+																				<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
+																				<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+																				<span class="svg-icon svg-icon-5 m-0">
+																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																						<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																					</svg>
+																				</span>
+																				<!--end::Svg Icon--></a>
+																				<!--begin::Menu-->
+																				<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																					<!--begin::Menu item-->
+																					<?php if (!$horario['archivado']): ?>
+																						<div class="menu-item px-3">
+																							<a href="<?= base_url('horarios/save/' . $horario['id']) ?>" class="menu-link px-3">
+																								Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
+																							</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
+																						</div>
+																					<?php endif; ?>
+																					<!--end::Menu item-->
+																					<!--begin::Menu item-->
+																					<div class="menu-item px-3">
+																					<?php if ($horario['archivado']): ?>
+																						<form action="<?= base_url('horarios/restore/' . $horario['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																							<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
+																						</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
+																					<?php else: ?>
+																						<form action="<?= base_url('horarios/delete/' . $horario['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																							<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
+																						</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
+																					<?php endif; ?>
+																					</div>
+																					<!--end::Menu item-->
+																				</div>
+																				<!--end::Menu-->
+																			</td>
+																		<?php endif; ?>
+																		<!--end::Action=-->
+																	</tr>
+																<?php endforeach; ?>
+																<!--end::Table row-->
+															</tbody>
+															<!--end::Table body-->
+														</table>
+														<!--end::Table-->
+														<!-- Paginador -->
+														<div class="mt-4">
+															<div class="d-flex justify-content-between align-items-center">
+																<div class="d-flex align-items-center">
+																	<label for="perPage" class="form-label me-2">Elementos por página:</label>
+																	<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
+																		<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
+																		<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
+																		<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
+																		<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
+																	</select>
+																</div>
+																<div>													
+																	<?= $pager->only(['nombre', 'horarioInicio', 'horariofinalizacion', 'horarioArchivado', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
+																</div>
+															</div>													
 														</div>
-														<div>													
-															<?= $pager->only(['nombre', 'horarioInicio', 'horariofinalizacion', 'horarioArchivado', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
-														</div>
-													</div>													
+													<?php else: ?>
+														<p class="text-center">No hay horarios registradas.</p>
+													<?php endif; ?>
 												</div>
-											<?php else: ?>
-												<p class="text-center">No hay horarios registradas.</p>
-											<?php endif; ?>
-										</div>
-										<!--end::Card body-->
-										<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
-										<!-- Modal de confirmación -->
-										<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title" id="confirmModalLabel">Confirmar acción</h5>
-														<button type="button" class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-															<span class="svg-icon svg-icon-1">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-																	<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-																</svg>
-															</span>
-														</button>
-													</div>
-													<div class="modal-body">
-														¿Estás seguro de que deseas realizar esta acción?
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-														<button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
-													</div>
+											</div>
+										</div>										
+									<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
+									<!-- Modal de confirmación -->
+									<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="confirmModalLabel">Confirmar acción</h5>
+													<button type="button" class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+														<span class="svg-icon svg-icon-1">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+																<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+															</svg>
+														</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													¿Estás seguro de que deseas realizar esta acción?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+													<button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
 												</div>
 											</div>
 										</div>
-									<!-- FIN DE LA PARTE DEL MODAL -->
 									</div>
-									<!--end::Card body-->
+									<!-- FIN DE LA PARTE DEL MODAL -->
 								</div>
-									
+								<!--end::Card body-->														
 							</div>
 							<!--end::Container-->
 						</div>

@@ -351,7 +351,7 @@ License: For each use you must have a valid license purchased only from above li
 													<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 														<!--begin::Item-->
 														<li class="breadcrumb-item text-muted">
-															<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
 														</li>
 														<!--end::Item-->
 														<!--begin::Item-->
@@ -486,6 +486,10 @@ License: For each use you must have a valid license purchased only from above li
 											<button type="submit" id="submitBtn" class="btn btn-success"><?= isset($user) ? 'Actualizar' : 'Guardar' ?></button>
                                         </div>
                                         <!--end::Actions-->
+										<!-- Mensaje de carga -->
+										<div id="mensajeCarga" style="display: none; text-align: center; margin-top: 10px;">
+											<p>Guardando, por favor espera...</p>
+										</div>
                                     </form>
                                     <!--end::Form-->
                                 </div>

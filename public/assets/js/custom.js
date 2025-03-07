@@ -1,3 +1,10 @@
+// script para el mensaje de carga a la hora de crear
+document.getElementById('userForm').addEventListener('submit', function() {
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('mensajeCarga').style.display = 'block';
+});
+
+
 // script para que funcione el selector de elementos por página
 function changePerPage() {
     const perPage = document.getElementById('perPage').value;

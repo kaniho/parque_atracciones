@@ -350,7 +350,7 @@ License: For each use you must have a valid license purchased only from above li
 													<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 														<!--begin::Item-->
 														<li class="breadcrumb-item text-muted">
-															<a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
+															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
 														</li>
 														<!--end::Item-->
 														<!--begin::Item-->
@@ -467,14 +467,14 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--end::Label-->
                                                 <!--begin::Col-->
                                                 <div class="col-lg-8 fv-row">
-												<select class="form-select form-select-lg form-select-solid" name="rol" id="rol" data-control="select2" data-placeholder="Selecciona un rol">
-													<option></option>
-													<?php foreach ($roles as $rol): ?>
-														<option value="<?= $rol['id'] ?>" <?= set_select('rol', $rol['id'], isset($user) && $user['id_rol'] == $rol['id']) ?>>
-															<?= $rol['nombre_rol'] ?>
-														</option>
-													<?php endforeach; ?>
-												</select>
+													<select class="form-select form-select-lg form-select-solid" name="rol" id="rol" data-control="select2" data-placeholder="Selecciona un rol">
+														<option></option>
+														<?php foreach ($roles as $rol): ?>
+															<option value="<?= $rol['id'] ?>" <?= set_select('rol', $rol['id'], isset($user) && $user['id_rol'] == $rol['id']) ?>>
+																<?= $rol['nombre_rol'] ?>
+															</option>
+														<?php endforeach; ?>
+													</select>
                                                 </div>
                                                 <!--end::Col-->
                                             </div> 										
@@ -486,6 +486,10 @@ License: For each use you must have a valid license purchased only from above li
 											<button type="submit" id="submitBtn" class="btn btn-success"><?= isset($user) ? 'Actualizar' : 'Guardar' ?></button>
                                         </div>
                                         <!--end::Actions-->
+										<!-- Mensaje de carga -->
+										<div id="mensajeCarga" style="display: none; text-align: center; margin-top: 10px;">
+											<p>Guardando, por favor espera...</p>
+										</div>
                                     </form>
                                     <!--end::Form-->
                                 </div>

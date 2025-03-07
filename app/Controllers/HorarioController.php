@@ -16,6 +16,7 @@ class HorarioController extends BaseController {
         $horarioFinalizacion = $this->request->getVar('horarioFinalizacion');
         $horarioArchivado = $this->request->getVar('horarioArchivado');
         $perPage = $this->request->getVar('perPage') ?? 3;
+        $page = $this->request->getVar('page') ?? 1; // Obtener la página actual, por defecto 1
 
         // Parámetros de ordenación
         $sort = $this->request->getVar('sort') ?? 'id';
@@ -64,6 +65,7 @@ class HorarioController extends BaseController {
             'filtrosActivos' => $filtrosActivos,
             'sort' => $sort, // Enviar el campo de ordenación a la vista
             'order' => $order, // Enviar la dirección de ordenación a la vista
+            'page' => $page, // Enviar la página actual a la vista
         ];
        
 

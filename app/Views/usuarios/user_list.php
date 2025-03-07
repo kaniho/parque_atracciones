@@ -350,7 +350,7 @@ License: For each use you must have a valid license purchased only from above li
 													<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 														<!--begin::Item-->
 														<li class="breadcrumb-item text-muted">
-															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Home</a>
+															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">inicio</a>
 														</li>
 														<!--end::Item-->
 														<!--begin::Item-->
@@ -453,6 +453,8 @@ License: For each use you must have a valid license purchased only from above li
 													<div class="px-7 py-5" data-kt-user-table-filter="form">
 														<!--begin::Input group-->
 														<form method="GET" action="<?= base_url("users") ?>">
+															<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+															<input type="hidden" name="page" value="<?= esc($page) ?>">
 															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Usuario:</label>
 																<div class="input-group w-auto">
@@ -498,7 +500,7 @@ License: For each use you must have a valid license purchased only from above li
 																	<option selected>selecciona una opción</option>
 																	<option value="0" <?= $usuarioArchivado === '0' ? 'selected' : '' ?>>No Archivados</option>
 																	<option value="1" <?= $usuarioArchivado === '1' ? 'selected' : '' ?>>Archivados</option>
-																	<option value="2" <?= $usuarioArchivado === '2' ? 'selected' : '' ?>>Todos</option>
+																	<option value="" <?= $usuarioArchivado === null ? 'selected' : '' ?>>Todos</option>
 																</select>
 																</div>
 															</div>
@@ -521,6 +523,8 @@ License: For each use you must have a valid license purchased only from above li
 													<input type="hidden" name="usuario" value="<?= esc($usuario) ?>">
 													<input type="hidden" name="email" value="<?= esc($email) ?>">
 													<input type="hidden" name="rol" value="<?= esc($rol) ?>">
+													<input type="hidden" name="sort" value="<?= esc($sort) ?>">
+													<input type="hidden" name="order" value="<?= esc($order) ?>">
 													
 													<input type="hidden" name="usuarioArchivado" value="<?= esc($usuarioArchivado) ?>">
 													<button type="submit" class="btn btn-light-primary me-3">
@@ -570,7 +574,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</div>
 																</th>											
 																<th class="min-w-125px">
-																	<a href="<?= base_url('users?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('users?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Usuario
 																		<?php if ($sort == 'nombre_usuario'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -578,7 +582,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('users?sort=email&order=' . ($sort == 'email' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('users?sort=email&order=' . ($sort == 'email' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Email
 																		<?php if ($sort == 'email'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -586,7 +590,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('users?sort=nombre_rol&order=' . ($sort == 'nombre_rol' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage) ?>">
+																	<a href="<?= base_url('users?sort=nombre_rol&order=' . ($sort == 'nombre_rol' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Rol
 																		<?php if ($sort == 'nombre_rol'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -613,23 +617,14 @@ License: For each use you must have a valid license purchased only from above li
 																	</td>															
 																	<!--end::Checkbox-->
 																	<!--begin::User=-->
-																	<td class="d-flex align-items-center position-relative">
+																	<td class=" align-items-center position-relative">
 																		<?php if ($user['archivado']): ?>
 																			<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
 																		<?php endif; ?>
 																		<!--begin:: Avatar -->
-																		<div class="symbol symbol-circle symbol-50px overflow-hidden me-3"><!-- PARTE DE LA FOTO DE LOS USUARIOS -->
-																			<a href="../../demo1/dist/apps/user-management/users/view.html">
-																				<div class="symbol-label">
-																					<img src="<?= base_url("assets/media/avatars/150-1.jpg") ?>" alt="Emma Smith" class="w-100" />
-																				</div>
-																			</a>
-																		</div>
-																		<!--end::Avatar-->
+																		<?= esc($user['nombre_usuario']) ?></a> <!-- PARTE DEL FOREACH DONDE PILLA EL USUARIO -->	
 																		<!--begin::User details-->
-																		<div class="d-flex flex-column"> <!-- PARTE DEL LOS NOMBRES DE LOS USUARIOS -->
-																			<a href="../../demo1/dist/apps/user-management/users/view.html" class="text-gray-800 text-hover-primary mb-1"><?= esc($user['nombre_usuario']) ?></a> <!-- PARTE DEL FOREACH DONDE PILLA EL USUARIO -->										
-																		</div>
+																		
 																		<!--begin::User details-->
 																	</td>
 																	<!--end::User=-->
@@ -699,11 +694,11 @@ License: For each use you must have a valid license purchased only from above li
 													<!--end::Table-->
 													<!-- Paginador -->
 																									
-													<div class="mt-4">
+													
 														<div class="d-flex justify-content-between align-items-center">
-															<div class="d-flex align-items-center">
+															<div class="d-flex align-items-center ">
 																<label for="perPage" class="form-label me-2">Elementos por página:</label>
-																<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
+																<select class="form-select form-select-sm form-select-solid" name="perPage" id="perPage"  data-control="select2"  onchange="changePerPage()">
 																	<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
 																	<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
 																	<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
@@ -711,10 +706,10 @@ License: For each use you must have a valid license purchased only from above li
 																</select>
 															</div>
 															<div>
-																<?= $pager->only(['usuario', 'email', 'rol', 'ultimaConexion', 'fechaIngreso', 'usuarioArchivado', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantilla predeterminada -->
+																<?= $pager->only(['usuario', 'email', 'rol', 'usuarioArchivado', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantilla predeterminada -->
 															</div>
 														</div>
-													</div>
+													
 												<?php else: ?>
 													<p class="text-center">No hay usuarios registrados.</p>
 												<?php endif; ?>
