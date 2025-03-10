@@ -16,7 +16,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <head>
 	<base href="../">
-	<title><?= isset($horario) ? 'Editar Horario' : 'Crear Horario' ?></title>
+	<title>Bienvenido a Karmalandia</title>
 	<meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
 	<meta name="keywords" content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -90,7 +90,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 							</div>
 							<div class="menu-item">
-								<a class="menu-link" href="<?= base_url("users") ?>">
+								<a class="menu-link active" href="<?= base_url("users") ?>">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 										<span class="svg-icon svg-icon-2">
@@ -109,7 +109,6 @@ License: For each use you must have a valid license purchased only from above li
 									<span class="menu-section text-muted text-uppercase fs-8 ls-1">Dashboard</span>
 								</div>
 							</div>
-							<!--Sección de inicio-->
 							<div class="menu-item">
 								<a class="menu-link" href="<?= base_url("dashboard") ?>">
 									<span class="menu-icon">
@@ -136,7 +135,6 @@ License: For each use you must have a valid license purchased only from above li
 									<span class="menu-title">Graficas</span>
 								</a>
 							</div>
-							<!--Sección de calendario-->
 							<div class="menu-item">
 								<a class="menu-link" href="<?= base_url("calendario") ?>">
 									<span class="menu-icon">
@@ -155,10 +153,10 @@ License: For each use you must have a valid license purchased only from above li
 							</div>
 							<!--Sección de horarios-->
 							<div class="menu-item">
-								<a class="menu-link active" href="<?= base_url("horarios") ?>">
+								<a class="menu-link" href="<?= base_url("horarios") ?>">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-										<span class="svg-icon svg-icon-2">
+										<span class="svg-icon svg-icon-2">										
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 													<rect x="0" y="0" width="24" height="24"/>
@@ -166,7 +164,7 @@ License: For each use you must have a valid license purchased only from above li
 													<path d="M11.9630156,7.5 L12.0475062,7.5 C12.3043819,7.5 12.5194647,7.69464724 12.5450248,7.95024814 L13,12.5 L16.2480695,14.3560397 C16.403857,14.4450611 16.5,14.6107328 16.5,14.7901613 L16.5,15 C16.5,15.2109164 16.3290185,15.3818979 16.1181021,15.3818979 C16.0841582,15.3818979 16.0503659,15.3773725 16.0176181,15.3684413 L11.3986612,14.1087258 C11.1672824,14.0456225 11.0132986,13.8271186 11.0316926,13.5879956 L11.4644883,7.96165175 C11.4845267,7.70115317 11.7017474,7.5 11.9630156,7.5 Z" fill="#000000"/>
 												</g>
 											</svg>
-										</span>
+										</span>	
 										<!--end::Svg Icon-->
 									</span>
 									<span class="menu-title">Horarios</span>
@@ -185,7 +183,7 @@ License: For each use you must have a valid license purchased only from above li
 													<path d="M10.3144829,18.7082217 C8.08859955,17.8189707 5.31710038,17.2495635 1.99998542,17 C1.99998542,16.9325178 1.99998542,13.1012863 1.99998542,5.50630526 L2.00000925,5.50630526 C2.00000925,5.23017604 2.22385621,5.00632908 2.49998542,5.00632908 C2.50420375,5.00632908 2.5084219,5.00638247 2.51263888,5.00648922 C5.34175439,5.07811173 8.17086991,5.74261533 10.9999854,7 C10.9999854,7.04449645 10.9999854,10.79246 10.9999854,18.2438906 L11,18.2438906 C11,18.520041 10.7761358,18.7439052 10.4999854,18.7439052 C10.4364457,18.7439052 10.3734882,18.7317946 10.3144829,18.7082217 Z" fill="#000000" opacity="0.3"/>
 												</g>
 											</svg>
-										</span>
+										</span>									
 										<!--end::Svg Icon-->
 									</span>
 									<span class="menu-title">Reservas</span>
@@ -224,7 +222,7 @@ License: For each use you must have a valid license purchased only from above li
 								<a class="menu-link" href="<?= base_url("atracciones") ?>">
 									<span class="menu-icon">
 										<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-										<span class="svg-icon svg-icon-2"><i class="fa-solid fa-shuttle-space"></i></span>
+										<span class="svg-icon svg-icon-2"><i class="fa-solid fa-shuttle-space"></i></span>										
 										<!--end::Svg Icon-->
 									</span>
 									<span class="menu-title">Atracciones</span>
@@ -279,8 +277,8 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Menu item-->							
 						</div>
 						<!--end::Menu-->
-						<!--end::Menu wrapper-->
-					</div>										
+						<!--end::Menu wrapper-->					
+					</div>							
 					<!-- FIN DE PARTE DE LA CUENTA DE USUARIO-->
 					<div class="menu-item">
 						<a class="menu-link" href="<?= base_url("changelog") ?>">
@@ -298,7 +296,8 @@ License: For each use you must have a valid license purchased only from above li
 						</a>
 					</div>
 				</div>
-				<!--end::Footer-->
+				
+				<!--end::Footer-->		
 			</div>
 			<!--end::Aside-->
 			<!--begin::Wrapper-->
@@ -342,7 +341,7 @@ License: For each use you must have a valid license purchased only from above li
 												<!--begin::Page title-->
 												<div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 													<!--begin::Title-->
-													<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Horarios</h1>
+													<h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">Usuario</h1>
 													<!--end::Title-->
 													<!--begin::Separator-->
 													<span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -351,7 +350,7 @@ License: For each use you must have a valid license purchased only from above li
 													<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 														<!--begin::Item-->
 														<li class="breadcrumb-item text-muted">
-															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">Inicio</a>
+															<a href="<?= base_url("dashboard") ?>" class="text-muted text-hover-primary">inicio</a>
 														</li>
 														<!--end::Item-->
 														<!--begin::Item-->
@@ -360,7 +359,7 @@ License: For each use you must have a valid license purchased only from above li
 														</li>
 														<!--end::Item-->
 														<!--begin::Item-->
-														<li class="breadcrumb-item text-dark"><?= isset($horario) ? 'Editar Horario' : 'Crear Horario' ?></li>
+														<li class="breadcrumb-item text-dark">Listado de Usuarios</li>
 														<!--end::Item-->
 													</ul>
 													<!--end::Breadcrumb-->
@@ -390,111 +389,158 @@ License: For each use you must have a valid license purchased only from above li
 							toastr.success('<?= session()->getFlashdata('success'); ?>');
 						</script>
 					<?php endif; ?>
+					<?php if (session()->getFlashdata('error')): ?>
+						<script>
+							toastr.error('<?= session()->getFlashdata('error'); ?>');
+						</script>
+					<?php endif; ?>
 					<!--begin::Post-->
 					<div class="post d-flex flex-column-fluid" id="kt_post">
 						<!--begin::Container-->
 						<div id="kt_content_container" class="container-xxl">
 							<!--begin::Card-->
-							<div class="card mb-5 mb-xl-10"><!-- PARTE DEL FORMULARIO PARA CREAR Y EDITAR -->
-                                <!--begin::Card header-->
-                                <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
-                                    <!--begin::Card title-->
-                                    <div class="card-title m-0">
-									<h1 class="text-center"><?= isset($horario) ? 'Editar Horario' : 'Crear Horario' ?></h1>
-                                    </div>
-                                    <!--end::Card title-->
-                                </div>
-                                <!--begin::Card header-->
-                                <!--begin::Content-->
-                                <div id="kt_account_profile_details" class="collapse show">
-									<!-- Mostrar errores de validación -->
-									<?php if (isset($validation)): ?>
-										<div class="alert alert-danger">
-											<?= $validation->listErrors() ?>
+							<div class="card">
+								<!--COMIENZO DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->								
+									<!--begin::Card header-->
+									<div class="card-header border-0 pt-6">
+										<!--begin::Card title-->
+										<div class="card-title">
+											<!--begin::Search-->
+											<div class="d-flex align-items-center position-relative my-1"> <!-- FORMULARIO DE búsqueda -->
+												<!-- Formulario de búsqueda -->
+												<div class="d-flex align-items-center position-relative my-1">
+													<i class="ki-duotone ki-magnifier fs-1 position-absolute ms-6"><span class="path1"></span><span class="path2"></span></i>
+													<input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Customers"/>
+												</div>
+												
+												<!--<form method="GET" action="<?= base_url("") ?>" >
+														<div class="input-group w-auto">
+															<input type="text" name="name" class="form-control" placeholder="Nombre" value="">
+															<button type="submit" class="btn btn-primary">Buscar</button>
+														</div>
+													</form>-->
+											</div>
+											<!-- FORMULARIO DE búsqueda -->
 										</div>
-									<?php endif; ?>
-                                    <!--begin::Form-->
-                                    <form id="userForm" action="<?= isset($horario) ? base_url('horarios/save/') . $horario['id'] : base_url('horarios/save') ?>" method="post">
-										<?= csrf_field(); ?>
-                                        <!--begin::Card body-->
-                                        <div class="card-body border-top p-9">                                       
-                                            <!--begin::Input group-->
-                                            <div class="row mb-6">
-                                                <!--begin::Label-->
-                                                <label class="col-lg-4 col-form-label required fw-bold fs-6" for="nombre_horario">Nombre</label>
-                                                <!--end::Label-->
-                                                <!--begin::Col-->
-                                                <div class="col-lg-8">
-                                                    <!--begin::Row-->
-                                                    <div class="row">
-                                                        <!--begin::Col-->
-                                                        <div class="col-lg-6 fv-row">
-                                                            <input type="text" name="nombre_horario" id="nombre_horario" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Nombre horario" value="<?= isset($user) ? esc($user['nombre_horario']) : '' ?>"required/>
-                                                        </div>
-                                                        <!--end::Col-->                                                        
-                                                    </div>
-                                                    <!--end::Row-->
-                                                </div>
-                                                <!--end::Col-->									
-                                            </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="row mb-6">
-                                                <!--begin::Label-->
-                                                <label class="col-lg-4 col-form-label required fw-bold fs-6" for="hora_inicio">Horario de inicio</label>
-                                                <!--end::Label-->
-                                                <!--begin::Col-->
-                                                <div class="col-lg-8">
-                                                    <!--begin::Row-->
-                                                    <div class="row">
-                                                        <!--begin::Col-->
-                                                        <div class="col-lg-6 fv-row">
-                                                            <input type="text" name="hora_inicio" id="hora_inicio" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Horario inicio" value="<?= isset($user) ? esc($user['hora_inicio']) : '' ?>"required/>
-                                                        </div>
-                                                        <!--end::Col-->                                                        
-                                                    </div>
-                                                    <!--end::Row-->
-                                                </div>
-                                                <!--end::Col-->									
-                                            </div>
-                                            <!--end::Input group-->	
-                                            <!--begin::Input group-->
-                                            <div class="row mb-6">
-                                                <!--begin::Label-->
-                                                <label class="col-lg-4 col-form-label required fw-bold fs-6" for="hora_fin">Horario de finalización</label>
-                                                <!--end::Label-->
-                                                <!--begin::Col-->
-                                                <div class="col-lg-8">
-                                                    <!--begin::Row-->
-                                                    <div class="row">
-                                                        <!--begin::Col-->
-                                                        <div class="col-lg-6 fv-row">
-                                                            <input type="text" name="hora_fin" id="hora_fin" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Horario de finalización" value="<?= isset($user) ? esc($user['hora_inicio']) : '' ?>"required/>
-                                                        </div>
-                                                        <!--end::Col-->                                                        
-                                                    </div>
-                                                    <!--end::Row-->
-                                                </div>
-                                                <!--end::Col-->									
-                                            </div>
-                                            <!--end::Input group-->			
-                                        </div>
-                                        <!--end::Card body-->
-                                        <!--begin::Actions-->
-                                        <div class="card-footer d-flex justify-content-end py-6 px-9">
-											<a href="<?= base_url('horarios') ?>" class="btn btn-light btn-active-light-primary me-2">Cancelar</a>
-											<button type="submit" id="submitBtn" class="btn btn-success"><?= isset($user) ? 'Actualizar' : 'Guardar' ?></button>
-                                        </div>
-                                        <!--end::Actions-->
-										<!-- Mensaje de carga -->
-										<div id="mensajeCarga" style="display: none; text-align: center; margin-top: 10px;">
-											<p>Guardando, por favor espera...</p>
+
+										<!--<h1 class="text-center">Listado de Usuarios</h1>-->
+
+										<!--begin::Card title-->
+										<!--begin::Card toolbar-->
+										<div class="card-toolbar">
+											<!--begin::Toolbar-->
+											<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+												<!--begin::Filter-->
+
+												<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+													<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
+													<span class="svg-icon svg-icon-2">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
+														</svg>
+													</span>
+													<!--end::Svg Icon-->Filtrar</button>
+												<!--begin::Menu 1-->
+
+												<!--end::Menu 1-->
+												<!--end::Filter-->
+												<!--begin::Export-->											
+												<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+												<form method="GET" action="<?= base_url('users/exportExcel') ?>">
+
+													
+													
+													<button type="submit" class="btn btn-light-primary me-3">
+														<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+														<span class="svg-icon svg-icon-2">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black" />
+																<path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black" />
+																<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
+															</svg>
+														</span>
+														<!--end::Svg Icon-->Exportar a Excel
+													</button>
+												</form>												
+												<!--end::Export-->
+												<!--begin::Add user--> <!-- BOTÓN DE CREAR USUARIO -->
+												<a href="<?= base_url('users/save') ?>" class="btn btn-primary ">
+													<span class="svg-icon svg-icon-2">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+															<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+														</svg>
+													</span>
+													Crear</a> <!-- BOTÓN DE CREAR USUARIO -->
+												<!--end::Svg Icon-->
+												<!--end::Add user-->
+											</div>
+											<!--end::Toolbar-->
 										</div>
-                                    </form>
-                                    <!--end::Form-->
-                                </div>
-                                <!--end::Content-->
-							</div>
+										<!--end::Card toolbar-->
+									</div>
+									<!--end::Card header-->
+									<!--begin::Card body-->
+									<div class="card-body pt-0">
+										<!--begin::Table-->
+										<div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+											<div class="table-responsive">
+												<!--begin::Wrapper-->
+												
+												<!--end::Wrapper-->
+
+												<!--begin::Datatable-->
+												<table id="kt_datatable_example_1" class="table align-middle table-row-dashed fs-6 gy-5">
+													<thead>
+													<tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+														<th class="w-10px pe-2">
+															<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+																<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_datatable_example_1 .form-check-input" value="1"/>
+															</div>
+														</th>
+														<th>Customer Name</th>
+														<th>Email</th>
+														<th>Company</th>
+														<th>Payment Method</th>
+														<th>Created Date</th>
+														<th class="text-end min-w-100px">Actions</th>
+													</tr>
+													</thead>
+													<tbody class="text-gray-600 fw-semibold">
+													</tbody>
+												</table>
+												<!--end::Datatable-->
+											</div>
+										</div>
+									</div>							
+								<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
+								<!-- Modal de confirmación -->
+								<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="confirmModalLabel">Confirmar acción</h5>
+												<button type="button" class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+													<span class="svg-icon svg-icon-1">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+															<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+														</svg>
+													</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												¿Estás seguro de que deseas realizar esta acción?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+												<button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- FIN DE LA PARTE DEL MODAL -->
+						    </div>
 						    <!--end::Card body-->
 						</div>
 					</div>
@@ -527,6 +573,7 @@ License: For each use you must have a valid license purchased only from above li
 		var hostUrl = "assets/";
 	</script>
 	<!--begin::Javascript-->
+	<script src="<?= base_url("assets/js/dataTable.js") ?>"></script>
 	<!--begin::Global Javascript Bundle(used by all pages)-->
 	<script src="<?= base_url("assets/plugins/global/plugins.bundle.js") ?>"></script>
 	<script src="<?= base_url("assets/js/scripts.bundle.js") ?>"></script>
@@ -535,23 +582,15 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
+	<script src="<?= base_url("assets/js/custom.js") ?>"></script>
 	<script src="assets/js/custom/apps/calendar/calendar.js"></script>
 	<script src="assets/js/custom/widgets.js"></script>
 	<script src="assets/js/custom/apps/chat/chat.js"></script>
 	<script src="assets/js/custom/modals/create-app.js"></script>
 	<script src="assets/js/custom/modals/upgrade-plan.js"></script>
 	<!--end::Page Custom Javascript-->
-	<script>
-        document.getElementById('userForm').addEventListener('submit', function() {
-            document.getElementById('submitBtn').disabled = true;
-            document.getElementById('mensajeCarga').style.display = 'block';
-        });
-    </script>
 	<!--end::Javascript-->
 </body>
 <!--end::Body-->
 
 </html>
-
-
-

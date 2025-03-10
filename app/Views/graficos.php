@@ -26,6 +26,13 @@ License: For each use you must have a valid license purchased only from above li
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 		<script src="https://kit.fontawesome.com/47d7c4b9a5.js" crossorigin="anonymous"></script>
 		<link rel="shortcut icon" href="<?= base_url("assets/media/logos/atracciones.png")?>" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"><!-- link para los mensajes -->
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<!-- Swapy CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swapy@latest/dist/swapy.min.css">
+		<!-- Swapy JS -->
+		<script src="https://cdn.jsdelivr.net/npm/swapy@latest/dist/swapy.min.js"></script>
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -36,8 +43,10 @@ License: For each use you must have a valid license purchased only from above li
 		<link href="<?= base_url("assets/plugins/global/plugins.bundle.css")?>" rel="stylesheet" type="text/css" />
 		<link href="<?= base_url("assets/css/style.bundle.css")?>" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
+
 	</head>
 	<!--end::Head-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script><!-- link para los mensajes -->
 	<!--begin::Body-->
 	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
 		<!--begin::Main-->
@@ -375,9 +384,9 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
 								<!--begin::Row-->
-								<div class="row gy-5 g-xl-8"> <!--INICIO DE PLANTILLA GRAFICOS-->
+								<div class="row gy-5 g-xl-8">
 									<!--begin::Col-->
-									<div class="col-xxl-6">
+									<div class="col-xxl-6 swapy-item">
 										<!--begin::Mixed Widget 2-->
 										<div class="card card-xxl-stretch">
 											<!--begin::Header-->
@@ -388,7 +397,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Body-->
 											<div class="card-body p-0">
 												<!--begin::Chart-->
-												<div id="kt_apexcharts_2" class="card-rounded-bottom " style="height: 350px;"></div>
+												<div id="kt_apexcharts_2" class="card-rounded-bottom" style="height: 350px;"></div>
 												<!--end::Chart-->
 											</div>
 											<!--end::Body-->
@@ -397,7 +406,7 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 									<!--end::Col-->
 									<!--begin::Col-->
-									<div class="col-xxl-6">
+									<div class="col-xxl-6 swapy-item">
 										<!--begin::Mixed Widget 2-->
 										<div class="card card-xxl-stretch">
 											<!--begin::Header-->
@@ -408,7 +417,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Body-->
 											<div class="card-body p-0">
 												<!--begin::Chart-->
-												<div id="kt_apexcharts_3" class="card-rounded-bottom " style="height: 350px;"></div>
+												<div id="kt_apexcharts_3" class="card-rounded-bottom" style="height: 350px;"></div>
 												<!--end::Chart-->
 											</div>
 											<!--end::Body-->
@@ -417,7 +426,7 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 									<!--end::Col-->
 									<!--begin::Col-->
-									<div class="col-xxl-6">
+									<div class="col-xxl-6 swapy-item">
 										<!--begin::Mixed Widget 2-->
 										<div class="card card-xxl-stretch">
 											<!--begin::Header-->
@@ -428,7 +437,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Body-->
 											<div class="card-body p-0">
 												<!--begin::Chart-->
-												<div id="kt_apexcharts_4" class="card-rounded-bottom " style="height: 350px;"></div>
+												<div id="kt_apexcharts_4" class="card-rounded-bottom" style="height: 350px;"></div>
 												<!--end::Chart-->
 											</div>
 											<!--end::Body-->
@@ -437,7 +446,7 @@ License: For each use you must have a valid license purchased only from above li
 									</div>
 									<!--end::Col-->
 									<!--begin::Col-->
-									<div class="col-xxl-6">
+									<div class="col-xxl-6 swapy-item">
 										<!--begin::Mixed Widget 2-->
 										<div class="card card-xxl-stretch">
 											<!--begin::Header-->
@@ -448,7 +457,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Body-->
 											<div class="card-body p-0">
 												<!--begin::Chart-->
-												<div id="kt_apexcharts_5" class="card-rounded-bottom " style="height: 350px;"></div>
+												<div id="kt_apexcharts_5" class="card-rounded-bottom" style="height: 350px;"></div>
 												<!--end::Chart-->
 											</div>
 											<!--end::Body-->
@@ -470,23 +479,10 @@ License: For each use you must have a valid license purchased only from above li
 						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
-								<span class="text-muted fw-bold me-1">2021©</span>
-								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+								<span class="text-muted fw-bold me-1">2025©</span>
+								<span  target="_blank" class="text-gray-800 text-hover-primary">Karmalandia derecho reservados</span>
 							</div>
 							<!--end::Copyright-->
-							<!--begin::Menu-->
-							<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-								<li class="menu-item">
-									<a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-								</li>
-								<li class="menu-item">
-									<a href="https://keenthemes.com/support" target="_blank" class="menu-link px-2">Support</a>
-								</li>
-								<li class="menu-item">
-									<a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
-								</li>
-							</ul>
-							<!--end::Menu-->
 						</div>
 						<!--end::Container-->
 					</div> <!-- FIN DEL FOOTER -->
@@ -527,21 +523,21 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="assets/js/custom/modals/create-app.js"></script>
 		<script src="assets/js/custom/modals/upgrade-plan.js"></script>
 		<!--end::Page Custom Javascript-->
-		
+		<!-- Swapy JS -->
+		<script src="<?= base_url("assets/swapy/swapy.min.js") ?>"></script>
 		<!-- ApexCharts JS -->
 		<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.3/dist/apexcharts.min.js"></script>
-		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 		<script>
 			$(document).ready(function() {
 				// Función para obtener datos de usuarios
 				function fetchUserData() {
 					$.ajax({
-						url: '<?= base_url('evento/getUserData') ?>', // URL para obtener datos de usuarios
+						url: '<?= base_url('evento/getUserData') ?>',
 						method: 'GET',
 						success: function(data) {
-							updateUserChart(data); // Llama a la función para actualizar el gráfico de usuarios
+							updateUserChart(data);
 						}
 					});
 				}
@@ -549,10 +545,10 @@ License: For each use you must have a valid license purchased only from above li
 				// Función para obtener datos de reservas
 				function fetchReservaData() {
 					$.ajax({
-						url: '<?= base_url('evento/getReservaData') ?>', // URL para obtener datos de reservas
+						url: '<?= base_url('evento/getReservaData') ?>',
 						method: 'GET',
 						success: function(data) {
-							updateReservaChart(data); // Llama a la función para actualizar el gráfico de reservas
+							updateReservaChart(data);
 						}
 					});
 				}
@@ -560,10 +556,10 @@ License: For each use you must have a valid license purchased only from above li
 				// Función para obtener datos de reseñas
 				function fetchReviewData() {
 					$.ajax({
-						url: '<?= base_url('evento/getReviewData') ?>', // URL para obtener datos de reseñas
+						url: '<?= base_url('evento/getReviewData') ?>',
 						method: 'GET',
 						success: function(data) {
-							updateReviewChart(data); // Llama a la función para actualizar el gráfico de reseñas
+							updateReviewChart(data);
 						}
 					});
 				}
@@ -571,10 +567,10 @@ License: For each use you must have a valid license purchased only from above li
 				// Función para obtener datos de atracciones
 				function fetchAtraccionData() {
 					$.ajax({
-						url: '<?= base_url('evento/getAtraccionData') ?>', // URL para obtener datos de atracciones
+						url: '<?= base_url('evento/getAtraccionData') ?>',
 						method: 'GET',
 						success: function(data) {
-							updateAtraccionChart(data); // Llama a la función para actualizar el gráfico de atracciones
+							updateAtraccionChart(data);
 						}
 					});
 				}
@@ -584,15 +580,15 @@ License: For each use you must have a valid license purchased only from above li
 					let options = {
 						series: [{
 							name: 'Usuarios',
-							data: data.users.map(user => user.id) // Mapea los datos de usuarios para obtener los IDs
+							data: data.users.map(user => user.id)
 						}],
 						chart: {
-							type: 'bar', // Tipo de gráfico: barras
+							type: 'bar',
 							height: 350
 						},
 						plotOptions: {
 							bar: {
-								horizontal: false, // Columnas verticales
+								horizontal: false,
 								columnWidth: '55%',
 								endingShape: 'rounded'
 							},
@@ -606,7 +602,7 @@ License: For each use you must have a valid license purchased only from above li
 							colors: ['transparent']
 						},
 						xaxis: {
-							categories: data.users.map(user => user.nombre_usuario) // Mapea los datos de usuarios para obtener los nombres
+							categories: data.users.map(user => user.nombre_usuario)
 						},
 						yaxis: {
 							title: {
@@ -623,11 +619,11 @@ License: For each use you must have a valid license purchased only from above li
 								}
 							}
 						},
-						colors: ['#1E90FF', '#FF6347', '#32CD32'] // Colores personalizados
+						colors: ['#1E90FF', '#FF6347', '#32CD32']
 					};
 
 					let chart = new ApexCharts(document.querySelector("#kt_apexcharts_2"), options);
-					chart.render(); // Renderiza el gráfico
+					chart.render();
 				}
 
 				// Función para actualizar el gráfico de reservas
@@ -635,10 +631,10 @@ License: For each use you must have a valid license purchased only from above li
 					let options = {
 						series: [{
 							name: 'Reservas',
-							data: data.reservas.map(reserva => reserva.id) // Mapea los datos de reservas para obtener los IDs
+							data: data.reservas.map(reserva => reserva.id)
 						}],
 						chart: {
-							type: 'line', // Tipo de gráfico: líneas
+							type: 'line',
 							height: 350,
 							zoom: {
 								enabled: false
@@ -656,12 +652,12 @@ License: For each use you must have a valid license purchased only from above li
 						},
 						grid: {
 							row: {
-								colors: ['#f3f3f3', 'transparent'], // Alternar colores de las filas
+								colors: ['#f3f3f3', 'transparent'],
 								opacity: 0.5
 							},
 						},
 						xaxis: {
-							categories: data.reservas.map(reserva => reserva.fecha) // Mapea los datos de reservas para obtener las fechas
+							categories: data.reservas.map(reserva => reserva.fecha)
 						},
 						yaxis: {
 							title: {
@@ -677,11 +673,11 @@ License: For each use you must have a valid license purchased only from above li
 								size: 7,
 							}
 						},
-						colors: ['#FF4500'] // Color personalizado
+						colors: ['#FF4500']
 					};
 
 					let chart = new ApexCharts(document.querySelector("#kt_apexcharts_3"), options);
-					chart.render(); // Renderiza el gráfico
+					chart.render();
 				}
 
 				// Función para actualizar el gráfico de reseñas
@@ -689,10 +685,10 @@ License: For each use you must have a valid license purchased only from above li
 					let options = {
 						series: [{
 							name: 'Reseñas',
-							data: data.reviews.map(review => review.id) // Mapea los datos de reseñas para obtener los IDs
+							data: data.reviews.map(review => review.id)
 						}],
 						chart: {
-							type: 'area', // Tipo de gráfico: área
+							type: 'area',
 							height: 350,
 							zoom: {
 								enabled: false
@@ -710,12 +706,12 @@ License: For each use you must have a valid license purchased only from above li
 						},
 						grid: {
 							row: {
-								colors: ['#f3f3f3', 'transparent'], // Alternar colores de las filas
+								colors: ['#f3f3f3', 'transparent'],
 								opacity: 0.5
 							},
 						},
 						xaxis: {
-							categories: data.reviews.map(review => review.fecha) // Mapea los datos de reseñas para obtener las fechas
+							categories: data.reviews.map(review => review.fecha)
 						},
 						yaxis: {
 							title: {
@@ -731,11 +727,11 @@ License: For each use you must have a valid license purchased only from above li
 								size: 7,
 							}
 						},
-						colors: ['#008000'] // Color personalizado
+						colors: ['#008000']
 					};
 
 					let chart = new ApexCharts(document.querySelector("#kt_apexcharts_4"), options);
-					chart.render(); // Renderiza el gráfico
+					chart.render();
 				}
 
 				// Función para actualizar el gráfico de atracciones
@@ -743,29 +739,29 @@ License: For each use you must have a valid license purchased only from above li
 					let options = {
 						series: [{
 							name: 'Atracciones',
-							data: data.atracciones.map(atraccion => atraccion.id) // Mapea los datos de atracciones para obtener los IDs
+							data: data.atracciones.map(atraccion => atraccion.id)
 						}],
 						chart: {
-							type: 'bar', // Tipo de gráfico: barras
+							type: 'bar',
 							height: 350,
-							stacked: true // Habilitar barras apiladas
+							stacked: true
 						},
 						plotOptions: {
 							bar: {
-								horizontal: true, // Cambiar a barras horizontales
+								horizontal: true,
 							},
 						},
 						dataLabels: {
 							enabled: false
 						},
 						xaxis: {
-							categories: data.atracciones.map(atraccion => atraccion.nombre) // Mapea los datos de atracciones para obtener los nombres
+							categories: data.atracciones.map(atraccion => atraccion.nombre)
 						},
-						colors: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF'] // Colores personalizados
+						colors: ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF']
 					};
 
 					let chart = new ApexCharts(document.querySelector("#kt_apexcharts_5"), options);
-					chart.render(); // Renderiza el gráfico
+					chart.render();
 				}
 
 				// Llamadas a las funciones para obtener los datos y actualizar los gráficos
@@ -773,11 +769,27 @@ License: For each use you must have a valid license purchased only from above li
 				fetchReservaData();
 				fetchReviewData();
 				fetchAtraccionData();
+
+				// Inicializar Swapy
+				const swapy = new Swapy.default({
+					elements: document.querySelectorAll('.swapy-item'),
+					dropZone: document.querySelector('.row.gy-5.g-xl-8'),
+					handleClass: 'card-header',
+					draggingClass: 'swapy-dragging',
+					overClass: 'swapy-over',
+					onDrop: function(droppedEl, targetEl, elements) {
+						console.log('Elemento soltado', droppedEl, 'sobre', targetEl);
+						// Recargar los gráficos después del reordenamiento
+						setTimeout(function() {
+							fetchUserData();
+							fetchReservaData();
+							fetchReviewData();
+							fetchAtraccionData();
+						}, 200);
+					}
+				});
 			});
 		</script>
-
-		
-
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->

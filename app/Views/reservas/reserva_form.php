@@ -470,7 +470,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <div class="row">
                                                         <!--begin::Col-->
                                                         <div class="col-lg-6 fv-row">
-                                                            <input type="text" name="fecha" id="fecha" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Fecha" value="<?= set_value('fecha', $reserva['fecha'] ?? '') ?>"required/>
+                                                            <input type="text" name="fecha" id="fecha" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Fecha" value="<?= set_value('fecha', $reserva['fecha'] ?? '') ?>"/>
                                                         </div>
                                                         <!--end::Col-->                                                        
                                                     </div>
@@ -507,7 +507,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <div class="row">
                                                         <!--begin::Col-->
                                                         <div class="col-lg-6 fv-row">
-                                                            <input type="text" name="cantidad_personas" id="cantidad_personas" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Cantidad de Personas" value="<?= set_value('cantidad_personas', $reserva['cantidad_personas'] ?? '') ?>"required/>
+                                                            <input type="text" name="cantidad_personas" id="cantidad_personas" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Cantidad de Personas" value="<?= set_value('cantidad_personas', $reserva['cantidad_personas'] ?? '') ?>"/>
                                                         </div>
                                                         <!--end::Col-->                                                        
                                                     </div>
@@ -564,7 +564,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-bold me-1">2025©</span>
-							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+							<span  target="_blank" class="text-gray-800 text-hover-primary">Karmalandia derecho reservados</span>
 						</div>
 					</div>
 					<!--end::Container-->

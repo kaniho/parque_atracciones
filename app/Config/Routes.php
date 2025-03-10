@@ -21,6 +21,7 @@ $routes->post('deactivateAccount', 'AuthController::deactivateAccount');
 $routes->get('graficos','EventoController::graficos');
 $routes->get('changelog','AuthController::changelog'); // Ruta para el changelog
 
+$routes->get('swapy','UserController::swapy');
 
 
 
@@ -104,5 +105,6 @@ $routes->group("", ["filter" => "auth"], function ($routes) {
         $routes->get('users/exportExcel', 'UserController::exportExcel'); // Exportar usuarios a Excel
         $routes->post('user/updateProfile', 'UserController::updateProfile'); // Actualizar perfil de usuario
         $routes->post('user/deactivateAccount', 'UserController::deactivateAccount'); // Desactivar cuenta de usuario
+        $routes->get('users/getUsersByRole', 'UserController::getUsersByRole'); // Obtener usuarios por rol
     });
 });

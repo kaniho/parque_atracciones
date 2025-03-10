@@ -11,7 +11,7 @@ Dribbble: www.dribbble.com/keenthemes
 Like: www.facebook.com/keenthemes
 License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
 -->
-<html lang="en">
+<html lang="es">
 <!--begin::Head-->
 
 <head>
@@ -508,7 +508,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-bold me-1">2025©</span>
-							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+							<span  target="_blank" class="text-gray-800 text-hover-primary">Karmalandia derecho reservados</span>
 						</div>
 					</div>
 					<!--end::Container-->

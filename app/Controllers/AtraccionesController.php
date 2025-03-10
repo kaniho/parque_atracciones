@@ -179,6 +179,8 @@ class AtraccionesController extends BaseController
                     'altura_minima' => $this->request->getPost('altura_minima'),
                     'capacidad_maxima' => $this->request->getPost('capacidad_maxima'),
                     'estado' => $this->request->getPost('estado'),
+                    'plazas_mañana' => $this->request->getPost('plazas_mañana'),
+                    'plazas_tarde' => $this->request->getPost('plazas_tarde'),
                 ];
 
                 if ($id) {

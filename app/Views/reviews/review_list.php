@@ -404,320 +404,320 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Card-->
 								<div class="card">									
 									<!--COMIENZO DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->									
-										<!--begin::Card header-->
-										<div class="card-header border-0 pt-6">
-											<!--begin::Card title-->
-											<div class="card-title">
-												<!--begin::Search-->
-												<div class="d-flex align-items-center position-relative my-1"> <!-- FORMULARIO DE búsqueda -->
-													<!-- Formulario de búsqueda -->
-													<!--<form method="GET" action="<?= base_url("reviews") ?>" >
-														<div class="input-group w-auto">
-															<input type="text" name="name" class="form-control" placeholder="Nombre" value="">
-															<button type="submit" class="btn btn-primary">Buscar</button>
-														</div>
-													</form>-->
-												</div>
-												<!-- FORMULARIO DE búsqueda -->												
-											</div>
-
-											<h1 class="text-center">Listado de Reseñas</h1>
-
-											<!--begin::Card title-->
-											<!--begin::Card toolbar-->
-											<div class="card-toolbar">
-												<!--begin::Toolbar-->
-												<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-													<!--begin::Filter-->
-													<div class="px-7 d-flex align-items-center justify-content-between">
-														<?php if ($filtrosActivos > 0): ?>
-															<span class="badge bg-danger ms-2">Filtros activados: <?= $filtrosActivos ?></span>
-														<?php endif; ?>
+									<!--begin::Card header-->
+									<div class="card-header border-0 pt-6">
+										<!--begin::Card title-->
+										<div class="card-title">
+											<!--begin::Search-->
+											<div class="d-flex align-items-center position-relative my-1"> <!-- FORMULARIO DE búsqueda -->
+												<!-- Formulario de búsqueda -->
+												<!--<form method="GET" action="<?= base_url("reviews") ?>" >
+													<div class="input-group w-auto">
+														<input type="text" name="name" class="form-control" placeholder="Nombre" value="">
+														<button type="submit" class="btn btn-primary">Buscar</button>
 													</div>
-													<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-													<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
-													<span class="svg-icon svg-icon-2">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
-														</svg>
-													</span>
-													<!--end::Svg Icon-->Filtrar</button>
-													<!--begin::Menu 1-->
-													<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
-														<!--begin::Header-->
-														<div class="px-7 py-5">
-															<div class="fs-5 text-dark fw-bolder">Opciones de Filtrado</div>
-														</div>
-														<!--end::Header-->
-														<!--begin::Separator-->
-														<div class="separator border-gray-200"></div>
-														<!--end::Separator-->
-														<!--begin::Content-->
-														<div class="px-7 py-5" data-kt-user-table-filter="form">
-															<!--begin::Input group-->
-															<form method="GET" action="<?= base_url("reviews") ?>">
-																<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
-																<input type="hidden" name="page" value="<?= esc($page) ?>">
-																<div class="mb-10">
-																	<label class="form-label fs-6 fw-bold">Atracción:</label>
-																	<div class="input-group w-auto">
-																		<input type="text" name="atraccion" class="form-control" placeholder="Atracción" value="<?= esc($atraccion) ?>">
-																	</div>
-																</div>
-																<!--end::Input group-->
-																<!--begin::Input group-->
-																<div class="mb-10">
-																	<label class="form-label fs-6 fw-bold">Usuario:</label>
-																	<div class="input-group w-auto">
-																		<input type="text" name="usuario" class="form-control" placeholder="Nombre" value="<?= esc($usuario) ?>">
-																	</div>
-																</div>
-																<!--end::Input group-->
-																<!--begin::Input group-->
-																<div class="mb-10">
-																	<label class="form-label fs-6 fw-bold">Calificación:</label>
-																	<div class="input-group w-auto">
-																		<input type="text" name="calificacion" class="form-control" placeholder="Calificación" value="<?= esc($calificacion) ?>">
-																	</div>
-																</div>
-																<!--end::Input group-->
-																<!--begin::Input group-->
-																<div class="mb-10">
-																	<label class="form-label fs-6 fw-bold">Comentario:</label>
-																	<div class="input-group w-auto">
-																		<input type="text" name="comentario" class="form-control" placeholder="Comentario" value="<?= esc($comentario) ?>">
-																	</div>
-																</div>
-																<!--end::Input group-->
-																<!--begin::Input group-->
-																<div class="mb-10">
-																	<label class="form-label fs-6 fw-bold">Fecha:</label>
-																	<div class="input-group w-auto">
-																		<input type="text" name="fechaCreacion" class="form-control" placeholder="Fecha" value="<?= esc($fechaCreacion) ?>">
-																	</div>
-																</div>
-																<!--end::Input group-->
-																<!--begin::Input group-->
-																<div class="mb-5">
-																	<label class="form-label fs-6 fw-bold">Mostrar Reseñas:</label>
-																	<div class="input-group w-auto">
-																	<select name="reviewArchivada" id="reviewArchivada" class="form-select">
-																		<option selected>selecciona una opción</option>
-																		<option value="0" <?= $reviewArchivada === '0' ? 'selected' : '' ?>>No Archivados</option>
-																		<option value="1" <?= $reviewArchivada === '1' ? 'selected' : '' ?>>Archivados</option>
-																		<option value="2" <?= $reviewArchivada === '2' ? 'selected' : '' ?>>Todos</option>
-																	</select>
-																	</div>
-																</div>
-																<!--end::Input group-->
-																<!--begin::Actions-->
-																<div class="d-flex justify-content-end">
-																	<button type="reset" class="btn btn-light btn-active-light-primary fw-bold me-2 px-6" onclick="window.location.href='<?= base_url("reviews") ?>'">Restablece</button>
-																	<button type="submit" class="btn btn-primary">Buscar</button>
-																</div>
-															</form>
-														</div>
-														<!--end::Content-->
-													</div>
-													<!--end::Menu 1-->
-													<!--end::Filter-->
-													<!--begin::Export-->
-													<form method="GET" action="<?= base_url('reviews/exportExcel') ?>">
-														<input type="hidden" name="atraccion" value="<?= esc($atraccion) ?>">
-														<input type="hidden" name="usuario" value="<?= esc($usuario) ?>">
-														<input type="hidden" name="calificacion" value="<?= esc($calificacion) ?>">
-														<input type="hidden" name="comentario" value="<?= esc($comentario) ?>">
-														<input type="hidden" name="fechaCreacion" value="<?= esc($fechaCreacion) ?>">														
-														<input type="hidden" name="reviewArchivada" value="<?= esc($reviewArchivada) ?>">
-														<button type="submit" class="btn btn-light-primary me-3">
-															<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
-															<span class="svg-icon svg-icon-2">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black" />
-																	<path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black" />
-																	<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
-																</svg>
-															</span>
-															<!--end::Svg Icon-->Exportar a Excel
-														</button>
-													</form>	
-													<!--end::Export-->
-													<!--begin::Add user-->
-													<a href="<?= base_url('reviews/save') ?>" class="btn btn-primary ">
-														<span class="svg-icon svg-icon-2">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-																<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-															</svg>
-														</span>
-													Crear</a> <!-- BOTÓN DE CREAR USUARIO -->
-													<!--end::Svg Icon-->
-													<!--end::Add user-->
-												</div>
-												<!--end::Toolbar-->																								
+												</form>-->
 											</div>
-											<!--end::Card toolbar-->
+											<!-- FORMULARIO DE búsqueda -->												
 										</div>
-										<!--end::Card header-->
-										<!--begin::Card body-->
-										<div class="card-body pt-0">
-											<div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-												<div class="table-responsive">
-													<?php if (!empty($reviews) && is_array($reviews)): ?>
-														<!--begin::Table-->
-														<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-															<!--begin::Table head-->
-															<thead>
-																<!--begin::Table row-->
-																<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-																	<th class="w-10px pe-2">
-																		<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-																			<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
-																		</div>
-																	</th>
-																	<th class="min-w-125px"><a href="<?= base_url('reviews?sort=nombre_atraccion&order=' . ($sort == 'nombre_atraccion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
-																		Atracción
-																		<?php if ($sort == 'nombre_atraccion'): ?>
-																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																		<?php endif; ?>
-																	</a></th>
-																	<th class="min-w-125px"><a href="<?= base_url('reviews?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
-																		Usuario
-																		<?php if ($sort == 'nombre_usuario'): ?>
-																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																		<?php endif; ?>
-																	</a></th>
-																	<th class="min-w-125px"><a href="<?= base_url('reviews?sort=calificacion&order=' . ($sort == 'calificacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
-																		Calificación
-																		<?php if ($sort == 'calificacion'): ?>
-																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																		<?php endif; ?>
-																	</a></th>
-																	<th class="min-w-125px"><a href="<?= base_url('reviews?sort=comentario&order=' . ($sort == 'comentario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
-																		Comentario
-																		<?php if ($sort == 'comentario'): ?>
-																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																		<?php endif; ?>
-																	</a></th>
-																	<th class="min-w-125px"><a href="<?= base_url('reviews?sort=fecha_creacion&order=' . ($sort == 'fecha_creacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
-																		Fecha
-																		<?php if ($sort == 'fecha_creacion'): ?>
-																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
-																		<?php endif; ?>
-																	</a></th>
-																	<th class="text-end min-w-100px">Acciones</th>
-																</tr>
-																<!--end::Table row-->
-															</thead>
-															<!--end::Table head-->
-															<!--begin::Table body-->
-															<tbody class="text-gray-600 fw-bold">
-																<?php foreach ($reviews as $review): ?>
-																	<tr> <!-- PRUEBA -->
-																		<!--begin::Checkbox-->
-																		<td>
-																			<div class="form-check form-check-sm form-check-custom form-check-solid">
-																				<input class="form-check-input" type="checkbox" value="1" />
-																			</div>
-																		</td>
-																		<!--end::Checkbox-->
-																		<!--begin::User=-->
-																		<td class="position-relative">
-																			<?php if ($review['archivado']): ?>
-																				<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
-																			<?php endif; ?>
-																			<?= esc($review['nombre_atraccion']) ?> <!-- PARTE DEL FOREACH DONDE PILLA EL NOMBRE -->																		
-																		</td>
-																		<!--end::User=-->
-																		<!--begin::Role=-->
-																		<td> 
-																			<?= esc($review['nombre_usuario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA DESCRIPCIÓN -->
-																		</td> 
-																		<!--end::Role=-->
 
-																		<!--begin::Two step=-->
-																		<td>
-																			<?= esc($review['calificacion']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA ALTURA MAXIMA -->
-																		</td>
-																		<!--end::Two step=-->
-																		<!--begin::Joined-->
-																		<td>
-																			<?= esc($review['comentario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA CAPACIDAD MAXIMA -->
-																		</td> 
+										<!--<h1 class="text-center">Listado de Reseñas</h1>-->
 
-																		<td>
-																			<?= (new DateTime($review['fecha_creacion']))->format('d-m-Y H:i:s') ?> <!-- PARTE DEL FOREACH DONDE PILLA LOS ESTADOS -->
-																		</td> 
-
-																		<!--begin::Joined-->
-																		<!--begin::Action=-->
-																		<td class="text-end">
-																			<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
-																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																			<span class="svg-icon svg-icon-5 m-0">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon--></a>
-																			<!--begin::Menu-->
-																			<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-																				<!--begin::Menu item-->
-																				<?php if (!$review['archivado']): ?>
-																					<div class="menu-item px-3">
-																						<a href="<?= base_url('reviews/save/' . $review['id']) ?>" class="menu-link px-3">
-																							Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
-																						</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
-																					</div>
-																				<?php endif; ?>
-																				<!--end::Menu item-->
-																				<!--begin::Menu item-->
-																				<div class="menu-item px-3">																		
-																				<?php if ($review['archivado']): ?>
-																					<form action="<?= base_url('reviews/restore/' . $review['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
-																						<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
-																					</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
-																				<?php else: ?>
-																					<form action="<?= base_url('reviews/delete/' . $review['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
-																						<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
-																					</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
-																				<?php endif; ?>
-																				</div>
-																				<!--end::Menu item-->
-																			</div>
-																			<!--end::Menu-->
-																		</td>
-																		<!--end::Action=-->
-																	</tr>
-																<?php endforeach; ?>
-																<!--end::Table row-->
-															</tbody>
-															<!--end::Table body-->
-														</table>
-														<!--end::Table-->
-														<!-- Paginador -->
-														<div class="row">
-															<div class="d-flex justify-content-between align-items-center">
-																<div class="d-flex align-items-center">
-																	<label for="perPage" class="form-label me-2">Elementos por página:</label>
-																	<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
-																		<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
-																		<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
-																		<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
-																		<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
-																	</select>
-																</div>
-																<div>													
-																	<?= $pager->only(['atraccion', 'usuario', 'calificacion', 'comentario', 'fechaCreacion', 'reviewArchivada', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
-																</div>
-															</div>
-														</div>
-													<?php else: ?>
-														<p class="text-center">No hay reseñas registradas.</p>
+										<!--begin::Card title-->
+										<!--begin::Card toolbar-->
+										<div class="card-toolbar">
+											<!--begin::Toolbar-->
+											<div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+												<!--begin::Filter-->
+												<div class="px-7 d-flex align-items-center justify-content-between">
+													<?php if ($filtrosActivos > 0): ?>
+														<span class="badge bg-danger ms-2">Filtros activados: <?= $filtrosActivos ?></span>
 													<?php endif; ?>
 												</div>
+												<button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+												<!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
+												<span class="svg-icon svg-icon-2">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+														<path d="M19.0759 3H4.72777C3.95892 3 3.47768 3.83148 3.86067 4.49814L8.56967 12.6949C9.17923 13.7559 9.5 14.9582 9.5 16.1819V19.5072C9.5 20.2189 10.2223 20.7028 10.8805 20.432L13.8805 19.1977C14.2553 19.0435 14.5 18.6783 14.5 18.273V13.8372C14.5 12.8089 14.8171 11.8056 15.408 10.964L19.8943 4.57465C20.3596 3.912 19.8856 3 19.0759 3Z" fill="black" />
+													</svg>
+												</span>
+												<!--end::Svg Icon-->Filtrar</button>
+												<!--begin::Menu 1-->
+												<div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
+													<!--begin::Header-->
+													<div class="px-7 py-5">
+														<div class="fs-5 text-dark fw-bolder">Opciones de Filtrado</div>
+													</div>
+													<!--end::Header-->
+													<!--begin::Separator-->
+													<div class="separator border-gray-200"></div>
+													<!--end::Separator-->
+													<!--begin::Content-->
+													<div class="px-7 py-5" data-kt-user-table-filter="form">
+														<!--begin::Input group-->
+														<form method="GET" action="<?= base_url("reviews") ?>">
+															<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+															<input type="hidden" name="page" value="<?= esc($page) ?>">
+															<div class="mb-10">
+																<label class="form-label fs-6 fw-bold">Atracción:</label>
+																<div class="input-group w-auto">
+																	<input type="text" name="atraccion" class="form-control" placeholder="Atracción" value="<?= esc($atraccion) ?>">
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10">
+																<label class="form-label fs-6 fw-bold">Usuario:</label>
+																<div class="input-group w-auto">
+																	<input type="text" name="usuario" class="form-control" placeholder="Nombre" value="<?= esc($usuario) ?>">
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10">
+																<label class="form-label fs-6 fw-bold">Calificación:</label>
+																<div class="input-group w-auto">
+																	<input type="text" name="calificacion" class="form-control" placeholder="Calificación" value="<?= esc($calificacion) ?>">
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10">
+																<label class="form-label fs-6 fw-bold">Comentario:</label>
+																<div class="input-group w-auto">
+																	<input type="text" name="comentario" class="form-control" placeholder="Comentario" value="<?= esc($comentario) ?>">
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10">
+																<label class="form-label fs-6 fw-bold">Fecha:</label>
+																<div class="input-group w-auto">
+																	<input type="text" name="fechaCreacion" class="form-control" placeholder="Fecha" value="<?= esc($fechaCreacion) ?>">
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-5">
+																<label class="form-label fs-6 fw-bold">Mostrar Reseñas:</label>
+																<div class="input-group w-auto">
+																<select name="reviewArchivada" id="reviewArchivada" class="form-select">
+																	<option selected>selecciona una opción</option>
+																	<option value="0" <?= $reviewArchivada === '0' ? 'selected' : '' ?>>No Archivados</option>
+																	<option value="1" <?= $reviewArchivada === '1' ? 'selected' : '' ?>>Archivados</option>
+																	<option value="2" <?= $reviewArchivada === '2' ? 'selected' : '' ?>>Todos</option>
+																</select>
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Actions-->
+															<div class="d-flex justify-content-end">
+																<button type="reset" class="btn btn-light btn-active-light-primary fw-bold me-2 px-6" onclick="window.location.href='<?= base_url("reviews") ?>'">Restablece</button>
+																<button type="submit" class="btn btn-primary">Buscar</button>
+															</div>
+														</form>
+													</div>
+													<!--end::Content-->
+												</div>
+												<!--end::Menu 1-->
+												<!--end::Filter-->
+												<!--begin::Export-->
+												<form method="GET" action="<?= base_url('reviews/exportExcel') ?>">
+													<input type="hidden" name="atraccion" value="<?= esc($atraccion) ?>">
+													<input type="hidden" name="usuario" value="<?= esc($usuario) ?>">
+													<input type="hidden" name="calificacion" value="<?= esc($calificacion) ?>">
+													<input type="hidden" name="comentario" value="<?= esc($comentario) ?>">
+													<input type="hidden" name="fechaCreacion" value="<?= esc($fechaCreacion) ?>">														
+													<input type="hidden" name="reviewArchivada" value="<?= esc($reviewArchivada) ?>">
+													<button type="submit" class="btn btn-light-primary me-3">
+														<!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+														<span class="svg-icon svg-icon-2">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black" />
+																<path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black" />
+																<path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
+															</svg>
+														</span>
+														<!--end::Svg Icon-->Exportar a Excel
+													</button>
+												</form>	
+												<!--end::Export-->
+												<!--begin::Add user-->
+												<a href="<?= base_url('reviews/save') ?>" class="btn btn-primary ">
+													<span class="svg-icon svg-icon-2">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+															<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+														</svg>
+													</span>
+												Crear</a> <!-- BOTÓN DE CREAR USUARIO -->
+												<!--end::Svg Icon-->
+												<!--end::Add user-->
+											</div>
+											<!--end::Toolbar-->																								
+										</div>
+										<!--end::Card toolbar-->
+									</div>
+									<!--end::Card header-->
+									<!--begin::Card body-->
+									<div class="card-body pt-0">
+										<div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+											<div class="table-responsive">
+												<?php if (!empty($reviews) && is_array($reviews)): ?>
+													<!--begin::Table-->
+													<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+														<!--begin::Table head-->
+														<thead>
+															<!--begin::Table row-->
+															<tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+																<th class="w-10px pe-2">
+																	<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+																		<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
+																	</div>
+																</th>
+																<th class="min-w-125px"><a href="<?= base_url('reviews?sort=nombre_atraccion&order=' . ($sort == 'nombre_atraccion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	Atracción
+																	<?php if ($sort == 'nombre_atraccion'): ?>
+																		<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																	<?php endif; ?>
+																</a></th>
+																<th class="min-w-125px"><a href="<?= base_url('reviews?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	Usuario
+																	<?php if ($sort == 'nombre_usuario'): ?>
+																		<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																	<?php endif; ?>
+																</a></th>
+																<th class="min-w-125px"><a href="<?= base_url('reviews?sort=calificacion&order=' . ($sort == 'calificacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	Calificación
+																	<?php if ($sort == 'calificacion'): ?>
+																		<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																	<?php endif; ?>
+																</a></th>
+																<th class="min-w-125px"><a href="<?= base_url('reviews?sort=comentario&order=' . ($sort == 'comentario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	Comentario
+																	<?php if ($sort == 'comentario'): ?>
+																		<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																	<?php endif; ?>
+																</a></th>
+																<th class="min-w-125px"><a href="<?= base_url('reviews?sort=fecha_creacion&order=' . ($sort == 'fecha_creacion' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	Fecha
+																	<?php if ($sort == 'fecha_creacion'): ?>
+																		<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
+																	<?php endif; ?>
+																</a></th>
+																<th class="text-end min-w-100px">Acciones</th>
+															</tr>
+															<!--end::Table row-->
+														</thead>
+														<!--end::Table head-->
+														<!--begin::Table body-->
+														<tbody class="text-gray-600 fw-bold">
+															<?php foreach ($reviews as $review): ?>
+																<tr> <!-- PRUEBA -->
+																	<!--begin::Checkbox-->
+																	<td>
+																		<div class="form-check form-check-sm form-check-custom form-check-solid">
+																			<input class="form-check-input" type="checkbox" value="1" />
+																		</div>
+																	</td>
+																	<!--end::Checkbox-->
+																	<!--begin::User=-->
+																	<td class="position-relative">
+																		<?php if ($review['archivado']): ?>
+																			<div  id="archivado"></div> <!-- esto es para identificar los datos que estan archivado -->
+																		<?php endif; ?>
+																		<?= esc($review['nombre_atraccion']) ?> <!-- PARTE DEL FOREACH DONDE PILLA EL NOMBRE -->																		
+																	</td>
+																	<!--end::User=-->
+																	<!--begin::Role=-->
+																	<td> 
+																		<?= esc($review['nombre_usuario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA DESCRIPCIÓN -->
+																	</td> 
+																	<!--end::Role=-->
+
+																	<!--begin::Two step=-->
+																	<td>
+																		<?= esc($review['calificacion']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA ALTURA MAXIMA -->
+																	</td>
+																	<!--end::Two step=-->
+																	<!--begin::Joined-->
+																	<td>
+																		<?= esc($review['comentario']) ?> <!-- PARTE DEL FOREACH DONDE PILLA LA CAPACIDAD MAXIMA -->
+																	</td> 
+
+																	<td>
+																		<?= (new DateTime($review['fecha_creacion']))->format('d-m-Y H:i:s') ?> <!-- PARTE DEL FOREACH DONDE PILLA LOS ESTADOS -->
+																	</td> 
+
+																	<!--begin::Joined-->
+																	<!--begin::Action=-->
+																	<td class="text-end">
+																		<a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Acciones
+																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+																		<span class="svg-icon svg-icon-5 m-0">
+																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																				<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+																			</svg>
+																		</span>
+																		<!--end::Svg Icon--></a>
+																		<!--begin::Menu-->
+																		<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+																			<!--begin::Menu item-->
+																			<?php if (!$review['archivado']): ?>
+																				<div class="menu-item px-3">
+																					<a href="<?= base_url('reviews/save/' . $review['id']) ?>" class="menu-link px-3">
+																						Editar<i class="fa-regular fa-pen-to-square ms-4"></i>
+																					</a>  <!-- AQUI PONEMOS EL LINK PARA EDITAR EL USUARIO -->
+																				</div>
+																			<?php endif; ?>
+																			<!--end::Menu item-->
+																			<!--begin::Menu item-->
+																			<div class="menu-item px-3">																		
+																			<?php if ($review['archivado']): ?>
+																				<form action="<?= base_url('reviews/restore/' . $review['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																					<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Desarchivar <i class="fa-solid fa-trash ms-4"></i></button>
+																				</form><!-- AQUI PONEMOS EL LINK PARA RESTAURAR LA ATRACCIÓN -->
+																			<?php else: ?>
+																				<form action="<?= base_url('reviews/delete/' . $review['id']) ?>" method="GET" onsubmit="event.preventDefault(); showConfirmModal(this);">
+																					<button type="submit" class="menu-link px-3 btn btn-sm btn-link" id="btn-archivar" data-kt-users-table-filter="delete_row">Archivar <i class="fa-solid fa-trash ms-4"></i></button>
+																				</form><!-- AQUI PONEMOS EL LINK PARA ELIMINAR LA ATRACCIÓN -->
+																			<?php endif; ?>
+																			</div>
+																			<!--end::Menu item-->
+																		</div>
+																		<!--end::Menu-->
+																	</td>
+																	<!--end::Action=-->
+																</tr>
+															<?php endforeach; ?>
+															<!--end::Table row-->
+														</tbody>
+														<!--end::Table body-->
+													</table>
+													<!--end::Table-->
+													<!-- Paginador -->
+													<div class="mt-4">
+														<div class="d-flex justify-content-between align-items-center">
+															<div class="d-flex align-items-center">
+																<label for="perPage" class="form-label me-2">Elementos por página:</label>
+																<select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="changePerPage()">
+																	<option value="3" <?= $perPage == 3 ? 'selected' : '' ?>>3</option>
+																	<option value="5" <?= $perPage == 5 ? 'selected' : '' ?>>5</option>
+																	<option value="10" <?= $perPage == 10 ? 'selected' : '' ?>>10</option>
+																	<option value="20" <?= $perPage == 20 ? 'selected' : '' ?>>20</option>
+																</select>
+															</div>
+															<div>													
+																<?= $pager->only(['atraccion', 'usuario', 'calificacion', 'comentario', 'fechaCreacion', 'reviewArchivada', 'perPage', 'sort', 'order'])->links("default", "custom_pagination") ?> <!-- Usa la plantila predeterminada -->
+															</div>
+														</div>
+													</div>
+												<?php else: ?>
+													<p class="text-center">No hay reseñas registradas.</p>
+												<?php endif; ?>
 											</div>
 										</div>
+									</div>
 									<!--FIN DEL CARD DE LA PARTE DEL LISTADO DE USUARIO-->
 									<!-- Modal de confirmación -->
 									<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -745,8 +745,6 @@ License: For each use you must have a valid license purchased only from above li
 										</div>
 									</div>
 									<!-- FIN DE LA PARTE DEL MODAL -->
-
-									<!--end::Card body-->
 								</div>
 							</div>
 							<!--end::Container-->
@@ -761,7 +759,7 @@ License: For each use you must have a valid license purchased only from above li
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
 								<span class="text-muted fw-bold me-1">2025©</span>
-								<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+								<span  target="_blank" class="text-gray-800 text-hover-primary">Karmalandia derecho reservados</span>
 							</div>
 						</div>
 						<!--end::Container-->

@@ -418,7 +418,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!-- FORMULARIO DE búsqueda -->
 										</div>
 
-										<h1 class="text-center">Listado de Usuarios</h1>
+										<!--<h1 class="text-center">Listado de Usuarios</h1>-->
 
 										<!--begin::Card title-->
 										<!--begin::Card toolbar-->
@@ -455,12 +455,11 @@ License: For each use you must have a valid license purchased only from above li
 														<form method="GET" action="<?= base_url("users") ?>">
 															<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
 															<input type="hidden" name="page" value="<?= esc($page) ?>">
-															<div class="mb-5">
-																<label class="form-label fs-6 fw-bold">Usuario:</label>
-																<div class="input-group w-auto">
-																	<input type="text" name="usuario" class="form-control" placeholder="Nombre" value="<?= esc($usuario) ?>">
-																</div>
-															</div>
+															<input type="hidden" name="sort" value="<?= esc($sort) ?>">
+															<input type="hidden" name="order" value="<?= esc($order) ?>">
+															<input type="hidden" name="perPage" value="<?= esc($perPage) ?>">
+															<input type="hidden" name="page" value="<?= esc($page) ?>">
+															
 															<!--end::Input group-->
 															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Email:</label>
@@ -472,36 +471,32 @@ License: For each use you must have a valid license purchased only from above li
 															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Rol:</label>
 																<div class="input-group w-auto">
-																	<input type="text" name="rol" class="form-control" placeholder="Rol" value="<?= esc($rol) ?>">
+																	<select name="rol" id="rol" class="form-select">
+																		<option value="">Selecciona un rol</option>
+																		<option value="Administrador" <?= $rol == 'Administrador' ? 'selected' : '' ?>>Administrador</option>
+																		<option value="Usuario" <?= $rol == 'Usuario' ? 'selected' : '' ?>>Usuario</option>
+																		<!-- Añade más roles según sea necesario -->
+																	</select>
 																</div>
 															</div>
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<!--<div class="mb-5">
-																<label class="form-label fs-6 fw-bold">Última Conexión:</label>
+															<div class="mb-5">
+																<label class="form-label fs-6 fw-bold">Usuario:</label>
 																<div class="input-group w-auto">
-																	<input type="text" name="ultimaConexion" class="form-control" placeholder="Última Conexión" value="">
+																	<select name="usuario" id="usuario" class="form-select">
+																		<option value="">Selecciona un rol primero</option>
+																		<!-- Las opciones de usuario se llenarán dinámicamente -->
+																	</select>
 																</div>
-															</div>-->
-															<!--end::Input group-->
-															<!--begin::Input group-->
-															<!--<div class="mb-5">
-																<label class="form-label fs-6 fw-bold">Fecha de Ingreso:</label>
-																<div class="input-group w-auto">
-																	<input type="text" name="fechaIngreso" class="form-control" placeholder="Fecha de Ingreso" value="">
-																</div>
-															</div>-->
-															<!--end::Input group-->
-															<!--begin::Input group-->
+															</div>
 															<div class="mb-5">
 																<label class="form-label fs-6 fw-bold">Mostrar Usuarios:</label>
 																<div class="input-group w-auto">
-																<select name="usuarioArchivado" id="usuarioArchivado" class="form-select">
-																	<option selected>selecciona una opción</option>
-																	<option value="0" <?= $usuarioArchivado === '0' ? 'selected' : '' ?>>No Archivados</option>
-																	<option value="1" <?= $usuarioArchivado === '1' ? 'selected' : '' ?>>Archivados</option>
-																	<option value="" <?= $usuarioArchivado === null ? 'selected' : '' ?>>Todos</option>
-																</select>
+																	<select name="usuarioArchivado" id="usuarioArchivado" class="form-select">
+																		<option value="">selecciona una opción</option>
+																		<option value="0" <?= $usuarioArchivado === '0' ? 'selected' : '' ?>>No Archivados</option>
+																		<option value="1" <?= $usuarioArchivado === '1' ? 'selected' : '' ?>>Archivados</option>
+																		<option value="" <?= $usuarioArchivado === null ? 'selected' : '' ?>>Todos</option>
+																	</select>
 																</div>
 															</div>
 															<!--end::Input group-->
@@ -573,8 +568,8 @@ License: For each use you must have a valid license purchased only from above li
 																		<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_users .form-check-input" value="1" />
 																	</div>
 																</th>											
-																<th class="min-w-125px">
-																	<a href="<?= base_url('users?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																<th class="min-w-125px">																
+																	<a href="<?= base_url('users?sort=nombre_usuario&order=' . ($sort == 'nombre_usuario' && $order == 'asc' ? 'desc' : 'asc') . '&usuario=' . $usuario . '&email=' . $email . '&rol=' . $rol . '&usuarioArchivado=' . $usuarioArchivado . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Usuario
 																		<?php if ($sort == 'nombre_usuario'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -582,7 +577,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('users?sort=email&order=' . ($sort == 'email' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	<a href="<?= base_url('users?sort=email&order=' . ($sort == 'email' && $order == 'asc' ? 'desc' : 'asc') . '&usuario=' . $usuario . '&email=' . $email . '&rol=' . $rol . '&usuarioArchivado=' . $usuarioArchivado . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Email
 																		<?php if ($sort == 'email'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -590,7 +585,7 @@ License: For each use you must have a valid license purchased only from above li
 																	</a>
 																</th>
 																<th class="min-w-125px">
-																	<a href="<?= base_url('users?sort=nombre_rol&order=' . ($sort == 'nombre_rol' && $order == 'asc' ? 'desc' : 'asc') . '&perPage=' . $perPage . '&page=' . $page) ?>">
+																	<a href="<?= base_url('users?sort=nombre_rol&order=' . ($sort == 'nombre_rol' && $order == 'asc' ? 'desc' : 'asc') . '&usuario=' . $usuario . '&email=' . $email . '&rol=' . $rol . '&usuarioArchivado=' . $usuarioArchivado . '&perPage=' . $perPage . '&page=' . $page) ?>">
 																		Rol
 																		<?php if ($sort == 'nombre_rol'): ?>
 																			<i class="fa fa-arrow-<?= $order == 'asc' ? 'up' : 'down' ?>"></i>
@@ -757,7 +752,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-bold me-1">2025©</span>
-							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+							<span  target="_blank" class="text-gray-800 text-hover-primary">Karmalandia derecho reservados</span>
 						</div>
 					</div>
 					<!--end::Container-->
@@ -792,6 +787,40 @@ License: For each use you must have a valid license purchased only from above li
 	<script src="assets/js/custom/modals/upgrade-plan.js"></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
+	<script>
+		$(document).ready(function() {
+			$('#rol').change(function() {
+				let rol = $(this).val();
+				let usuarioSelect = $('#usuario');
+				if (rol) {
+					$.ajax({
+						url: '<?= base_url('users/getUsersByRole') ?>',
+						method: 'GET',
+						data: { rol: rol },
+						success: function(data) {
+							console.log(data); // Verificar los datos recibidos
+							let usuarios = data;
+							usuarioSelect.empty();
+							if (usuarios.length > 0) {
+								usuarioSelect.append('<option value="">Selecciona un usuario</option>');
+								usuarios.forEach(function(usuario) {
+									usuarioSelect.append('<option value="' + usuario.id + '">' + usuario.nombre_usuario + '</option>');
+								});
+							} else {
+								usuarioSelect.append('<option value="">No hay usuarios disponibles</option>');
+							}
+						},
+						error: function(xhr, status, error) {
+							console.error('Error en la solicitud AJAX:', error);
+						}
+					});
+				} else {
+					usuarioSelect.empty();
+					usuarioSelect.append('<option value="">Selecciona un rol primero</option>');
+				}
+			});
+		});
+	</script>
 </body>
 <!--end::Body-->
 

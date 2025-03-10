@@ -51,6 +51,7 @@ class EventoController extends BaseController
         return $this->response->setJSON(['status' => 'success']); 
     }
 
+
     /**
     * Parte de la graficas.
     */

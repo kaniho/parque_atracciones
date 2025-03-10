@@ -41,4 +41,7 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
+    
+    // Añadir la configuración del idioma
+    public $locale = 'es';
 }

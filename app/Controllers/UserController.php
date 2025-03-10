@@ -29,8 +29,8 @@ class UserController extends BaseController
     
         // Construir la consulta con uniones
         $userModel->select('users.*, roles.nombre_rol')
-            ->join('roles', 'roles.id = users.id_rol');
-            
+                  ->join('roles', 'roles.id = users.id_rol');
+                  
         // Contador de filtros activos
         $filtrosActivos = 0;
         if ($usuario) $filtrosActivos++;
@@ -40,7 +40,7 @@ class UserController extends BaseController
     
         // Aplicar filtros si se introducen
         if ($usuario) {
-            $userModel->like('users.nombre_usuario', $usuario);
+            $userModel->where('users.id', $usuario);
         }
         if ($email) {
             $userModel->like('users.email', $email);
@@ -60,6 +60,7 @@ class UserController extends BaseController
         // Configuración de la paginación  
         $users = $userModel->paginate($perPage); // Obtener usuarios paginados        
         $pager = $userModel->pager; // Instancia del paginador
+    
         // Pasar los datos a la vista
         $data = [
             'users' => $users,
@@ -76,6 +77,17 @@ class UserController extends BaseController
         ];
         
         return view('usuarios/user_list', $data); // Cargar la vista con los datos
+    }
+
+    public function getUsersByRole()
+    {
+        $rol = $this->request->getVar('rol');
+        $userModel = new UserModel();
+        $users = $userModel->select('users.id, users.nombre_usuario')
+                           ->join('roles', 'roles.id = users.id_rol')
+                           ->where('roles.nombre_rol', $rol)
+                           ->findAll();
+        return $this->response->setJSON($users);
     }
 
     public function exportExcel() {
@@ -174,7 +186,6 @@ class UserController extends BaseController
                 $userData = [
                     'nombre_usuario' => $this->request->getPost('name'),
                     'email' => $this->request->getPost('email'),
-                    //'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT), // Encriptamos la contraseña antes de guardarla.
                     'id_rol' => $this->request->getPost('rol'),
                 ];
 

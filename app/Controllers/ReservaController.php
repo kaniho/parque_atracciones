@@ -229,6 +229,7 @@ class ReservaController extends BaseController {
                 'id_horario' => 'required|integer',
                 'cantidad_personas' => 'required|integer',
                 'estado' => 'required|string',
+                'turno' => 'required|string',  // mañana o tarde
             ]);
 
             if(!$validation->withRequest($this->request)->run()) {
@@ -240,8 +241,26 @@ class ReservaController extends BaseController {
                 $usuario = $usuariosModel->where('nombre_usuario', $usuarioNombre)->first();
 
                 // Preparar datos del formulario
+                $fecha = $this->request->getPost('fecha');
                 $fecha = (new \DateTime())->format('Y-m-d'); // Formato compatible con la base de datos
                 $fechaCreacion = (new \DateTime())->format('Y-m-d H:i:s'); // Formato compatible con la base de datos
+                $cantidad_personas = $this->request->getPost('cantidad_personas');
+                $turno = $this->request->getPost('turno'); // 'manana' o 'tarde'
+                $id_atraccion = $this->request->getPost('id_atraccion');
+
+                
+                // Verificar disponibilidad de plazas
+                $atraccion = $atraccionesModel->find($id_atraccion);
+                if ($turno == 'mañana') {
+                    $plazas_disponibles = $atraccion['plazas_mañana'];
+                } else {
+                    $plazas_disponibles = $atraccion['plazas_tarde'];
+                }
+
+                if ($cantidad_personas > $plazas_disponibles) {
+                    return redirect()->back()->with('error', 'No hay suficientes plazas disponibles para este turno.');
+                }
+
                 $reservaData = [
                     'id_atraccion' => $this->request->getPost('id_atraccion'),
                     'id_usuario' => $this->request->getPost('id_usuario'), //$usuario['id'],
@@ -260,6 +279,13 @@ class ReservaController extends BaseController {
                     // Crear nueva atracción
                     $reservaModel->save($reservaData);
                     $message = 'Reseña creada correctamente';
+                }
+
+                // Actualizar las plazas disponibles
+                if ($turno == 'mañana') {
+                    $atraccionesModel->update($id_atraccion, ['plazas_mañana' => $plazas_disponibles - $cantidad_personas]);
+                } else {
+                    $atraccionesModel->update($id_atraccion, ['plazas_tarde' => $plazas_disponibles - $cantidad_personas]);
                 }
 
                 // Redirigir al listado con un mensaje de éxito

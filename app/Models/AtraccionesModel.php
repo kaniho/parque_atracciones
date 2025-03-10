@@ -20,5 +20,5 @@ class AtraccionesModel extends Model
     protected $updatedField  = 'fecha_actualizacion';
 
     // Campos que se pueden insertar o actualizar en la base de datos de manera masiva
-    protected $allowedFields = ["nombre", "descripcion", "altura_minima", "capacidad_maxima", "estado", "archivado"];
+    protected $allowedFields = ["nombre", "descripcion", "altura_minima", "capacidad_maxima", "estado", 'plazas_manana', 'plazas_tarde', "archivado"];
 }

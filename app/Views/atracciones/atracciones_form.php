@@ -490,6 +490,46 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--end::Col-->									
                                             </div>
                                             <!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="row mb-6">
+												<!--begin::Label-->
+												<label class="col-lg-4 col-form-label required fw-bold fs-6" for="plazas_manana">Plazas Mañana</label>
+												<!--end::Label-->
+												<!--begin::Col-->
+												<div class="col-lg-8">
+													<!--begin::Row-->
+													<div class="row">
+														<!--begin::Col-->
+														<div class="col-lg-6 fv-row">
+															<input type="text" name="plazas_manana" id="plazas_manana" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Plazas Mañana" value="<?= isset($atraccion['plazas_manana']) ? esc($atraccion['plazas_manana']) : '' ?>" required/>
+														</div>
+														<!--end::Col-->
+													</div>
+													<!--end::Row-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="row mb-6">
+												<!--begin::Label-->
+												<label class="col-lg-4 col-form-label required fw-bold fs-6" for="plazas_tarde">Plazas Tarde</label>
+												<!--end::Label-->
+												<!--begin::Col-->
+												<div class="col-lg-8">
+													<!--begin::Row-->
+													<div class="row">
+														<!--begin::Col-->
+														<div class="col-lg-6 fv-row">
+															<input type="text" name="plazas_tarde" id="plazas_tarde" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Plazas Tarde" value="<?= isset($atraccion['plazas_tarde']) ? esc($atraccion['plazas_tarde']) : '' ?>" required/>
+														</div>
+														<!--end::Col-->
+													</div>
+													<!--end::Row-->
+												</div>
+												<!--end::Col-->
+											</div>
+											<!--end::Input group-->
                                             <!--end::Input group-->                                                                                   
 											<div class="row mb-6">
                                                 <!--begin::Label-->
@@ -536,7 +576,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-bold me-1">2025©</span>
-							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+							<span  target="_blank" class="text-gray-800 text-hover-primary">Karmalandia derecho reservados</span>
 						</div>
 					</div>
 					<!--end::Container-->
